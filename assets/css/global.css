@@ -1,0 +1,4797 @@
+:root {
+  --bg: #f4efe7;
+  --surface: rgba(255,255,255,0.58);
+  --surface-strong: rgba(255,255,255,0.78);
+  --surface-dark: #171411;
+  --text: #221c17;
+  --muted: #6f655c;
+  --line: rgba(34,28,23,0.12);
+  --line-strong: rgba(34,28,23,0.22);
+  --brand: #9b7b54;
+  --brand-deep: #6f553a;
+  --forest: #3d4c43;
+  --sand: #d8c3a5;
+  --shadow: 0 24px 80px rgba(31, 24, 18, 0.10);
+  --shadow-soft: 0 14px 34px rgba(31, 24, 18, 0.08);
+  --radius: 24px;
+  --radius-sm: 16px;
+  --container: 1240px;
+  --header-h: 86px;
+  --section-space: clamp(72px, 10vw, 132px);
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(216,195,165,.28), transparent 32%),
+    radial-gradient(circle at top right, rgba(61,76,67,.08), transparent 20%),
+    linear-gradient(180deg, #f8f4ed 0%, #f4efe7 52%, #efe7dc 100%);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0 0 1rem; }
+button, input, textarea, select { font: inherit; }
+
+.container {
+  width: min(calc(100% - 32px), var(--container));
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--section-space) 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(14px);
+  color: rgba(255,255,255,.92);
+  font-size: .8rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.page-eyebrow {
+  color: var(--brand-deep);
+  background: rgba(155,123,84,.08);
+  border: 1px solid rgba(155,123,84,.16);
+}
+
+.display {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.8rem, 7vw, 6.2rem);
+  line-height: .94;
+  letter-spacing: -.04em;
+  font-weight: 500;
+}
+
+.h1, .h2, .h3 {
+  margin: 0 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -.03em;
+  line-height: .98;
+  font-weight: 500;
+}
+.h1 { font-size: clamp(2.5rem, 5.4vw, 4.8rem); }
+.h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+.h3 { font-size: clamp(1.45rem, 2.5vw, 2rem); }
+
+.lead {
+  font-size: clamp(1.06rem, 1.6vw, 1.28rem);
+  line-height: 1.75;
+  color: rgba(255,255,255,.86);
+  max-width: 820px;
+}
+
+.page-lead {
+  color: var(--muted);
+}
+
+.copy {
+  font-size: 1.02rem;
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.grid-2,
+.grid-3,
+.grid-4 {
+  display: grid;
+  gap: 22px;
+}
+.grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.42);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+  backdrop-filter: blur(18px);
+}
+
+.card-inner { padding: clamp(24px, 3vw, 34px); }
+.card.kpi .value {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.card.kpi .label,
+.small-label {
+  color: var(--muted);
+  font-size: .86rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  overflow: clip;
+  background:
+    linear-gradient(180deg, rgba(18,16,14,.26), rgba(18,16,14,.48)),
+    radial-gradient(circle at 15% 25%, rgba(216,195,165,.24), transparent 35%),
+    linear-gradient(120deg, #68513a 0%, #3d4c43 45%, #161310 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12,10,9,.16) 0%, rgba(12,10,9,.32) 46%, rgba(12,10,9,.62) 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -18% auto;
+  width: 58vw;
+  height: 58vw;
+  background: radial-gradient(circle, rgba(255,255,255,.08) 0%, rgba(255,255,255,0) 70%);
+  filter: blur(14px);
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: calc(var(--header-h) + 32px) 0 72px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.24fr) minmax(320px, .76fr);
+  gap: clamp(28px, 5vw, 64px);
+  align-items: end;
+}
+.hero-copy { max-width: 860px; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+.hero-panel {
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 28px;
+  padding: 28px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 54px rgba(0,0,0,.16);
+}
+.hero-panel p { color: rgba(255,255,255,.82); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease), background .6s var(--ease), border-color .6s var(--ease);
+  will-change: transform;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--sand), #efe3cf);
+  color: #2e241c;
+  box-shadow: 0 14px 36px rgba(0,0,0,.16);
+}
+.btn-secondary {
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+.btn-outline {
+  border-color: rgba(34,28,23,.14);
+  color: var(--text);
+  background: rgba(255,255,255,.36);
+}
+
+.site-shell { position: relative; }
+#site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 40;
+}
+.header {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+}
+.header-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: rgba(21,18,15,.42);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 48px rgba(0,0,0,.14);
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(216,195,165,.95), rgba(155,123,84,.88));
+  box-shadow: inset 0 1px 1px rgba(255,255,255,.3);
+}
+.brand-text {
+  color: #fff;
+  line-height: 1.08;
+}
+.brand-text strong {
+  display: block;
+  font-size: .95rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.brand-text span {
+  display: block;
+  font-size: .75rem;
+  color: rgba(255,255,255,.7);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.nav a {
+  color: rgba(255,255,255,.82);
+  font-size: .92rem;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: background .45s var(--ease), color .45s var(--ease);
+}
+.nav a:hover,
+.nav a.is-active { background: rgba(255,255,255,.12); color: #fff; }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lang-switch {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.lang-switch a {
+  min-width: 42px;
+  text-align: center;
+  color: rgba(255,255,255,.74);
+  font-size: .82rem;
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+.lang-switch a.is-active { background: rgba(255,255,255,.18); color: #fff; }
+
+.page-hero {
+  padding: calc(var(--header-h) + 74px) 0 48px;
+}
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
+  gap: 26px;
+  align-items: end;
+}
+.glass-panel {
+  background: rgba(255,255,255,.52);
+  border: 1px solid rgba(255,255,255,.45);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius);
+  padding: clamp(24px, 3vw, 34px);
+}
+.metric-list {
+  display: grid;
+  gap: 12px;
+}
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.metric-row:last-child { border-bottom: 0; }
+.metric-row span:last-child { color: var(--muted); text-align: right; }
+
+.house-card {
+  overflow: hidden;
+}
+.house-card .visual {
+  aspect-ratio: 1.1 / .9;
+  background:
+    radial-gradient(circle at top left, rgba(216,195,165,.44), transparent 36%),
+    linear-gradient(135deg, rgba(155,123,84,.42), rgba(61,76,67,.82));
+}
+.house-card .meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.house-card .pill,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(155,123,84,.09);
+  border: 1px solid rgba(155,123,84,.14);
+  color: var(--brand-deep);
+  font-size: .82rem;
+}
+
+.feature-list,
+.bullet-list {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+.feature-list li,
+.bullet-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.feature-list li::before,
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .72em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand);
+}
+
+.quote-block {
+  padding: clamp(26px, 4vw, 46px);
+  border-radius: 34px;
+  background: linear-gradient(135deg, #211b17, #3a3128 52%, #4b5a50);
+  color: rgba(255,255,255,.94);
+  box-shadow: 0 28px 64px rgba(33,27,23,.24);
+}
+.quote-block p {
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  line-height: 1.55;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.quote-block small {
+  display: block;
+  margin-top: 18px;
+  color: rgba(255,255,255,.68);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(155,123,84,.16), rgba(61,76,67,.12));
+  border: 1px solid rgba(255,255,255,.44);
+  border-radius: 36px;
+  box-shadow: var(--shadow);
+}
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: auto -8% -18% auto;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.28), transparent 70%);
+}
+.cta-band .card-inner { position: relative; z-index: 2; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+}
+.label {
+  display: block;
+  font-size: .86rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.input,
+.textarea,
+.select {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(34,28,23,.10);
+  background: rgba(255,255,255,.72);
+  color: var(--text);
+  outline: none;
+  transition: border-color .35s var(--ease), box-shadow .35s var(--ease), transform .35s var(--ease);
+}
+.textarea {
+  min-height: 164px;
+  padding: 16px;
+  resize: vertical;
+}
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: rgba(155,123,84,.5);
+  box-shadow: 0 0 0 6px rgba(155,123,84,.12);
+}
+
+.footer {
+  padding: 30px 0 42px;
+}
+.footer-shell {
+  border-radius: 32px;
+  background: linear-gradient(180deg, rgba(25,21,18,.96), rgba(17,14,12,.98));
+  color: rgba(255,255,255,.84);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 24px 60px rgba(18,15,12,.22);
+  overflow: hidden;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr .8fr .9fr;
+  gap: 26px;
+  padding: 34px;
+}
+.footer h4 {
+  margin: 0 0 14px;
+  font-size: .84rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.56);
+}
+.footer p,
+.footer li,
+.footer a {
+  color: rgba(255,255,255,.78);
+  line-height: 1.75;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 0 34px 28px;
+  color: rgba(255,255,255,.52);
+  font-size: .9rem;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px) scale(.992);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .btn, .nav a, .input, .textarea, .select { transition: none; }
+}
+
+@media (max-width: 1080px) {
+  .hero-grid,
+  .page-hero-grid,
+  .footer-top,
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 820px) {
+  :root { --header-h: 78px; }
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .hero-grid,
+  .page-hero-grid,
+  .footer-top,
+  .form-grid { grid-template-columns: 1fr; }
+  .header-bar {
+    padding: 12px 14px;
+    border-radius: 24px;
+  }
+  .nav { display: none; }
+  .hero-inner { padding-bottom: 40px; }
+  .footer-top,
+  .footer-bottom { padding-left: 22px; padding-right: 22px; }
+}
+/* ===== HEADER PREMIUM ===== */
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  padding-top: 14px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.header-shell{
+  display: grid;
+  grid-template-columns: auto minmax(0,1fr) auto;
+  align-items: center;
+  gap: 20px;
+  min-height: 86px;
+  padding: 14px 18px 14px 16px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(24,22,19,.84), rgba(24,22,19,.68));
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 18px 50px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.header-brand{
+  min-width: 0;
+}
+
+.brand-text strong{
+  font-size: .88rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #f5efe7;
+  font-weight: 650;
+}
+
+.brand-text span{
+  margin-top: 4px;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+}
+
+.header-nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.header-nav a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(255,255,255,.74);
+  font-size: .88rem;
+  white-space: nowrap;
+  transition: color .25s ease, background .25s ease, transform .25s ease, opacity .25s ease;
+}
+
+.header-nav a:hover{
+  color: #fff;
+  background: rgba(255,255,255,.06);
+}
+
+.header-nav a.is-active{
+  color: #fff;
+  background: rgba(255,255,255,.10);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.header-actions{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.premium-lang{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+
+.premium-lang a{
+  min-width: 40px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: rgba(255,255,255,.72);
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: all .25s ease;
+}
+
+.header-cta{
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #d7b885 0%, #caa36b 100%);
+  color: #20170f;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .01em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 12px 22px rgba(0,0,0,.16);
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+}
+
+@media (max-width: 1180px){
+  .header-shell{
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 16px;
+  }
+
+  .header-nav{
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .header-actions{
+    flex-wrap: wrap;
+  }
+}
+/* FOOTER */
+
+/* =========================
+   FOOTER PREMIUM — FINAL
+   ========================= */
+
+.site-footer-premium{
+  padding: 42px 0 52px;
+}
+
+.site-footer-premium .footer-shell{
+  padding: 34px 34px 22px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.06), transparent 26%),
+    linear-gradient(180deg, rgba(22,20,18,.96), rgba(22,20,18,.88));
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.site-footer-premium .footer-hero{
+  display:grid;
+  grid-template-columns: minmax(280px, 360px) minmax(320px, 620px);
+  gap: 56px;
+  align-items:start;
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.site-footer-premium .footer-brand{
+  display:inline-flex;
+  align-items:center;
+  gap: 14px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.site-footer-premium .brand-mark{
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 35% 35%, #dcc8a6 0%, #c7ab77 38%, #8f7452 72%, #6a553c 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.35),
+    0 8px 18px rgba(0,0,0,.18);
+}
+
+.site-footer-premium .brand-text{
+  display:inline-flex;
+  flex-direction:column;
+  line-height:1.05;
+}
+
+.site-footer-premium .brand-text strong{
+  font-size: .96rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #f5efe7;
+  font-weight: 650;
+}
+
+.site-footer-premium .brand-text span{
+  margin-top: 5px;
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.56);
+}
+
+.site-footer-premium .footer-intro{
+  display:flex;
+  align-items:flex-start;
+}
+
+.site-footer-premium .footer-copy{
+  margin: 0;
+  max-width: 52ch;
+  color: rgba(255,255,255,.68);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+
+.site-footer-premium .footer-main{
+  display:grid;
+  grid-template-columns: 1.2fr 1fr .7fr;
+  gap: 46px;
+  padding: 28px 0 22px;
+}
+
+.site-footer-premium .footer-column{
+  min-width: 0;
+}
+
+.site-footer-premium .footer-heading{
+  margin-bottom: 18px;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.42);
+}
+
+.site-footer-premium .footer-links{
+  display:grid;
+  gap: 11px;
+}
+
+.site-footer-premium .footer-links a{
+  text-decoration:none;
+  color: rgba(255,255,255,.84);
+  line-height: 1.55;
+  transition: color .22s ease, transform .22s ease;
+}
+
+.site-footer-premium .footer-links a:hover{
+  color:#fff;
+  transform: translateX(2px);
+}
+
+.site-footer-premium .footer-column-lang{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.site-footer-premium .footer-lang{
+  justify-content:flex-start;
+}
+
+.site-footer-premium .footer-bottom{
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  color: rgba(255,255,255,.42);
+  font-size: .88rem;
+}
+
+/* responsive */
+
+@media (max-width: 980px){
+  .site-footer-premium .footer-hero{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .site-footer-premium .footer-main{
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .site-footer-premium .footer-column-lang{
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px){
+  .site-footer-premium{
+    padding: 34px 0 42px;
+  }
+
+  .site-footer-premium .footer-shell{
+    padding: 24px 20px 18px;
+    border-radius: 28px;
+  }
+
+  .site-footer-premium .footer-main{
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 0 18px;
+  }
+
+  .site-footer-premium .footer-copy{
+    font-size: .96rem;
+    line-height: 1.75;
+  }
+
+  .site-footer-premium .brand-text strong{
+    font-size: .9rem;
+  }
+}
+
+@media (max-width: 720px){
+  .site-header{
+    padding-top: 10px;
+  }
+/* =========================================================
+   CASAS DA VILA — HOUSE PAGES CARD SYSTEM FIX
+   Uniformiza altura, ritmo interno e alinhamento visual
+   para páginas das casas (Serenidade / Brisa / Céu)
+   ========================================================= */
+
+.houseConceptGrid,
+.houseExperienceGrid,
+.houseOverviewGrid{
+  align-items:stretch;
+}
+
+.houseConceptCard,
+.houseExperienceItem,
+.houseOverviewCard,
+.houseSalesCard{
+  height:100%;
+}
+
+/* Cards de conceito */
+.houseConceptCard{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.houseConceptCard h3{
+  min-height:2.4em;
+}
+
+.houseConceptCard p{
+  flex:1 1 auto;
+}
+
+/* Cards de experiência */
+.houseExperienceItem{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+
+.houseExperienceItem .pill{
+  align-self:flex-start;
+}
+
+.houseExperienceItem h3{
+  min-height:2.4em;
+}
+
+.houseExperienceItem p{
+  flex:1 1 auto;
+}
+
+/* Bloco de overview / disponibilidade */
+.houseOverviewGrid{
+  align-items:stretch;
+}
+
+.houseOverviewBlock{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  min-height:100%;
+}
+
+.houseOverviewBlock strong{
+  min-height:2.2em;
+}
+
+/* Ajuste fino de consistência nos grids */
+.houseConceptGrid > *,
+.houseExperienceGrid > *,
+.houseOverviewGrid > *{
+  min-width:0;
+}
+
+/* Melhor equilíbrio entre colunas largas e textos */
+.houseConceptCard,
+.houseExperienceItem{
+  min-height:260px;
+}
+
+/* Desktop largo: deixa tudo ainda mais estável */
+@media (min-width: 1101px){
+  .houseConceptCard,
+  .houseExperienceItem{
+    min-height:280px;
+  }
+}
+
+/* Tablet e mobile: remove rigidez excessiva */
+@media (max-width: 1100px){
+  .houseConceptCard,
+  .houseExperienceItem{
+    min-height:unset;
+  }
+
+  .houseConceptCard h3,
+  .houseExperienceItem h3,
+  .houseOverviewBlock strong{
+    min-height:unset;
+  }
+}
+  .header-shell{
+    min-height: auto;
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .header-nav{
+    gap: 6px;
+  }
+
+  .header-nav a{
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: .92rem;
+  }
+
+  .header-cta{
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: .92rem;
+  }
+
+  .footer-shell{
+    padding: 26px 20px 20px;
+    border-radius: 28px;
+  }
+}
+/* Footer refinement */
+
+.footer-top{
+  display:grid;
+  grid-template-columns:minmax(280px, 360px) minmax(320px, 560px);
+  gap:48px;
+  align-items:start;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.footer-copy{
+  max-width:46ch;
+  margin:0;
+  color:rgba(255,255,255,.68);
+  line-height:1.85;
+  font-size:.98rem;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr .8fr;
+  gap:42px;
+  padding:30px 0 18px;
+}
+
+.footer-links{
+  display:grid;
+  gap:10px;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:rgba(255,255,255,.82);
+  transition:color .25s ease, transform .25s ease;
+}
+
+.footer-links a:hover{
+  color:#fff;
+  transform:translateX(2px);
+}
+
+.footer-heading{
+  margin-bottom:18px;
+  font-size:.74rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.44);
+}
+
+.footer-bottom{
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.44);
+  font-size:.88rem;
+}
+/* Header width fix */
+
+.header-shell{
+  grid-template-columns:auto minmax(0,1fr) auto;
+  gap:16px;
+}
+
+.header-nav{
+  gap:0;
+  flex-wrap:nowrap;
+  min-width:0;
+}
+
+.header-nav a{
+  padding:0 9px;
+  font-size:.84rem;
+  min-height:38px;
+  white-space:nowrap;
+}
+
+.brand-text strong{
+  font-size:.84rem;
+  letter-spacing:.06em;
+}
+
+.brand-text span{
+  font-size:.64rem;
+  letter-spacing:.11em;
+}
+
+.header-actions{
+  gap:8px;
+  flex-shrink:0;
+}
+
+.header-cta{
+  min-height:42px;
+  padding:0 16px;
+  font-size:.86rem;
+  white-space:nowrap;
+}
+/* =========================================================
+   CASAS DA VILA — HOUSE PAGES GALLERY + SPACING FIX
+   Uniformiza galerias, respiro vertical e imagem editorial
+   para páginas das casas (Serenidade / Brisa / Céu)
+   ========================================================= */
+
+/* Respiro vertical mais consistente entre blocos */
+.houseOpening,
+.houseConcepts,
+.houseGallery,
+.houseExperience,
+.houseClosing{
+  scroll-margin-top: 110px;
+}
+
+.houseOpeningFigure,
+.houseGalleryCard,
+.houseOverviewCard,
+.houseSalesCard,
+.houseConceptCard,
+.houseExperienceItem{
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   CASAS DA VILA — HOUSE GALLERY SYSTEM FINAL
+   Galeria limpa, simétrica e premium para todas as casas
+   ========================================================= */
+
+.houseGallery{
+  padding-top:0;
+  padding-bottom:88px;
+}
+
+.houseGalleryGrid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
+
+.houseGalleryGrid > *{
+  min-width:0;
+}
+
+.houseGalleryCard{
+  position:relative;
+  overflow:hidden;
+  border-radius:28px;
+  min-height:340px;
+  background:#d7cebf;
+  box-shadow:0 18px 60px rgba(26,20,14,.08);
+}
+
+.houseGalleryCard.tall{
+  min-height:340px;
+}
+
+.houseGalleryCard img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+  transition:transform .8s ease;
+}
+
+.houseGalleryCard:hover img{
+  transform:scale(1.035);
+}
+
+/* Tablet */
+@media (max-width:1100px){
+  .houseGalleryGrid{
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:16px;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:300px;
+  }
+
+  .houseGalleryGrid > :nth-child(3){
+    grid-column:1 / -1;
+  }
+}
+
+/* Mobile */
+@media (max-width:820px){
+  .houseGalleryGrid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:260px;
+    border-radius:22px;
+  }
+
+  .houseGalleryGrid > :nth-child(3){
+    grid-column:auto;
+  }
+}
+/* TABLET */
+@media (min-width: 821px) and (max-width: 1100px){
+  .houseGalleryGrid{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:280px;
+    gap:16px;
+  }
+
+  .houseGalleryGrid > :nth-child(1){
+    grid-column:1 / -1;
+    grid-row:auto;
+  }
+
+  .houseGalleryGrid > :nth-child(2),
+  .houseGalleryGrid > :nth-child(3){
+    grid-column:auto;
+    grid-row:auto;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:320px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 820px){
+  .houseGalleryGrid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .houseGalleryGrid > :nth-child(1),
+  .houseGalleryGrid > :nth-child(2),
+  .houseGalleryGrid > :nth-child(3){
+    grid-column:auto;
+    grid-row:auto;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:260px;
+    border-radius:22px;
+  }
+}
+/* Tablet: duas colunas mais limpas */
+@media (min-width: 821px) and (max-width: 1100px){
+  .houseGalleryGrid{
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:280px;
+    gap:16px;
+  }
+
+  .houseGalleryCard{
+    min-height:280px;
+  }
+
+  .houseGalleryCard.tall{
+    grid-column:1 / -1;
+    min-height:360px;
+  }
+}
+
+/* Mobile: tudo empilha com proporção consistente */
+@media (max-width: 820px){
+  .houseGalleryGrid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:260px;
+    border-radius:22px;
+  }
+}
+
+/* Imagem editorial principal mais estável */
+.houseOpeningFigure{
+  display:block;
+}
+
+.houseOpeningFigure img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+/* Ajuste fino de espaçamento entre seções */
+.houseSection.houseConcepts{
+  padding-bottom:88px;
+}
+
+.houseSection.houseGallery{
+  padding-top:0;
+  padding-bottom:88px;
+}
+
+.houseSection.houseExperience{
+  padding-top:0;
+  padding-bottom:88px;
+}
+
+/* Em telas largas, equaliza ainda mais a sensação de bloco */
+@media (min-width: 1101px){
+  .houseConceptGrid,
+  .houseExperienceGrid{
+    gap:24px;
+  }
+
+  .houseGalleryGrid{
+    margin-top:4px;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — HOUSE PAGES HERO SYSTEM FIX
+   Normaliza hero das páginas individuais das casas
+   (Serenidade / Brisa / Céu | PT + EN)
+   ========================================================= */
+
+/* Estrutura geral do hero */
+.houseHero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+
+.houseHeroMedia{
+  position:absolute;
+  inset:0;
+}
+
+.houseHeroMedia img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+/* Overlay mais consistente e elegante */
+.houseHero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(18,16,14,.10) 0%,
+      rgba(18,16,14,.08) 18%,
+      rgba(18,16,14,.24) 58%,
+      rgba(18,16,14,.56) 100%
+    );
+  z-index:1;
+  pointer-events:none;
+}
+
+/* Container interno */
+.houseHeroInner{
+  position:relative;
+  z-index:2;
+  width:min(1180px, calc(100vw - 48px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.16fr) minmax(320px,.84fr);
+  gap:44px;
+  align-items:end;
+  padding-top:calc(var(--header-h, 96px) + 46px);
+  padding-bottom:76px;
+}
+
+/* Bloco esquerdo */
+.houseHeroCopy{
+  color:#f4efe7;
+  max-width:760px;
+}
+
+.houseHeroCopy .houseEyebrow{
+  color:rgba(244,239,231,.74);
+  margin-bottom:20px;
+}
+
+.houseHeroCopy .houseDisplay{
+  max-width:9.5ch;
+}
+
+.houseHeroCopy .houseLead{
+  margin-top:28px;
+  max-width:34ch;
+  color:rgba(244,239,231,.84);
+}
+
+/* Painel direito */
+.houseHeroPanel{
+  justify-self:end;
+  width:min(100%,390px);
+  min-height:unset;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:28px;
+  border-radius:24px;
+  color:#f4efe7;
+  background:rgba(35,31,28,.24);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 50px rgba(0,0,0,.10);
+}
+
+.houseHeroPanel h2{
+  margin:0 0 12px;
+  font-size:1rem;
+  line-height:1.25;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:#f4efe7;
+}
+
+.houseHeroPanel p{
+  margin:0;
+  font-size:.97rem;
+  line-height:1.72;
+  color:rgba(244,239,231,.82);
+}
+
+/* Metas */
+.houseHeroMeta{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.12);
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.houseHeroMeta span{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 13px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.05);
+  font-size:.74rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:rgba(244,239,231,.78);
+}
+
+/* Hero com mais consistência de espaçamento */
+.houseHero + .houseSection{
+  padding-top:102px;
+}
+
+/* Títulos muito longos: melhor equilíbrio */
+.houseDisplay{
+  text-wrap:balance;
+}
+
+/* Evita hero “estourado” em algumas páginas */
+.houseHeroCopy,
+.houseHeroPanel{
+  min-width:0;
+}
+
+/* Tablet */
+@media (max-width:1100px){
+  .houseHeroInner{
+    grid-template-columns:1fr;
+    gap:26px;
+    padding-bottom:42px;
+  }
+
+  .houseHeroPanel{
+    justify-self:start;
+    width:min(100%,560px);
+  }
+
+  .houseHeroCopy .houseDisplay{
+    max-width:10ch;
+  }
+}
+
+/* Mobile */
+@media (max-width:820px){
+  .houseHero{
+    min-height:auto;
+  }
+
+  .houseHeroInner{
+    width:min(100vw - 28px, 1000px);
+    padding-top:calc(var(--header-h, 90px) + 30px);
+    padding-bottom:36px;
+    gap:22px;
+  }
+
+  .houseHeroCopy .houseLead{
+    margin-top:20px;
+    max-width:30ch;
+  }
+
+  .houseHeroPanel{
+    width:100%;
+    padding:22px 20px;
+    border-radius:22px;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — INTERNAL PAGES EDITORIAL TYPOGRAPHY SYSTEM
+   Padroniza tipografia e ritmo editorial das páginas internas
+   (casas / projeto / investment / location e similares)
+   ========================================================= */
+
+/* -----------------------------
+   Eyebrows / micro-rótulos
+-------------------------------- */
+.houseEyebrow,
+.projectEyebrow,
+.investEyebrow,
+.locEyebrow{
+  display:inline-block;
+  margin:0 0 18px;
+  font-size:.72rem;
+  line-height:1;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--house-soft, #8b8277);
+  opacity:.92;
+}
+
+/* -----------------------------
+   Displays principais
+-------------------------------- */
+.houseDisplay,
+.projectDisplay,
+.investDisplay,
+.locDisplay{
+  margin:0;
+  font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+  font-size:clamp(3.65rem, 8vw, 7rem);
+  line-height:.92;
+  letter-spacing:-.052em;
+  font-weight:400;
+  text-wrap:balance;
+}
+
+/* Hero title max-width control */
+.houseHeroCopy .houseDisplay,
+.projectHeroCopy .projectDisplay,
+.investHeroCopy .investDisplay,
+.locationHeroText .locDisplay{
+  max-width:9.5ch;
+}
+
+/* -----------------------------
+   H2 editoriais
+-------------------------------- */
+.houseH2,
+.projectH2,
+.investH2,
+.locH2{
+  margin:0;
+  font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+  font-size:clamp(2.3rem, 4.5vw, 4.18rem);
+  line-height:.98;
+  letter-spacing:-.042em;
+  font-weight:400;
+  text-wrap:balance;
+}
+
+/* -----------------------------
+   Lead editorial
+-------------------------------- */
+.houseLead,
+.projectLead,
+.investLead,
+.locLead{
+  margin:0;
+  font-size:clamp(1.06rem, 1.46vw, 1.24rem);
+  line-height:1.78;
+  color:var(--house-muted, #6d655b);
+  max-width:60ch;
+}
+
+/* Leads em fundo escuro / hero */
+.houseHeroCopy .houseLead,
+.projectHeroCopy .projectLead,
+.investHeroCopy .investLead,
+.locationHeroText .locLead,
+.houseOpeningCaption .houseLead,
+.projectOpeningCaption .projectLead,
+.investEditorialCaption .investLead,
+.locationAtmosphereContent .locLead{
+  color:rgba(244,239,231,.84);
+}
+
+/* -----------------------------
+   Texto corrido / corpo
+-------------------------------- */
+.houseBody,
+.projectBody,
+.investBody,
+.locBody,
+.houseConceptCard p,
+.projectConceptCard p,
+.investAdvCard p,
+.houseExperienceItem p,
+.projectExperienceItem p,
+.locationMapPoint span,
+.locationAddressMetaBlock span,
+.projectOverviewBlock span,
+.investOverviewBlock span,
+.houseOverviewBlock span,
+.houseSalesCard p,
+.projectSalesCard p,
+.investSalesCard p{
+  font-size:1rem;
+  line-height:1.78;
+  color:var(--house-muted, #6d655b);
+}
+
+/* -----------------------------
+   Títulos de cards editoriais
+-------------------------------- */
+.houseConceptCard h3,
+.projectConceptCard h3,
+.investAdvCard h3,
+.houseExperienceItem h3,
+.projectExperienceItem h3,
+.houseSalesCard h3,
+.projectSalesCard h3,
+.investSalesCard h3{
+  margin:0 0 12px;
+  font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+  font-size:clamp(1.32rem, 2vw, 1.72rem);
+  line-height:1.08;
+  letter-spacing:-.03em;
+  font-weight:500;
+  text-wrap:balance;
+}
+
+/* -----------------------------
+   Índices / capítulos
+-------------------------------- */
+.houseConceptIndex,
+.projectConceptIndex,
+.investAdvIndex,
+.chapter-index{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  font-size:.8rem;
+  line-height:1;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--house-ink, #201c18);
+}
+
+.houseConceptIndex::before,
+.projectConceptIndex::before,
+.investAdvIndex::before,
+.chapter-index::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:rgba(111,85,58,.4);
+}
+
+/* -----------------------------
+   Overlays de galeria/cards
+-------------------------------- */
+.house-overlay-copy h3,
+.locationMapCaption strong{
+  font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+  letter-spacing:-.03em;
+}
+
+.house-overlay-copy p{
+  font-size:.95rem;
+  line-height:1.62;
+}
+
+/* -----------------------------
+   Blocos overview / metadados
+-------------------------------- */
+.houseOverviewBlock small,
+.projectOverviewBlock small,
+.investOverviewBlock small,
+.locationAddressMetaBlock small{
+  display:block;
+  margin-bottom:8px;
+  font-size:.72rem;
+  line-height:1;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--house-soft, #8b8277);
+}
+
+.houseOverviewBlock strong,
+.projectOverviewBlock strong,
+.investOverviewBlock strong,
+.locationAddressMetaBlock strong{
+  display:block;
+  font-size:1.02rem;
+  line-height:1.46;
+  font-weight:600;
+  color:var(--house-ink, #201c18);
+}
+
+/* -----------------------------
+   Hero panel text
+-------------------------------- */
+.houseHeroPanel h2,
+.projectHeroPanel h2,
+.investHeroPanel h2,
+.locationHeroCard h2{
+  margin:0 0 12px;
+  font-size:1rem;
+  line-height:1.28;
+  font-weight:600;
+  letter-spacing:.01em;
+}
+
+.houseHeroPanel p,
+.projectHeroPanel p,
+.investHeroPanel p,
+.locationHeroCard p{
+  margin:0;
+  font-size:.97rem;
+  line-height:1.72;
+}
+
+/* -----------------------------
+   Section intros
+-------------------------------- */
+.houseSectionIntro,
+.projectSectionIntro,
+.section-intro{
+  max-width:760px;
+}
+
+.houseSectionIntro .houseLead,
+.projectSectionIntro .projectLead,
+.section-intro .lead{
+  margin-top:18px;
+}
+
+/* -----------------------------
+   Mobile refinement
+-------------------------------- */
+@media (max-width:820px){
+  .houseEyebrow,
+  .projectEyebrow,
+  .investEyebrow,
+  .locEyebrow{
+    margin-bottom:14px;
+    font-size:.68rem;
+    letter-spacing:.16em;
+  }
+
+  .houseDisplay,
+  .projectDisplay,
+  .investDisplay,
+  .locDisplay{
+    font-size:clamp(2.85rem, 11vw, 4.3rem);
+    line-height:.94;
+    letter-spacing:-.045em;
+  }
+
+  .houseH2,
+  .projectH2,
+  .investH2,
+  .locH2{
+    font-size:clamp(2rem, 8vw, 3rem);
+    line-height:1;
+    letter-spacing:-.038em;
+  }
+
+  .houseLead,
+  .projectLead,
+  .investLead,
+  .locLead{
+    font-size:1.02rem;
+    line-height:1.72;
+  }
+
+  .houseConceptCard h3,
+  .projectConceptCard h3,
+  .investAdvCard h3,
+  .houseExperienceItem h3,
+  .projectExperienceItem h3,
+  .houseSalesCard h3,
+  .projectSalesCard h3,
+  .investSalesCard h3{
+    font-size:1.26rem;
+    line-height:1.1;
+  }
+
+  .houseBody,
+  .projectBody,
+  .investBody,
+  .locBody,
+  .houseConceptCard p,
+  .projectConceptCard p,
+  .investAdvCard p,
+  .houseExperienceItem p,
+  .projectExperienceItem p,
+  .locationMapPoint span,
+  .locationAddressMetaBlock span,
+  .projectOverviewBlock span,
+  .investOverviewBlock span,
+  .houseOverviewBlock span,
+  .houseSalesCard p,
+  .projectSalesCard p,
+  .investSalesCard p{
+    font-size:.98rem;
+    line-height:1.72;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — PREMIUM SURFACES & INSTITUTIONAL PANELS
+   Uniformiza superfícies, painéis e blocos institucionais
+   ========================================================= */
+
+/* Tokens globais de superfície */
+:root{
+  --panel-bg: linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.40));
+  --panel-bg-soft: linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,255,255,.34));
+  --panel-bg-warm: linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+  --panel-line: rgba(32,28,24,.09);
+  --panel-line-strong: rgba(32,28,24,.15);
+  --panel-shadow-sm: 0 10px 30px rgba(26,20,14,.06);
+  --panel-shadow-md: 0 18px 60px rgba(26,20,14,.08);
+  --panel-shadow-lg: 0 24px 90px rgba(26,20,14,.12);
+  --panel-radius-sm: 22px;
+  --panel-radius: 28px;
+  --panel-radius-lg: 34px;
+}
+
+/* Base compartilhada */
+.chapter-card,
+.glass-panel,
+.location-panel,
+.availability-board > .glass-panel,
+.availability-board > .location-panel,
+.houseConceptCard,
+.houseExperienceItem,
+.houseOverviewCard,
+.houseSalesCard,
+.projectConceptCard,
+.projectExperienceItem,
+.projectOverviewCard,
+.projectSalesCard,
+.investAdvCard,
+.investReferenceCard,
+.investNoteCard,
+.investOverviewCard,
+.investSalesCard,
+.locationAddressCard,
+.locationContactCard,
+.locationMapText,
+.locationMapShell{
+  border-radius: var(--panel-radius);
+  border: 1px solid var(--panel-line);
+  box-shadow: var(--panel-shadow-sm);
+  box-sizing: border-box;
+}
+
+/* Superfície clara institucional */
+.chapter-card,
+.houseConceptCard,
+.houseExperienceItem,
+.houseOverviewCard,
+.projectConceptCard,
+.projectExperienceItem,
+.projectOverviewCard,
+.investAdvCard,
+.investReferenceCard,
+.investOverviewCard,
+.locationAddressCard,
+.locationMapText{
+  background: var(--panel-bg);
+}
+
+/* Superfície ligeiramente mais leve */
+.glass-panel,
+.locationMapShell{
+  background: var(--panel-bg-soft);
+}
+
+/* Superfície quente / comercial */
+.location-panel,
+.houseSalesCard,
+.projectSalesCard,
+.investNoteCard,
+.investSalesCard,
+.locationContactCard{
+  background: var(--panel-bg-warm);
+}
+
+/* Hover sofisticado para cards institucionais */
+.chapter-card,
+.houseConceptCard,
+.houseExperienceItem,
+.projectConceptCard,
+.projectExperienceItem,
+.investAdvCard{
+  transition:
+    transform .24s ease,
+    box-shadow .24s ease,
+    border-color .24s ease,
+    background .24s ease;
+}
+
+.chapter-card:hover,
+.houseConceptCard:hover,
+.houseExperienceItem:hover,
+.projectConceptCard:hover,
+.projectExperienceItem:hover,
+.investAdvCard:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--panel-shadow-md);
+  border-color: rgba(185,150,90,.18);
+}
+
+/* Painéis de CTA / vendas sem hover agressivo */
+.houseSalesCard,
+.projectSalesCard,
+.investSalesCard,
+.investNoteCard,
+.locationContactCard,
+.location-panel{
+  transition:
+    box-shadow .24s ease,
+    border-color .24s ease;
+}
+
+.houseSalesCard:hover,
+.projectSalesCard:hover,
+.investSalesCard:hover,
+.investNoteCard:hover,
+.locationContactCard:hover,
+.location-panel:hover{
+  box-shadow: var(--panel-shadow-md);
+  border-color: rgba(185,150,90,.16);
+}
+
+/* Pads globais coerentes */
+.chapter-card,
+.glass-panel,
+.location-panel,
+.houseConceptCard,
+.houseExperienceItem,
+.houseOverviewCard,
+.houseSalesCard,
+.projectConceptCard,
+.projectExperienceItem,
+.projectOverviewCard,
+.projectSalesCard,
+.investAdvCard,
+.investReferenceCard,
+.investNoteCard,
+.investOverviewCard,
+.investSalesCard,
+.locationAddressCard,
+.locationContactCard{
+  padding: 30px;
+}
+
+/* Quando o componente já nasce “sem padding” por causa de imagem */
+.chapter-card[style*="padding:0"],
+.houseGalleryCard,
+.houseOpeningFigure,
+.projectOpeningFigure,
+.investEditorialFigure,
+.locationAtmospherePanel,
+.locationMapVisual{
+  padding: 0 !important;
+}
+
+/* Signature bands / faixas escuras */
+.signature-band,
+.projectSignatureBand,
+.investValuePanel,
+.housesClosingBand{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--panel-radius-lg);
+  box-shadow: 0 26px 70px rgba(34,28,23,.22);
+}
+
+.signature-band::after,
+.projectSignatureBand::after,
+.investValuePanel::after,
+.housesClosingBand::after{
+  content:"";
+  position:absolute;
+  inset:auto -10% -24% auto;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.16), transparent 68%);
+  pointer-events:none;
+}
+
+.signature-band > *,
+.projectSignatureBand > *,
+.investValuePanel > *,
+.housesClosingBand > *{
+  position:relative;
+  z-index:2;
+}
+
+/* Availability / CTA boards */
+.availability-board,
+.projectCtaGrid,
+.investClosingGrid,
+.houseClosingGrid,
+.locationAddressShell{
+  align-items: stretch;
+}
+
+.availability-board > *,
+.projectCtaGrid > *,
+.investClosingGrid > *,
+.houseClosingGrid > *,
+.locationAddressShell > *{
+  min-width: 0;
+  height: 100%;
+}
+
+/* Linhas internas mais elegantes */
+.metric-list,
+.availability-list,
+.projectOverviewGrid,
+.investOverviewGrid,
+.houseOverviewGrid,
+.locationAddressMeta{
+  position: relative;
+}
+
+.metric-row,
+.availability-row,
+.projectOverviewBlock,
+.investOverviewBlock,
+.houseOverviewBlock,
+.locationAddressMetaBlock{
+  min-width: 0;
+}
+
+/* Pills mais refinadas */
+.pill,
+.house-badge,
+.investRangeTag,
+.locationHeroMeta span,
+.houseHeroMeta span,
+.projectHeroMeta span,
+.investHeroMeta span{
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* Chapter cards com topografia melhor */
+.chapter-card .chapter-index,
+.houseConceptIndex,
+.projectConceptIndex,
+.investAdvIndex{
+  margin-bottom: 18px;
+}
+
+/* Painéis com copy longa */
+.glass-panel p,
+.location-panel p,
+.houseSalesCard p,
+.projectSalesCard p,
+.investSalesCard p,
+.investNoteCard p,
+.locationContactCard p{
+  max-width: 34ch;
+}
+
+/* Radius geral mais suave em telas menores */
+@media (max-width:820px){
+  .chapter-card,
+  .glass-panel,
+  .location-panel,
+  .houseConceptCard,
+  .houseExperienceItem,
+  .houseOverviewCard,
+  .houseSalesCard,
+  .projectConceptCard,
+  .projectExperienceItem,
+  .projectOverviewCard,
+  .projectSalesCard,
+  .investAdvCard,
+  .investReferenceCard,
+  .investNoteCard,
+  .investOverviewCard,
+  .investSalesCard,
+  .locationAddressCard,
+  .locationContactCard,
+  .locationMapText,
+  .locationMapShell,
+  .signature-band,
+  .projectSignatureBand,
+  .investValuePanel,
+  .housesClosingBand{
+    border-radius: 24px;
+  }
+
+  .chapter-card,
+  .glass-panel,
+  .location-panel,
+  .houseConceptCard,
+  .houseExperienceItem,
+  .houseOverviewCard,
+  .houseSalesCard,
+  .projectConceptCard,
+  .projectExperienceItem,
+  .projectOverviewCard,
+  .projectSalesCard,
+  .investAdvCard,
+  .investReferenceCard,
+  .investNoteCard,
+  .investOverviewCard,
+  .investSalesCard,
+  .locationAddressCard,
+  .locationContactCard{
+    padding: 24px 20px;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — RHYTHM & SPACING SYSTEM
+   Normaliza ritmo vertical, espaçamento entre blocos
+   e respiração editorial das páginas internas
+   ========================================================= */
+
+:root{
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 18px;
+  --space-md: 24px;
+  --space-lg: 34px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --space-3xl: 96px;
+  --space-4xl: 120px;
+
+  --section-y: 110px;
+  --section-y-tight: 88px;
+  --section-y-loose: 120px;
+
+  --content-max: 760px;
+  --content-narrow: 620px;
+}
+
+/* ---------------------------------
+   Section rhythm
+---------------------------------- */
+.section,
+.houseSection,
+.projectSection,
+.investSection,
+.locSection{
+  position:relative;
+  padding-top:var(--section-y);
+  padding-bottom:var(--section-y);
+}
+
+.section-tight,
+.houseSection.tight,
+.projectSection.tight,
+.investSection.tight,
+.locSection.tight{
+  padding-top:var(--section-y-tight);
+  padding-bottom:var(--section-y-tight);
+}
+
+.section-loose,
+.houseSection.loose,
+.projectSection.loose,
+.investSection.loose,
+.locSection.loose{
+  padding-top:var(--section-y-loose);
+  padding-bottom:var(--section-y-loose);
+}
+
+/* seções consecutivas sem “buraco” exagerado */
+.houseSection + .houseSection,
+.projectSection + .projectSection,
+.investSection + .investSection,
+.locSection + .locSection{
+  margin-top:0;
+}
+
+/* ---------------------------------
+   Intro blocks
+---------------------------------- */
+.section-intro,
+.houseSectionIntro,
+.projectSectionIntro{
+  max-width:var(--content-max);
+}
+
+.section-intro .eyebrow,
+.houseSectionIntro .houseEyebrow,
+.projectSectionIntro .projectEyebrow{
+  margin-bottom:var(--space-sm);
+}
+
+.section-intro .h2,
+.houseSectionIntro .houseH2,
+.projectSectionIntro .projectH2{
+  margin-top:0;
+}
+
+.section-intro .lead,
+.houseSectionIntro .houseLead,
+.projectSectionIntro .projectLead{
+  margin-top:var(--space-sm);
+}
+
+/* intro + grid */
+.section-intro + .grid-3,
+.section-intro + .grid-4,
+.section-intro + .house-grid-premium,
+.houseSectionIntro + .house-grid-premium,
+.projectSectionIntro + .house-grid-premium{
+  margin-top:var(--space-lg);
+}
+
+/* ---------------------------------
+   Editorial grids
+---------------------------------- */
+.editorial-grid,
+.houseIntroGrid,
+.projectIntroGrid,
+.investIntroGrid,
+.locationIntroGrid{
+  align-items:start;
+  gap:56px;
+}
+
+.editorial-copy,
+.editorial-copy p{
+  margin:0;
+}
+
+.editorial-copy{
+  display:grid;
+  gap:18px;
+}
+
+/* ---------------------------------
+   Hero rhythm
+---------------------------------- */
+.houseHeroCopy .houseEyebrow,
+.projectHeroCopy .projectEyebrow,
+.investHeroCopy .investEyebrow,
+.locationHeroText .locEyebrow{
+  margin-bottom:20px;
+}
+
+.houseHeroCopy .houseLead,
+.projectHeroCopy .projectLead,
+.investHeroCopy .investLead,
+.locationHeroText .locLead{
+  margin-top:28px;
+}
+
+.houseHeroPanel .houseHeroMeta,
+.projectHeroPanel .projectHeroMeta,
+.investHeroPanel .investHeroMeta,
+.locationHeroCard .locationHeroMeta{
+  margin-top:18px;
+  padding-top:18px;
+}
+
+/* ---------------------------------
+   Image bands / editorial figures
+---------------------------------- */
+.houseOpeningCaption .houseLead,
+.projectOpeningCaption .projectLead,
+.investEditorialCaption .investLead,
+.locationAtmosphereContent .locLead{
+  margin-top:20px;
+}
+
+.houseOpeningFigure + .houseSection,
+.projectOpeningFigure + .projectSection,
+.investEditorialFigure + .investSection{
+  margin-top:0;
+}
+
+/* ---------------------------------
+   Cards rhythm
+---------------------------------- */
+.chapter-card > * + *,
+.houseConceptCard > * + *,
+.projectConceptCard > * + *,
+.investAdvCard > * + *,
+.houseExperienceItem > * + *,
+.projectExperienceItem > * + *{
+  margin-top:12px;
+}
+
+.chapter-card .chapter-index + .h3,
+.houseConceptIndex + h3,
+.projectConceptIndex + h3,
+.investAdvIndex + h3{
+  margin-top:0;
+}
+
+.houseConceptCard p,
+.projectConceptCard p,
+.investAdvCard p,
+.houseExperienceItem p,
+.projectExperienceItem p{
+  margin-top:12px;
+}
+
+/* ---------------------------------
+   Overview / availability rhythm
+---------------------------------- */
+.availability-list,
+.metric-list,
+.houseOverviewGrid,
+.projectOverviewGrid,
+.investOverviewGrid,
+.locationAddressMeta{
+  margin-top:24px;
+  padding-top:24px;
+}
+
+.availability-row,
+.metric-row,
+.houseOverviewBlock,
+.projectOverviewBlock,
+.investOverviewBlock,
+.locationAddressMetaBlock{
+  min-width:0;
+}
+
+.houseSalesCard .houseActions,
+.projectSalesCard .projectActions,
+.investSalesCard .investActions{
+  margin-top:24px;
+}
+
+/* ---------------------------------
+   Gallery rhythm
+---------------------------------- */
+.houseGalleryGrid{
+  margin-top:4px;
+}
+
+.houseGallery + .houseSection,
+.houseGallery + .section{
+  margin-top:0;
+}
+
+/* ---------------------------------
+   CTA rhythm
+---------------------------------- */
+.houseClosingGrid,
+.projectCtaGrid,
+.investClosingGrid,
+.locationAddressShell{
+  gap:24px;
+}
+
+.houseClosingGrid .houseH2,
+.projectCtaGrid .projectH2,
+.investClosingGrid .investH2{
+  margin-top:0;
+}
+
+.houseClosingGrid .houseOverviewGrid,
+.projectCtaGrid .projectOverviewGrid,
+.investClosingGrid .investOverviewGrid{
+  margin-top:24px;
+}
+
+/* ---------------------------------
+   Signature / dark bands
+---------------------------------- */
+.signature-band .h2,
+.projectSignatureBand .projectH2,
+.investValuePanel .investH2,
+.housesClosingBand .housesH2{
+  margin-top:18px;
+}
+
+.signature-band .copy,
+.projectSignatureBand .projectLead,
+.investValuePanel .investLead,
+.housesClosingBand .housesLead{
+  margin-top:18px;
+}
+
+/* ---------------------------------
+   Global internal content width helper
+---------------------------------- */
+.content-narrow{
+  max-width:var(--content-narrow);
+}
+
+.content-max{
+  max-width:var(--content-max);
+}
+
+/* ---------------------------------
+   Desktop refinement
+---------------------------------- */
+@media (min-width:1101px){
+  .houseSection.houseConcepts,
+  .projectSection.projectConcepts,
+  .investSection.investAdvantages{
+    padding-top:0;
+    padding-bottom:96px;
+  }
+
+  .houseSection.houseExperience,
+  .projectSection.projectExperience{
+    padding-top:0;
+    padding-bottom:96px;
+  }
+
+  .houseSection.houseClosing,
+  .projectSection.projectCta,
+  .investSection.investClosing{
+    padding-top:0;
+    padding-bottom:120px;
+  }
+}
+
+/* ---------------------------------
+   Tablet rhythm
+---------------------------------- */
+@media (max-width:1100px){
+  :root{
+    --section-y: 92px;
+    --section-y-tight: 76px;
+    --section-y-loose: 104px;
+  }
+
+  .editorial-grid,
+  .houseIntroGrid,
+  .projectIntroGrid,
+  .investIntroGrid,
+  .locationIntroGrid{
+    gap:34px;
+  }
+
+  .section-intro + .grid-3,
+  .section-intro + .grid-4,
+  .section-intro + .house-grid-premium,
+  .houseSectionIntro + .house-grid-premium,
+  .projectSectionIntro + .house-grid-premium{
+    margin-top:28px;
+  }
+}
+
+/* ---------------------------------
+   Mobile rhythm
+---------------------------------- */
+@media (max-width:820px){
+  :root{
+    --space-sm: 16px;
+    --space-md: 20px;
+    --space-lg: 26px;
+    --space-xl: 36px;
+    --space-2xl: 56px;
+    --section-y: 84px;
+    --section-y-tight: 70px;
+    --section-y-loose: 94px;
+  }
+
+  .section,
+  .houseSection,
+  .projectSection,
+  .investSection,
+  .locSection{
+    padding-top:var(--section-y);
+    padding-bottom:var(--section-y);
+  }
+
+  .editorial-grid,
+  .houseIntroGrid,
+  .projectIntroGrid,
+  .investIntroGrid,
+  .locationIntroGrid{
+    gap:24px;
+  }
+
+  .section-intro .lead,
+  .houseSectionIntro .houseLead,
+  .projectSectionIntro .projectLead{
+    margin-top:16px;
+  }
+
+  .houseHeroCopy .houseLead,
+  .projectHeroCopy .projectLead,
+  .investHeroCopy .investLead,
+  .locationHeroText .locLead{
+    margin-top:20px;
+  }
+
+  .availability-list,
+  .metric-list,
+  .houseOverviewGrid,
+  .projectOverviewGrid,
+  .investOverviewGrid,
+  .locationAddressMeta{
+    margin-top:20px;
+    padding-top:20px;
+  }
+
+  .houseSalesCard .houseActions,
+  .projectSalesCard .projectActions,
+  .investSalesCard .investActions{
+    margin-top:20px;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — BUTTONS, PILLS & META CHIPS SYSTEM
+   Unifica botões, badges, pills e chips informativos
+   ========================================================= */
+
+/* =========================
+   BUTTON BASE
+========================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:46px;
+  padding:0 20px;
+  border-radius:999px;
+  font-size:.82rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    color .18s ease,
+    border-color .18s ease;
+  white-space:nowrap;
+}
+
+/* =========================
+   PRIMARY BUTTON
+========================= */
+.btn-primary{
+  background:#1f1b17;
+  color:#f4efe7;
+  border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.btn-primary:hover{
+  transform:translateY(-1px);
+  box-shadow:0 16px 40px rgba(0,0,0,.18);
+  background:#171310;
+}
+
+/* =========================
+   OUTLINE BUTTON
+========================= */
+.btn-outline{
+  background:transparent;
+  color:#1f1b17;
+  border:1px solid rgba(32,28,24,.18);
+}
+
+.btn-outline:hover{
+  background:rgba(32,28,24,.05);
+  border-color:rgba(32,28,24,.28);
+  transform:translateY(-1px);
+}
+
+/* =========================
+   LIGHT / GLASS BUTTON
+========================= */
+.btn-soft{
+  background:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.4);
+  color:#1f1b17;
+  backdrop-filter:blur(10px);
+}
+
+.btn-soft:hover{
+  background:rgba(255,255,255,.68);
+}
+
+/* =========================
+   BUTTON GROUP (CTA blocks)
+========================= */
+.houseActions,
+.projectActions,
+.investActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:24px;
+}
+
+/* =========================
+   PILLS (labels internos)
+========================= */
+.pill,
+.house-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:30px;
+  padding:0 12px;
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#201c18;
+  background:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.4);
+  backdrop-filter:blur(8px);
+}
+
+/* versão mais neutra */
+.pill-soft{
+  background:rgba(255,255,255,.38);
+}
+
+/* =========================
+   HERO META CHIPS
+========================= */
+.houseHeroMeta span,
+.projectHeroMeta span,
+.investHeroMeta span,
+.locationHeroMeta span{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 14px;
+  border-radius:999px;
+  font-size:.72rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:rgba(244,239,231,.78);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);
+}
+
+/* =========================
+   META TAGS (overview / specs)
+========================= */
+.meta-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  min-height:28px;
+  padding:0 10px;
+  border-radius:999px;
+  font-size:.7rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#6d655b;
+  background:rgba(32,28,24,.04);
+  border:1px solid rgba(32,28,24,.08);
+}
+
+/* =========================
+   RANGE TAG (investment etc)
+========================= */
+.investRangeTag{
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 14px;
+  border-radius:999px;
+  font-size:.74rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#1f1b17;
+  background:rgba(185,150,90,.12);
+  border:1px solid rgba(185,150,90,.22);
+}
+
+/* =========================
+   BADGE (status / destaque)
+========================= */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:0 10px;
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:#1f1b17;
+  color:#f4efe7;
+}
+
+/* =========================
+   HOVER COERENTE PARA CHIPS
+========================= */
+.meta-chip,
+.investRangeTag,
+.badge{
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    border-color .18s ease;
+}
+
+.meta-chip:hover,
+.investRangeTag:hover,
+.badge:hover{
+  transform:translateY(-1px);
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+========================= */
+@media (max-width:820px){
+
+  .btn{
+    min-height:44px;
+    padding:0 18px;
+    font-size:.78rem;
+  }
+
+  .houseActions,
+  .projectActions,
+  .investActions{
+    gap:10px;
+    margin-top:20px;
+  }
+
+  .pill,
+  .house-badge{
+    min-height:28px;
+    padding:0 10px;
+    font-size:.64rem;
+  }
+
+  .houseHeroMeta span,
+  .projectHeroMeta span,
+  .investHeroMeta span,
+  .locationHeroMeta span{
+    min-height:30px;
+    padding:0 12px;
+    font-size:.68rem;
+  }
+
+  .meta-chip,
+  .investRangeTag{
+    min-height:26px;
+    font-size:.66rem;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — PREMIUM MICRO-INTERACTIONS & MOTION SYSTEM
+   Hover, reveal, image motion e transições mais refinadas
+   ========================================================= */
+
+:root{
+  --ease-premium: cubic-bezier(.22,.61,.36,1);
+  --ease-soft: cubic-bezier(.25,.46,.45,.94);
+  --dur-fast: .18s;
+  --dur-med: .28s;
+  --dur-slow: .6s;
+}
+
+/* ---------------------------------
+   Base de suavização
+---------------------------------- */
+a,
+button,
+.btn,
+img,
+.chapter-card,
+.glass-panel,
+.location-panel,
+.houseConceptCard,
+.houseExperienceItem,
+.houseOverviewCard,
+.houseSalesCard,
+.projectConceptCard,
+.projectExperienceItem,
+.projectOverviewCard,
+.projectSalesCard,
+.investAdvCard,
+.investReferenceCard,
+.investNoteCard,
+.investOverviewCard,
+.investSalesCard,
+.locationAddressCard,
+.locationContactCard,
+.locationMapText,
+.locationMapShell,
+.houseGalleryCard,
+.houseOpeningFigure,
+.projectOpeningFigure,
+.investEditorialFigure,
+.locationAtmospherePanel{
+  transition-timing-function: var(--ease-premium);
+}
+
+/* ---------------------------------
+   Links textuais
+---------------------------------- */
+a{
+  transition:
+    color var(--dur-fast) var(--ease-premium),
+    opacity var(--dur-fast) var(--ease-premium);
+}
+
+a:hover{
+  opacity:.92;
+}
+
+/* ---------------------------------
+   Buttons
+---------------------------------- */
+.btn{
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    box-shadow var(--dur-fast) var(--ease-premium),
+    background var(--dur-fast) var(--ease-premium),
+    color var(--dur-fast) var(--ease-premium),
+    border-color var(--dur-fast) var(--ease-premium),
+    opacity var(--dur-fast) var(--ease-premium);
+  will-change: transform;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0);
+}
+
+/* ---------------------------------
+   Cards premium hover
+---------------------------------- */
+.chapter-card,
+.houseConceptCard,
+.houseExperienceItem,
+.projectConceptCard,
+.projectExperienceItem,
+.investAdvCard,
+.houseOverviewCard,
+.projectOverviewCard,
+.investOverviewCard,
+.houseSalesCard,
+.projectSalesCard,
+.investSalesCard,
+.locationAddressCard,
+.locationContactCard,
+.locationMapText{
+  will-change: transform, box-shadow;
+}
+
+.chapter-card:hover,
+.houseConceptCard:hover,
+.houseExperienceItem:hover,
+.projectConceptCard:hover,
+.projectExperienceItem:hover,
+.investAdvCard:hover{
+  transform: translateY(-4px);
+}
+
+/* Painéis institucionais: hover mais suave */
+.houseOverviewCard:hover,
+.projectOverviewCard:hover,
+.investOverviewCard:hover,
+.houseSalesCard:hover,
+.projectSalesCard:hover,
+.investSalesCard:hover,
+.locationAddressCard:hover,
+.locationContactCard:hover,
+.locationMapText:hover{
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------
+   Figures / images
+---------------------------------- */
+.houseGalleryCard,
+.houseOpeningFigure,
+.projectOpeningFigure,
+.investEditorialFigure,
+.locationAtmospherePanel,
+.locationMapVisual,
+.house-card .house-media{
+  overflow:hidden;
+}
+
+.houseGalleryCard img,
+.houseOpeningFigure img,
+.projectOpeningFigure img,
+.investEditorialFigure img,
+.locationAtmospherePanel img,
+.locationMapVisual img,
+.house-card .house-media img{
+  transition:
+    transform var(--dur-slow) var(--ease-premium),
+    filter var(--dur-med) var(--ease-premium);
+  will-change: transform;
+}
+
+.houseGalleryCard:hover img,
+.houseOpeningFigure:hover img,
+.projectOpeningFigure:hover img,
+.investEditorialFigure:hover img,
+.locationAtmospherePanel:hover img,
+.locationMapVisual:hover img,
+.house-card:hover .house-media img{
+  transform: scale(1.035);
+}
+
+/* ---------------------------------
+   Hero media breathing motion
+---------------------------------- */
+.houseHeroMedia img,
+.projectHeroMedia img,
+.investHeroMedia img,
+.locationHeroMedia img{
+  animation: heroBreath 14s var(--ease-soft) infinite alternate;
+}
+
+@keyframes heroBreath{
+  0%{
+    transform: scale(1.01);
+  }
+  100%{
+    transform: scale(1.035);
+  }
+}
+
+/* ---------------------------------
+   Chips / pills / badges
+---------------------------------- */
+.pill,
+.house-badge,
+.meta-chip,
+.investRangeTag,
+.badge,
+.houseHeroMeta span,
+.projectHeroMeta span,
+.investHeroMeta span,
+.locationHeroMeta span{
+  transition:
+    transform var(--dur-fast) var(--ease-premium),
+    background var(--dur-fast) var(--ease-premium),
+    border-color var(--dur-fast) var(--ease-premium),
+    color var(--dur-fast) var(--ease-premium);
+}
+
+.pill:hover,
+.house-badge:hover,
+.meta-chip:hover,
+.investRangeTag:hover,
+.badge:hover{
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------
+   CTA groups — entrada sequencial sutil
+---------------------------------- */
+.houseActions .btn:nth-child(1),
+.projectActions .btn:nth-child(1),
+.investActions .btn:nth-child(1){
+  transition-delay: .00s;
+}
+
+.houseActions .btn:nth-child(2),
+.projectActions .btn:nth-child(2),
+.investActions .btn:nth-child(2){
+  transition-delay: .02s;
+}
+
+/* ---------------------------------
+   Reveal system — elegante e silencioso
+---------------------------------- */
+[data-reveal]{
+  opacity:0;
+  transform: translateY(24px);
+  transition:
+    opacity .7s var(--ease-premium),
+    transform .7s var(--ease-premium);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* Variantes */
+[data-reveal="left"]{
+  transform: translateX(-28px);
+}
+
+[data-reveal="right"]{
+  transform: translateX(28px);
+}
+
+[data-reveal="zoom"]{
+  transform: scale(.975);
+}
+
+[data-reveal="left"].is-visible,
+[data-reveal="right"].is-visible,
+[data-reveal="zoom"].is-visible{
+  transform:none;
+}
+
+/* Delay escalonado opcional */
+[data-reveal-delay="1"]{ transition-delay:.04s; }
+[data-reveal-delay="2"]{ transition-delay:.08s; }
+[data-reveal-delay="3"]{ transition-delay:.12s; }
+[data-reveal-delay="4"]{ transition-delay:.16s; }
+
+/* ---------------------------------
+   Hover em grids de galeria
+---------------------------------- */
+.houseGalleryGrid:hover .houseGalleryCard:not(:hover){
+  opacity:.94;
+}
+
+.houseGalleryCard{
+  transition:
+    transform var(--dur-med) var(--ease-premium),
+    box-shadow var(--dur-med) var(--ease-premium),
+    opacity var(--dur-med) var(--ease-premium);
+}
+
+.houseGalleryCard:hover{
+  transform: translateY(-3px);
+}
+
+/* ---------------------------------
+   Signature / dark bands
+---------------------------------- */
+.signature-band,
+.projectSignatureBand,
+.investValuePanel,
+.housesClosingBand{
+  transition:
+    transform var(--dur-med) var(--ease-premium),
+    box-shadow var(--dur-med) var(--ease-premium);
+}
+
+.signature-band:hover,
+.projectSignatureBand:hover,
+.investValuePanel:hover,
+.housesClosingBand:hover{
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------
+   Focus states
+---------------------------------- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible{
+  outline:none;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.9),
+    0 0 0 4px rgba(185,150,90,.55);
+}
+
+/* ---------------------------------
+   Reduce motion accessibility
+---------------------------------- */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none !important;
+    transition:none !important;
+    scroll-behavior:auto !important;
+  }
+
+  [data-reveal]{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+
+/* ---------------------------------
+   Mobile: menos movimento, mesma elegância
+---------------------------------- */
+@media (max-width:820px){
+  .chapter-card:hover,
+  .houseConceptCard:hover,
+  .houseExperienceItem:hover,
+  .projectConceptCard:hover,
+  .projectExperienceItem:hover,
+  .investAdvCard:hover,
+  .houseGalleryCard:hover,
+  .houseOverviewCard:hover,
+  .projectOverviewCard:hover,
+  .investOverviewCard:hover,
+  .houseSalesCard:hover,
+  .projectSalesCard:hover,
+  .investSalesCard:hover,
+  .locationAddressCard:hover,
+  .locationContactCard:hover,
+  .locationMapText:hover,
+  .signature-band:hover,
+  .projectSignatureBand:hover,
+  .investValuePanel:hover,
+  .housesClosingBand:hover{
+    transform:none;
+  }
+
+  .houseGalleryCard:hover img,
+  .houseOpeningFigure:hover img,
+  .projectOpeningFigure:hover img,
+  .investEditorialFigure:hover img,
+  .locationAtmospherePanel:hover img,
+  .locationMapVisual:hover img,
+  .house-card:hover .house-media img{
+    transform:scale(1.02);
+  }
+}
+/* =========================================================
+   CASAS DA VILA — FINAL HOUSE 3-COLUMN SYSTEM
+   Resolve definitivamente a simetria entre:
+   - cards conceituais
+   - galerias
+   - cards de experiência
+   ========================================================= */
+
+/* container visual único dos blocos triplos */
+.houseTriptych,
+.houseConceptGrid,
+.houseExperienceGrid,
+.houseGalleryGrid,
+.grid-3,
+.experience-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:24px;
+  align-items:stretch;
+}
+
+.houseTriptych > *,
+.houseConceptGrid > *,
+.houseExperienceGrid > *,
+.houseGalleryGrid > *,
+.grid-3 > *,
+.experience-grid > *{
+  min-width:0;
+}
+
+/* -------------------------
+   CARDS DE TEXTO
+------------------------- */
+.houseConceptCard,
+.houseExperienceItem,
+.chapter-card,
+.experience-item{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  min-height:280px;
+  padding:30px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+  border:1px solid rgba(32,28,24,.08);
+  box-shadow:0 10px 30px rgba(26,20,14,.06);
+  box-sizing:border-box;
+}
+
+.houseConceptCard h3,
+.houseExperienceItem h3,
+.chapter-card .h3,
+.experience-item .h3{
+  min-height:2.5em;
+  margin:0 0 12px;
+}
+
+.houseConceptCard p,
+.houseExperienceItem p,
+.chapter-card .copy,
+.experience-item .copy{
+  flex:1 1 auto;
+  margin:0;
+}
+
+/* índices / pills */
+.houseConceptIndex,
+.chapter-index{
+  margin-bottom:18px;
+}
+
+.houseExperienceItem .pill,
+.experience-item .pill{
+  align-self:flex-start;
+  margin-bottom:18px;
+}
+
+/* -------------------------
+   GALERIA
+------------------------- */
+.houseGallery{
+  padding-top:0;
+  padding-bottom:88px;
+}
+
+.houseGalleryGrid{
+  margin-top:0;
+}
+
+.houseGalleryCard{
+  position:relative;
+  overflow:hidden;
+  min-height:320px;
+  border-radius:28px;
+  background:#d7cebf;
+  box-shadow:0 18px 60px rgba(26,20,14,.08);
+}
+
+.houseGalleryCard,
+.houseGalleryCard.tall{
+  min-height:320px;
+}
+
+.houseGalleryCard img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  display:block;
+}
+
+/* elimina qualquer lógica antiga de tall */
+.houseGalleryCard.tall{
+  grid-row:auto !important;
+  grid-column:auto !important;
+}
+
+/* -------------------------
+   ESPAÇAMENTO ENTRE BLOCOS
+------------------------- */
+.houseConcepts{
+  padding-top:0;
+  padding-bottom:88px;
+}
+
+.houseExperience{
+  padding-top:0;
+  padding-bottom:96px;
+}
+
+.houseConcepts + .houseGallery,
+.houseGallery + .houseExperience{
+  margin-top:0;
+}
+
+/* -------------------------
+   TABLET
+------------------------- */
+@media (max-width:1100px){
+  .houseTriptych,
+  .houseConceptGrid,
+  .houseExperienceGrid,
+  .houseGalleryGrid,
+  .grid-3,
+  .experience-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:18px;
+  }
+
+  .houseGalleryGrid > :nth-child(3),
+  .houseConceptGrid > :nth-child(3),
+  .houseExperienceGrid > :nth-child(3),
+  .grid-3 > :nth-child(3),
+  .experience-grid > :nth-child(3){
+    grid-column:1 / -1;
+  }
+
+  .houseConceptCard,
+  .houseExperienceItem,
+  .chapter-card,
+  .experience-item{
+    min-height:unset;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:300px;
+  }
+
+  .houseConceptCard h3,
+  .houseExperienceItem h3,
+  .chapter-card .h3,
+  .experience-item .h3{
+    min-height:unset;
+  }
+}
+
+/* -------------------------
+   MOBILE
+------------------------- */
+@media (max-width:820px){
+  .houseTriptych,
+  .houseConceptGrid,
+  .houseExperienceGrid,
+  .houseGalleryGrid,
+  .grid-3,
+  .experience-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .houseGalleryGrid > :nth-child(3),
+  .houseConceptGrid > :nth-child(3),
+  .houseExperienceGrid > :nth-child(3),
+  .grid-3 > :nth-child(3),
+  .experience-grid > :nth-child(3){
+    grid-column:auto;
+  }
+
+  .houseConceptCard,
+  .houseExperienceItem,
+  .chapter-card,
+  .experience-item{
+    min-height:unset;
+    border-radius:24px;
+    padding:24px 20px;
+  }
+
+  .houseGalleryCard,
+  .houseGalleryCard.tall{
+    min-height:260px;
+    border-radius:22px;
+  }
+}
+/* =========================================================
+   HOUSE GALLERY — EDITORIAL LAYOUT (FINAL)
+   ========================================================= */
+
+.houseGalleryEditorial{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:24px;
+  align-items:stretch;
+}
+
+/* imagem principal */
+.galleryMain{
+  margin:0;
+  border-radius:34px;
+  overflow:hidden;
+  min-height:520px;
+  background:#d7cebf;
+  box-shadow:0 24px 80px rgba(26,20,14,.12);
+}
+
+.galleryMain img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* coluna lateral */
+.gallerySide{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:24px;
+}
+
+.gallerySide figure{
+  margin:0;
+  border-radius:26px;
+  overflow:hidden;
+  min-height:240px;
+  background:#d7cebf;
+}
+
+.gallerySide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* tablet */
+@media (max-width:1100px){
+  .houseGalleryEditorial{
+    grid-template-columns:1fr;
+  }
+
+  .galleryMain{
+    min-height:420px;
+  }
+
+  .gallerySide{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+
+  .gallerySide figure{
+    min-height:260px;
+  }
+}
+
+/* mobile */
+@media (max-width:820px){
+  .galleryMain{
+    min-height:320px;
+    border-radius:24px;
+  }
+
+  .gallerySide{
+    grid-template-columns:1fr;
+  }
+
+  .gallerySide figure{
+    min-height:220px;
+    border-radius:20px;
+  }
+}
+/* =========================================================
+   HOUSE GALLERY — PREMIUM MOTION
+   Hover + zoom + parallax feel
+   ========================================================= */
+
+.houseGalleryEditorial,
+.galleryMain,
+.gallerySide figure{
+  position:relative;
+}
+
+.galleryMain,
+.gallerySide figure{
+  transition:
+    transform .45s cubic-bezier(.22,.61,.36,1),
+    box-shadow .45s cubic-bezier(.22,.61,.36,1),
+    filter .45s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+.galleryMain img,
+.gallerySide img{
+  transition:
+    transform 1.2s cubic-bezier(.22,.61,.36,1),
+    filter .6s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
+}
+
+/* Hover principal */
+.galleryMain:hover{
+  transform:translateY(-4px);
+  box-shadow:0 34px 100px rgba(26,20,14,.16);
+}
+
+.galleryMain:hover img{
+  filter:saturate(1.02) contrast(1.01);
+}
+/* Hover imagens secundárias */
+.gallerySide figure:hover{
+  transform:translateY(-3px);
+  box-shadow:0 24px 70px rgba(26,20,14,.14);
+}
+
+.gallerySide figure:hover img{
+  transform:scale(1.04);
+}
+
+/* brilho e profundidade mais premium */
+.galleryMain::after,
+.gallerySide figure::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(255,255,255,.03), rgba(0,0,0,.04));
+  pointer-events:none;
+  opacity:.8;
+  transition:opacity .35s ease;
+}
+
+.galleryMain:hover::after,
+.gallerySide figure:hover::after{
+  opacity:1;
+}
+
+/* entrada mais editorial */
+.galleryMain[data-reveal],
+.gallerySide figure[data-reveal]{
+  opacity:0;
+  transform:translateY(26px);
+  transition:
+    opacity .9s cubic-bezier(.22,.61,.36,1),
+    transform .9s cubic-bezier(.22,.61,.36,1);
+}
+
+.galleryMain[data-reveal].is-visible,
+.gallerySide figure[data-reveal].is-visible{
+  opacity:1;
+  transform:none;
+}
+
+/* leve escalonamento */
+.gallerySide figure:nth-child(1){
+  transition-delay:.06s;
+}
+
+.gallerySide figure:nth-child(2){
+  transition-delay:.12s;
+}
+
+/* respeita acessibilidade */
+@media (prefers-reduced-motion: reduce){
+  .galleryMain,
+  .gallerySide figure,
+  .galleryMain img,
+  .gallerySide img{
+    transition:none !important;
+    animation:none !important;
+    transform:none !important;
+  }
+}
+/* =========================================================
+   GLOBAL CLEANUP — HOUSE PAGES NORMALIZATION
+   Mata conflitos antigos + unifica sistema
+   ========================================================= */
+
+/* remove grids antigos das casas */
+.houseGalleryGrid,
+.houseGallery,
+.house-grid,
+.grid-3{
+  display:block !important;
+}
+
+/* neutraliza cards antigos */
+.houseGalleryCard,
+.house-card,
+.card.house-card{
+  all:unset;
+  display:block;
+}
+
+/* remove espaçamentos quebrados herdados */
+.houseSection{
+  padding-top:var(--space-6,64px);
+  padding-bottom:var(--space-6,64px);
+}
+
+/* remove margens inconsistentes internas */
+.houseWrap{
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+/* garante consistência visual das imagens */
+.houseGallery img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* remove qualquer altura estranha herdada */
+.houseGallery figure{
+  margin:0;
+}
+
+/* remove hacks inline comuns */
+[style*="height"],
+[style*="min-height"]{
+  height:auto !important;
+  min-height:auto !important;
+}
+
+/* evita desalinhamento de grid antigo */
+.row,
+.col,
+.columns{
+  all:unset;
+}
+
+/* força consistência de box */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+/* =========================================================
+   CASAS DA VILA — DYNAMIC FOOTER FIX (SIMÉTRICO)
+   ========================================================= */
+
+.site-footer-premium{
+  padding:28px 0 44px;
+}
+
+.site-footer-premium .container{
+  width:min(1080px, calc(100vw - 40px));
+  margin:0 auto;
+}
+
+.site-footer-premium .footer-shell{
+  padding:26px 28px 18px;
+  border-radius:28px;
+  background:
+    radial-gradient(circle at top left, rgba(255,255,255,.035), transparent 22%),
+    linear-gradient(180deg, #292621 0%, #1c1916 100%);
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:0 18px 60px rgba(18,16,14,.14);
+  color:rgba(244,239,231,.9);
+}
+
+/* topo */
+.site-footer-premium .footer-hero{
+  display:grid;
+  grid-template-columns:minmax(260px, 1fr) minmax(260px, 360px);
+  gap:24px;
+  align-items:start;
+  padding-bottom:18px;
+  margin-bottom:18px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.site-footer-premium .footer-brand-block{
+  display:flex;
+  align-items:flex-start;
+}
+
+.site-footer-premium .footer-brand{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  text-decoration:none;
+  color:inherit;
+}
+
+.site-footer-premium .brand-mark{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  flex:0 0 40px;
+  background:radial-gradient(circle at 35% 35%, #e3c98b 0%, #c8a861 55%, #9f7d3e 100%);
+  box-shadow:0 8px 20px rgba(0,0,0,.14);
+}
+
+.site-footer-premium .brand-text{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding-top:2px;
+}
+
+.site-footer-premium .brand-text strong{
+  font-size:.98rem;
+  line-height:1;
+  letter-spacing:.035em;
+  color:#fff;
+}
+
+.site-footer-premium .brand-text span{
+  font-size:.76rem;
+  line-height:1;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:rgba(244,239,231,.56);
+}
+
+.site-footer-premium .footer-intro{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.site-footer-premium .footer-copy{
+  margin:0;
+  max-width:28ch;
+  font-size:.95rem;
+  line-height:1.58;
+  color:rgba(244,239,231,.76);
+  text-align:left;
+}
+
+/* grade principal */
+.site-footer-premium .footer-main{
+  display:grid;
+  grid-template-columns:1fr .82fr .58fr;
+  gap:24px;
+  align-items:start;
+  padding-bottom:16px;
+  margin-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.site-footer-premium .footer-column{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+}
+
+.site-footer-premium .footer-column-lang{
+  align-items:flex-start;
+}
+
+.site-footer-premium .footer-heading{
+  margin:0 0 10px;
+  font-size:.69rem;
+  line-height:1;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(244,239,231,.52);
+}
+
+.site-footer-premium .footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.site-footer-premium .footer-links a{
+  color:rgba(255,255,255,.9);
+  text-decoration:none;
+  font-size:.96rem;
+  line-height:1.34;
+  transition:opacity .18s ease;
+}
+
+.site-footer-premium .footer-links a:hover{
+  opacity:.74;
+  transform:none;
+}
+
+/* language */
+.site-footer-premium .footer-lang{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  padding:4px;
+  border-radius:999px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.07);
+}
+
+.site-footer-premium .footer-lang a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:40px;
+  height:34px;
+  padding:0 11px;
+  border-radius:999px;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:rgba(255,255,255,.74);
+}
+
+.site-footer-premium .footer-lang a.is-active,
+.site-footer-premium .footer-lang a[aria-current="page"]{
+  background:rgba(255,255,255,.14);
+  color:#fff;
+}
+
+/* base */
+.site-footer-premium .footer-bottom{
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  font-size:.84rem;
+  line-height:1.35;
+  color:rgba(244,239,231,.42);
+}
+
+/* tablet */
+@media (max-width:1100px){
+  .site-footer-premium .container{
+    width:min(100vw - 32px, 1080px);
+  }
+
+  .site-footer-premium .footer-hero{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .site-footer-premium .footer-intro{
+    justify-content:flex-start;
+  }
+
+  .site-footer-premium .footer-copy{
+    max-width:40ch;
+  }
+
+  .site-footer-premium .footer-main{
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+
+  .site-footer-premium .footer-column-lang{
+    grid-column:1 / -1;
+  }
+}
+
+/* mobile */
+@media (max-width:820px){
+  .site-footer-premium{
+    padding:20px 0 34px;
+  }
+
+  .site-footer-premium .container{
+    width:min(100vw - 20px, 1080px);
+  }
+
+  .site-footer-premium .footer-shell{
+    padding:20px 16px 16px;
+    border-radius:22px;
+  }
+
+  .site-footer-premium .footer-hero{
+    gap:14px;
+    padding-bottom:16px;
+    margin-bottom:16px;
+  }
+
+  .site-footer-premium .footer-main{
+    grid-template-columns:1fr;
+    gap:18px;
+    padding-bottom:14px;
+    margin-bottom:12px;
+  }
+
+  .site-footer-premium .footer-column-lang{
+    grid-column:auto;
+  }
+
+  .site-footer-premium .footer-copy{
+    max-width:unset;
+    font-size:.92rem;
+    line-height:1.54;
+  }
+
+  .site-footer-premium .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:4px;
+  }
+}
+/* =========================================================
+   FOOTER — MICRO REFINEMENT / AMAN LEVEL
+   ========================================================= */
+
+/* marca mais suave e menos “logo-sticker” */
+.site-footer-premium .brand-mark{
+  width:38px;
+  height:38px;
+  flex:0 0 38px;
+  background:
+    radial-gradient(circle at 35% 35%, #e0c784 0%, #c5a45f 58%, #9b793c 100%);
+  box-shadow:
+    0 6px 16px rgba(0,0,0,.10),
+    inset 0 1px 1px rgba(255,255,255,.12);
+  opacity:.94;
+}
+
+.site-footer-premium .brand-text strong{
+  font-size:.95rem;
+  letter-spacing:.03em;
+}
+
+.site-footer-premium .brand-text span{
+  font-size:.74rem;
+  letter-spacing:.14em;
+  color:rgba(244,239,231,.5);
+}
+
+/* manifesto mais fino e editorial */
+.site-footer-premium .footer-copy{
+  max-width:27ch;
+  font-size:.92rem;
+  line-height:1.56;
+  color:rgba(244,239,231,.72);
+  letter-spacing:.002em;
+}
+
+/* headings ainda mais silenciosos */
+.site-footer-premium .footer-heading{
+  font-size:.67rem;
+  letter-spacing:.19em;
+  color:rgba(244,239,231,.46);
+}
+
+/* links um pouco menos pesados */
+.site-footer-premium .footer-links a{
+  font-size:.94rem;
+  line-height:1.32;
+  color:rgba(255,255,255,.86);
+}
+
+/* language switch menos brilhante */
+.site-footer-premium .footer-lang{
+  gap:3px;
+  padding:3px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.06);
+  box-shadow:none;
+}
+
+.site-footer-premium .footer-lang a{
+  min-width:38px;
+  height:32px;
+  padding:0 10px;
+  font-size:.75rem;
+  color:rgba(255,255,255,.68);
+}
+
+.site-footer-premium .footer-lang a.is-active,
+.site-footer-premium .footer-lang a[aria-current="page"]{
+  background:rgba(255,255,255,.10);
+  color:rgba(255,255,255,.92);
+}
+
+/* base ainda mais sussurrada */
+.site-footer-premium .footer-bottom{
+  font-size:.82rem;
+  color:rgba(244,239,231,.36);
+}
+
+/* manifesto no tablet/mobile */
+@media (max-width:1100px){
+  .site-footer-premium .footer-copy{
+    max-width:38ch;
+  }
+}
+
+@media (max-width:820px){
+  .site-footer-premium .brand-mark{
+    width:36px;
+    height:36px;
+    flex:0 0 36px;
+  }
+
+  .site-footer-premium .brand-text strong{
+    font-size:.92rem;
+  }
+
+  .site-footer-premium .brand-text span{
+    font-size:.72rem;
+  }
+
+  .site-footer-premium .footer-copy{
+    max-width:unset;
+    font-size:.9rem;
+    line-height:1.52;
+  }
+
+  .site-footer-premium .footer-lang a{
+    min-width:36px;
+    height:30px;
+    font-size:.73rem;
+  }
+}
+/* =========================================================
+   FOOTER — OPTICAL VERTICAL RHYTHM (AMAN LEVEL)
+   ========================================================= */
+
+/* mais ar dentro do container */
+.site-footer-premium .footer-shell{
+  padding:42px 42px 30px;
+}
+
+/* topo respira melhor */
+.site-footer-premium .footer-hero{
+  gap:44px;
+  padding-bottom:28px;
+  margin-bottom:30px;
+}
+
+/* separador mais sutil (menos UI, mais arquitetura) */
+.site-footer-premium .footer-hero,
+.site-footer-premium .footer-main{
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* manifesto com leve afastamento da borda */
+.site-footer-premium .footer-intro{
+  padding-top:2px;
+}
+
+/* grid principal com respiro real */
+.site-footer-premium .footer-main{
+  gap:54px;
+  padding-top:6px;
+  padding-bottom:26px;
+  margin-bottom:22px;
+}
+
+/* coluna esquerda mais “ancorada” */
+.site-footer-premium .footer-column:first-child{
+  padding-left:2px;
+}
+
+/* espaço interno dos grupos de links */
+.site-footer-premium .footer-links{
+  gap:12px;
+}
+
+/* headings respiram melhor dos links */
+.site-footer-premium .footer-heading{
+  margin-bottom:14px;
+}
+
+/* linguagem levemente deslocada pra não colar no topo */
+.site-footer-premium .footer-column-lang{
+  padding-top:6px;
+}
+
+/* base com distância elegante */
+.site-footer-premium .footer-bottom{
+  margin-top:6px;
+  padding-top:6px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width:1100px){
+  .site-footer-premium .footer-shell{
+    padding:36px 32px 26px;
+  }
+
+  .site-footer-premium .footer-hero{
+    gap:26px;
+    margin-bottom:26px;
+  }
+
+  .site-footer-premium .footer-main{
+    gap:34px;
+    padding-bottom:22px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:820px){
+  .site-footer-premium .footer-shell{
+    padding:28px 22px 22px;
+  }
+
+  .site-footer-premium .footer-hero{
+    gap:18px;
+    padding-bottom:18px;
+    margin-bottom:18px;
+  }
+
+  .site-footer-premium .footer-main{
+    gap:24px;
+    padding-bottom:18px;
+    margin-bottom:16px;
+  }
+
+  .site-footer-premium .footer-heading{
+    margin-bottom:10px;
+  }
+
+  .site-footer-premium .footer-links{
+    gap:8px;
+  }
+}
+/* =========================================================
+   INVESTMENT — HERO EDITORIAL FIX
+   ========================================================= */
+
+.invest-hero,
+.investment-hero,
+.section-invest-hero{
+  padding-top:64px;
+  padding-bottom:40px;
+}
+
+/* container editorial real */
+.invest-hero .container,
+.investment-hero .container{
+  max-width:1100px;
+}
+
+/* título principal */
+.invest-hero h1,
+.investment-hero h1{
+  max-width:20ch; /* controla leitura */
+  font-size:clamp(40px, 4.2vw, 64px);
+  line-height:1.06;
+  letter-spacing:-0.01em;
+}
+
+/* subtítulo / manifesto */
+.invest-hero p,
+.investment-hero p{
+  margin-top:22px;
+  max-width:52ch;
+  font-size:1.05rem;
+  line-height:1.7;
+  color:rgba(20,20,20,.68);
+}
+
+/* caixa visual mais leve (se houver card) */
+.invest-hero .card,
+.investment-hero .card{
+  padding:42px 48px;
+  border-radius:28px;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width:820px){
+
+  .invest-hero h1,
+  .investment-hero h1{
+    max-width:100%;
+    font-size:clamp(32px, 8vw, 42px);
+    line-height:1.1;
+  }
+
+  .invest-hero p{
+    font-size:1rem;
+    max-width:100%;
+  }
+
+  .invest-hero .card{
+    padding:28px 24px;
+  }
+}
+/* ===== INVEST ENTRY – AMAN LEVEL ===== */
+
+.invest-entry{
+  padding:120px 0 80px;
+}
+
+.invest-entry-wrap{
+  width:min(920px, 88vw);
+  margin:0 auto;
+}
+
+/* eyebrow */
+.invest-entry-eyebrow{
+  display:block;
+  margin-bottom:22px;
+
+  font-size:.68rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+
+  color:rgba(20,18,16,.42);
+}
+
+/* título */
+.invest-entry-title{
+  margin:0 0 28px;
+
+  font-family: "Canela", serif;
+  font-size:clamp(40px, 5.2vw, 64px);
+  line-height:1.12;
+  letter-spacing:-0.02em;
+
+  color:#1a1816;
+
+  max-width:18ch; /* ESSENCIAL */
+}
+
+/* texto */
+.invest-entry-text{
+  margin:0;
+
+  font-size:1.05rem;
+  line-height:1.75;
+
+  color:rgba(20,18,16,.62);
+
+  max-width:42ch;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width:820px){
+
+  .invest-entry{
+    padding:80px 0 56px;
+  }
+
+  .invest-entry-title{
+    font-size:clamp(30px, 8vw, 44px);
+    line-height:1.18;
+  }
+
+  .invest-entry-text{
+    font-size:.98rem;
+  }
+
+}
+.invest-entry-title{
+  text-wrap:balance;
+}
+/* =========================================================
+   CASAS DA VILA — INVEST PAGE GLOBAL OVERRIDE
+   Corrige excesso de destaque nos blocos editoriais da página
+   de investimento sem precisar mexer no HTML
+   ========================================================= */
+
+/* bloco editorial principal da página investimento */
+.investValuePanel,
+.invest-entry-wrap,
+.investment-entry-wrap{
+  width:min(980px, calc(100vw - 48px)) !important;
+  margin:0 auto !important;
+}
+
+/* título principal editorial */
+.investValuePanel .investH2,
+.invest-entry-title,
+.investment-entry-title,
+.investSection.investValueBand .investH2{
+  max-width:22ch !important;
+  font-size:clamp(34px, 4.2vw, 52px) !important;
+  line-height:1.18 !important;
+  letter-spacing:-0.01em !important;
+  font-weight:400 !important;
+  text-wrap:balance;
+}
+
+/* texto de apoio */
+.investValuePanel .investLead,
+.invest-entry-text,
+.investment-entry-text,
+.investSection.investValueBand .investLead{
+  max-width:42ch !important;
+  margin-top:22px !important;
+  font-size:1.02rem !important;
+  line-height:1.7 !important;
+  color:rgba(20,18,16,.62) !important;
+}
+
+/* caixa do bloco */
+.investValuePanel,
+.investSection.investValueBand .investValuePanel{
+  padding:38px 40px 32px !important;
+  border-radius:28px !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.60), rgba(255,255,255,.40)) !important;
+}
+
+/* respiro da seção */
+.investValueBand,
+.invest-entry,
+.investment-entry{
+  padding-top:0 !important;
+  padding-bottom:88px !important;
+}
+
+/* controla excesso de largura do hero/intros de investimento */
+.investWrap,
+.investWrapNarrow{
+  width:min(1100px, calc(100vw - 48px)) !important;
+}
+
+/* responsivo */
+@media (max-width:1100px){
+  .investValuePanel,
+  .invest-entry-wrap,
+  .investment-entry-wrap{
+    width:min(100%, 900px) !important;
+  }
+
+  .investValuePanel .investH2,
+  .invest-entry-title,
+  .investment-entry-title,
+  .investSection.investValueBand .investH2{
+    max-width:20ch !important;
+    font-size:clamp(30px, 5.4vw, 44px) !important;
+  }
+}
+
+@media (max-width:820px){
+  .investValuePanel,
+  .invest-entry-wrap,
+  .investment-entry-wrap{
+    width:100% !important;
+  }
+
+  .investValuePanel,
+  .investSection.investValueBand .investValuePanel{
+    padding:28px 22px 24px !important;
+    border-radius:24px !important;
+  }
+
+  .investValuePanel .investH2,
+  .invest-entry-title,
+  .investment-entry-title,
+  .investSection.investValueBand .investH2{
+    max-width:100% !important;
+    font-size:clamp(28px, 8vw, 38px) !important;
+    line-height:1.14 !important;
+  }
+
+  .investValuePanel .investLead,
+  .invest-entry-text,
+  .investment-entry-text,
+  .investSection.investValueBand .investLead{
+    max-width:100% !important;
+    font-size:.98rem !important;
+    line-height:1.64 !important;
+  }
+}
+/* =========================================================
+   CASAS DA VILA — HERO SYSTEM / AMAN FINAL
+   Refino global dos heroes internos
+   ========================================================= */
+
+:root{
+  --hero-max-width: 1180px;
+  --hero-copy-max: 12ch;
+  --hero-lead-max: 34ch;
+
+  --hero-title-size: clamp(40px, 5vw, 72px);
+  --hero-title-line: 0.96;
+  --hero-title-track: -0.03em;
+
+  --hero-lead-size: 1.04rem;
+  --hero-lead-line: 1.62;
+
+  --hero-panel-width: 380px;
+  --hero-panel-radius: 24px;
+
+  --hero-top-pad: calc(var(--header-h, 96px) + 42px);
+  --hero-bottom-pad: 58px;
+
+  --hero-overlay-top: rgba(18,16,14,.14);
+  --hero-overlay-mid: rgba(18,16,14,.18);
+  --hero-overlay-bottom: rgba(18,16,14,.46);
+
+  --hero-text: rgba(244,239,231,.94);
+  --hero-text-soft: rgba(244,239,231,.82);
+  --hero-eyebrow: rgba(244,239,231,.62);
+
+  --hero-panel-bg: rgba(30,27,24,.24);
+  --hero-panel-border: rgba(255,255,255,.10);
+  --hero-panel-shadow: 0 18px 50px rgba(0,0,0,.10);
+}
+
+/* ---------- ESTRUTURA BASE ---------- */
+
+.houseHero,
+.projectHero,
+.investHero,
+.locationHero,
+.pageHero,
+.editorialHero{
+  position: relative;
+  min-height: 100svh;
+  padding-top: var(--hero-top-pad);
+  padding-bottom: var(--hero-bottom-pad);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.houseHero::before,
+.projectHero::before,
+.investHero::before,
+.locationHero::before,
+.pageHero::before,
+.editorialHero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to bottom,
+      var(--hero-overlay-top) 0%,
+      var(--hero-overlay-mid) 28%,
+      rgba(18,16,14,.24) 58%,
+      var(--hero-overlay-bottom) 100%
+    );
+}
+
+.houseHeroMedia,
+.projectHeroMedia,
+.investHeroMedia,
+.locationHeroMedia,
+.pageHeroMedia,
+.editorialHeroMedia{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.houseHeroMedia img,
+.projectHeroMedia img,
+.investHeroMedia img,
+.locationHeroMedia img,
+.pageHeroMedia img,
+.editorialHeroMedia img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: saturate(.93) contrast(.98) brightness(.94);
+  transform: scale(1.01);
+}
+
+.houseHeroInner,
+.projectHeroInner,
+.investHeroInner,
+.locationHeroInner,
+.pageHeroInner,
+.editorialHeroInner{
+  position: relative;
+  z-index: 2;
+  width: min(var(--hero-max-width), calc(100vw - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0,1.14fr) minmax(300px,.86fr);
+  gap: 42px;
+  align-items: end;
+}
+
+/* ---------- COPY ---------- */
+
+.houseHeroCopy,
+.projectHeroCopy,
+.investHeroCopy,
+.locationHeroText,
+.pageHeroCopy,
+.editorialHeroCopy{
+  color: var(--hero-text);
+  min-width: 0;
+}
+
+.houseHeroCopy .houseEyebrow,
+.projectHeroCopy .projectEyebrow,
+.investHeroCopy .investEyebrow,
+.locationHeroText .locEyebrow,
+.pageHeroCopy .pageEyebrow,
+.editorialHeroCopy .heroEyebrow{
+  color: var(--hero-eyebrow);
+  margin: 0 0 16px;
+  font-size: .7rem;
+  line-height: 1;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.houseHeroCopy .houseDisplay,
+.projectHeroCopy .projectDisplay,
+.investHeroCopy .investDisplay,
+.locationHeroText .locDisplay,
+.pageHeroCopy h1,
+.editorialHeroCopy h1,
+.hero h1,
+.hero-title,
+.heroHeading{
+  margin: 0;
+  max-width: var(--hero-copy-max);
+  font-size: var(--hero-title-size);
+  line-height: var(--hero-title-line);
+  letter-spacing: var(--hero-title-track);
+  font-weight: 400;
+  text-wrap: balance;
+  color: var(--hero-text);
+  text-shadow: 0 1px 1px rgba(0,0,0,.08);
+}
+
+.houseHeroCopy .houseLead,
+.projectHeroCopy .projectLead,
+.investHeroCopy .investLead,
+.locationHeroText .locLead,
+.pageHeroCopy p,
+.editorialHeroCopy p,
+.hero p,
+.hero-sub,
+.heroText{
+  margin-top: 22px;
+  max-width: var(--hero-lead-max);
+  font-size: var(--hero-lead-size);
+  line-height: var(--hero-lead-line);
+  color: var(--hero-text-soft);
+  text-wrap: pretty;
+}
+
+/* ---------- PANEL ---------- */
+
+.houseHeroPanel,
+.projectHeroPanel,
+.investHeroPanel,
+.locationHeroCard,
+.pageHeroPanel,
+.editorialHeroPanel,
+.hero .glass-card,
+.hero .hero-card{
+  justify-self: end;
+  width: min(100%, var(--hero-panel-width));
+  padding: 24px 24px 22px;
+  border-radius: var(--hero-panel-radius);
+  background: var(--hero-panel-bg);
+  border: 1px solid var(--hero-panel-border);
+  box-shadow: var(--hero-panel-shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--hero-text);
+}
+
+.houseHeroPanel h2,
+.projectHeroPanel h2,
+.investHeroPanel h2,
+.locationHeroCard h2,
+.pageHeroPanel h2,
+.editorialHeroPanel h2,
+.hero .glass-card h2,
+.hero .hero-card h2{
+  margin: 0 0 10px;
+  font-size: .98rem;
+  line-height: 1.34;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--hero-text);
+}
+
+.houseHeroPanel p,
+.projectHeroPanel p,
+.investHeroPanel p,
+.locationHeroCard p,
+.pageHeroPanel p,
+.editorialHeroPanel p,
+.hero .glass-card p,
+.hero .hero-card p{
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.64;
+  color: rgba(244,239,231,.78);
+  max-width: 30ch;
+}
+
+/* ---------- META CHIPS ---------- */
+
+.houseHeroMeta,
+.projectHeroMeta,
+.investHeroMeta,
+.locationHeroMeta,
+.heroMeta{
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.houseHeroMeta span,
+.projectHeroMeta span,
+.investHeroMeta span,
+.locationHeroMeta span,
+.heroMeta span{
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  color: rgba(244,239,231,.74);
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ---------- CONTRASTE MAIS SILENCIOSO ---------- */
+
+.houseHeroCopy .houseDisplay,
+.projectHeroCopy .projectDisplay,
+.investHeroCopy .investDisplay,
+.locationHeroText .locDisplay,
+.pageHeroCopy h1,
+.editorialHeroCopy h1{
+  color: rgba(245,240,232,.92);
+}
+
+.houseHeroCopy .houseLead,
+.projectHeroCopy .projectLead,
+.investHeroCopy .investLead,
+.locationHeroText .locLead,
+.pageHeroCopy p,
+.editorialHeroCopy p{
+  color: rgba(245,240,232,.78);
+}
+
+/* ---------- RESPONSIVO ---------- */
+
+@media (max-width: 1100px){
+  :root{
+    --hero-copy-max: 13ch;
+    --hero-title-size: clamp(36px, 5.2vw, 58px);
+    --hero-panel-width: 520px;
+    --hero-top-pad: calc(var(--header-h, 92px) + 32px);
+    --hero-bottom-pad: 40px;
+  }
+
+  .houseHeroInner,
+  .projectHeroInner,
+  .investHeroInner,
+  .locationHeroInner,
+  .pageHeroInner,
+  .editorialHeroInner{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .houseHeroPanel,
+  .projectHeroPanel,
+  .investHeroPanel,
+  .locationHeroCard,
+  .pageHeroPanel,
+  .editorialHeroPanel,
+  .hero .glass-card,
+  .hero .hero-card{
+    justify-self: start;
+  }
+}
+
+@media (max-width: 820px){
+  :root{
+    --hero-copy-max: 100%;
+    --hero-lead-max: 100%;
+    --hero-title-size: clamp(30px, 8vw, 42px);
+    --hero-title-line: 1.02;
+    --hero-panel-width: 100%;
+    --hero-top-pad: calc(var(--header-h, 88px) + 22px);
+    --hero-bottom-pad: 28px;
+    --hero-lead-size: .96rem;
+  }
+
+  .houseHero,
+  .projectHero,
+  .investHero,
+  .locationHero,
+  .pageHero,
+  .editorialHero{
+    min-height: auto;
+  }
+
+  .houseHeroInner,
+  .projectHeroInner,
+  .investHeroInner,
+  .locationHeroInner,
+  .pageHeroInner,
+  .editorialHeroInner{
+    width: min(100vw - 28px, var(--hero-max-width));
+    gap: 18px;
+  }
+
+  .houseHeroPanel,
+  .projectHeroPanel,
+  .investHeroPanel,
+  .locationHeroCard,
+  .pageHeroPanel,
+  .editorialHeroPanel,
+  .hero .glass-card,
+  .hero .hero-card{
+    padding: 20px 18px 18px;
+    border-radius: 22px;
+  }
+
+  .houseHeroMeta,
+  .projectHeroMeta,
+  .investHeroMeta,
+  .locationHeroMeta,
+  .heroMeta{
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .houseHeroMeta span,
+  .projectHeroMeta span,
+  .investHeroMeta span,
+  .locationHeroMeta span,
+  .heroMeta span{
+    min-height: 30px;
+    font-size: .68rem;
+  }
+}
+
+/* ---------- HEROES MUITO GRANDES / ESPECIAIS ---------- */
+/* Segurança extra para páginas que estejam exageradas */
+.investHeroCopy .investDisplay,
+.hero.investment-hero h1,
+.page-investment h1{
+  max-width: 11ch;
+  font-size: clamp(38px, 4.6vw, 64px);
+}
+
+@media (max-width: 820px){
+  .investHeroCopy .investDisplay,
+  .hero.investment-hero h1,
+  .page-investment h1{
+    max-width: 100%;
+    font-size: clamp(30px, 8vw, 42px);
+  }
+}
+/* SEO BLOCK */
+
+.seoBlock{
+  padding:96px 0;
+}
+
+.seoBlockSoft{
+  padding:72px 0;
+}
+
+.seoInner{
+  max-width:760px;
+}
+
+.seoLinks{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:24px;
+}
+
+.seoLink{
+  font-size:1rem;
+  line-height:1.5;
+  text-decoration:none;
+  color:rgba(255,255,255,.82);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  padding-bottom:6px;
+  transition:all .18s ease;
+}
+
+.seoLink:hover{
+  color:#fff;
+  border-color:rgba(255,255,255,.28);
+}

@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Location | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Discover the location of Casas da Vila Homes in Trancoso — a quieter residential position close to the Quadrado, the beaches and the essential rhythm of village life."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+<style>
+  :root{
+    --loc-bg: #f6f1e8;
+    --loc-surface: rgba(255,255,255,.42);
+    --loc-surface-strong: rgba(255,255,255,.58);
+    --loc-panel: #ece4d8;
+    --loc-ink: #201c18;
+    --loc-muted: #6d655b;
+    --loc-soft: #8b8277;
+    --loc-line: rgba(32,28,24,.09);
+    --loc-line-strong: rgba(32,28,24,.15);
+    --loc-accent: #b9965a;
+    --loc-accent-soft: rgba(185,150,90,.16);
+    --loc-dark: #2b2926;
+    --loc-shadow-sm: 0 10px 30px rgba(26,20,14,.06);
+    --loc-shadow-md: 0 18px 60px rgba(26,20,14,.08);
+    --loc-shadow-lg: 0 24px 90px rgba(26,20,14,.12);
+    --loc-radius-sm: 18px;
+    --loc-radius: 28px;
+    --loc-radius-lg: 36px;
+    --loc-wrap: min(1180px, calc(100vw - 48px));
+    --loc-wrap-narrow: min(860px, calc(100vw - 48px));
+  }
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body{
+    background:
+      radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+      linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+    color: var(--loc-ink);
+  }
+
+  main{
+    overflow: hidden;
+  }
+
+  .locWrap{
+    width: var(--loc-wrap);
+    margin: 0 auto;
+  }
+
+  .locWrapNarrow{
+    width: var(--loc-wrap-narrow);
+    margin: 0 auto;
+  }
+
+  .locSection{
+    position: relative;
+    padding: 112px 0;
+  }
+
+  .locSection::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:1px;
+    background: linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+    pointer-events:none;
+  }
+
+  .locEyebrow{
+    display:inline-block;
+    margin:0 0 18px;
+    font-size:.72rem;
+    line-height:1;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--loc-soft);
+  }
+
+  .locDisplay{
+    margin:0;
+    font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    font-size:clamp(4rem, 8.8vw, 7.35rem);
+    line-height:.92;
+    letter-spacing:-.05em;
+    font-weight:400;
+    max-width:9ch;
+    text-wrap:balance;
+  }
+
+  .locH2{
+    margin:0;
+    font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    font-size:clamp(2.4rem, 4.5vw, 4.35rem);
+    line-height:.98;
+    letter-spacing:-.042em;
+    font-weight:400;
+    text-wrap:balance;
+  }
+
+  .locLead{
+    margin:0;
+    font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+    line-height:1.76;
+    color:var(--loc-muted);
+    max-width:60ch;
+  }
+
+  .locBody{
+    margin:0;
+    font-size:1rem;
+    line-height:1.82;
+    color:var(--loc-muted);
+  }
+
+  /* HERO */
+  .locationHeroPremium{
+    position:relative;
+    min-height:100svh;
+    padding:calc(var(--header-h, 96px) + 46px) 0 78px;
+    display:flex;
+    align-items:flex-end;
+    background:#d8d0c2;
+  }
+
+  .locationHeroPremium::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(to bottom, rgba(18,16,14,.12) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 58%, rgba(18,16,14,.52) 100%);
+    z-index:1;
+  }
+
+  .locationHeroPremium::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.08) 0%, transparent 34%, transparent 100%);
+    z-index:1;
+    pointer-events:none;
+  }
+
+  .locationHeroMedia{
+    position:absolute;
+    inset:0;
+    z-index:0;
+  }
+
+  .locationHeroMedia img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center center;
+    display:block;
+    filter:saturate(.92) contrast(.98) brightness(.96);
+    transform:scale(1.015);
+  }
+
+  .locationHeroInner{
+    position:relative;
+    z-index:2;
+    width:var(--loc-wrap);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:minmax(0, 1.16fr) minmax(300px, .84fr);
+    gap:46px;
+    align-items:end;
+  }
+
+  .locationHeroText{
+    color:#f4efe7;
+    padding:22px 0 12px;
+  }
+
+  .locationHeroText .locEyebrow{
+    color:rgba(244,239,231,.72);
+    margin-bottom:20px;
+  }
+
+  .locationHeroText .locLead{
+    color:rgba(244,239,231,.82);
+    margin-top:28px;
+    max-width:34ch;
+    font-size:clamp(1.04rem, 1.4vw, 1.22rem);
+    line-height:1.68;
+  }
+
+  .locationHeroCard{
+    justify-self:end;
+    width:min(100%, 386px);
+    padding:28px 28px 30px;
+    border-radius:24px;
+    color:#f4efe7;
+    background:rgba(35,31,28,.24);
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:0 18px 50px rgba(0,0,0,.10);
+  }
+
+  .locationHeroCard h2{
+    margin:0 0 10px;
+    font-size:1rem;
+    line-height:1.25;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+
+  .locationHeroCard p{
+    margin:0;
+    font-size:.97rem;
+    line-height:1.72;
+    color:rgba(244,239,231,.82);
+  }
+
+  .locationHeroMeta{
+    margin-top:18px;
+    padding-top:18px;
+    border-top:1px solid rgba(255,255,255,.12);
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  .locationHeroMeta span{
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    padding:0 13px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    font-size:.74rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:rgba(244,239,231,.78);
+  }
+
+  /* INTRO */
+  .locationIntroPremium{
+    padding-top:102px;
+    padding-bottom:76px;
+  }
+
+  .locationIntroGrid{
+    display:grid;
+    grid-template-columns:minmax(0, .96fr) minmax(0, 1.04fr);
+    gap:58px;
+    align-items:start;
+  }
+
+  .locationIntroGrid .locLead{
+    padding-top:18px;
+  }
+
+  /* MAP */
+  .locationMapPremium{
+    padding-top:44px;
+    padding-bottom:98px;
+  }
+
+  .locationMapShell{
+    background:linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.18));
+    border:1px solid var(--loc-line);
+    border-radius:var(--loc-radius-lg);
+    padding:20px;
+    box-shadow:var(--loc-shadow-md);
+  }
+
+  .locationMapGrid{
+    display:grid;
+    grid-template-columns:minmax(320px, .78fr) minmax(0, 1.22fr);
+    gap:22px;
+    align-items:stretch;
+  }
+
+  .locationMapText{
+    padding:28px 24px 24px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:linear-gradient(180deg, rgba(255,255,255,.52), rgba(255,255,255,.34));
+    border:1px solid var(--loc-line);
+    border-radius:24px;
+  }
+
+  .locationMapTextTop .locH2{
+    max-width:9ch;
+  }
+
+  .locationMapTextTop .locBody{
+    margin-top:22px;
+    max-width:38ch;
+  }
+
+  .locationMapPoints{
+    margin-top:34px;
+    display:grid;
+    gap:14px;
+  }
+
+  .locationMapPoint{
+    display:grid;
+    grid-template-columns:92px 1fr;
+    gap:14px;
+    padding-top:14px;
+    border-top:1px solid var(--loc-line);
+  }
+
+  .locationMapPoint strong{
+    font-size:.8rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--loc-ink);
+  }
+
+  .locationMapPoint span{
+    font-size:.97rem;
+    line-height:1.66;
+    color:var(--loc-muted);
+  }
+
+  .locationMapVisual{
+    position:relative;
+    min-height:620px;
+    border-radius:28px;
+    overflow:hidden;
+    background:#d8c39e;
+    border:1px solid var(--loc-line);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
+  }
+
+  .locationMapVisual img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .locationMapPin{
+    position:absolute;
+    left:13%;
+    bottom:29%;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    background:var(--loc-accent);
+    box-shadow:0 0 0 9px rgba(185,150,90,.16);
+    border:2px solid rgba(255,255,255,.76);
+  }
+
+  .locationMapPin::after{
+    content:"";
+    position:absolute;
+    inset:-10px;
+    border-radius:50%;
+    border:1px solid rgba(185,150,90,.28);
+    animation:locPulse 2.4s ease-out infinite;
+  }
+
+  @keyframes locPulse{
+    0%{ transform:scale(.6); opacity:.88; }
+    100%{ transform:scale(1.8); opacity:0; }
+  }
+
+  .locationMapCaption{
+    position:absolute;
+    left:22px;
+    right:22px;
+    bottom:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    padding:16px 18px;
+    border-radius:18px;
+    background:rgba(31,27,24,.58);
+    color:#f3ede4;
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.10);
+  }
+
+  .locationMapCaption strong{
+    display:block;
+    margin-bottom:4px;
+    font-size:.98rem;
+    font-weight:600;
+    letter-spacing:.01em;
+  }
+
+  .locationMapCaption span{
+    font-size:.9rem;
+    color:rgba(243,237,228,.74);
+  }
+
+  .locationMapCaption a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:0 18px;
+    border-radius:999px;
+    text-decoration:none;
+    white-space:nowrap;
+    background:#f2e8d8;
+    color:#211d19;
+    font-size:.87rem;
+    font-weight:600;
+    transition:transform .22s ease, opacity .22s ease, background .22s ease;
+  }
+
+  .locationMapCaption a:hover{
+    transform:translateY(-1px);
+    opacity:.95;
+    background:#f5eddf;
+  }
+
+  /* DISTANCES */
+  .locationDistancePremium{
+    padding-top:22px;
+    padding-bottom:100px;
+  }
+
+  .locationDistanceHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:34px;
+  }
+
+  .locationDistanceHead .locH2{
+    max-width:10ch;
+  }
+
+  .locationDistanceHead .locBody{
+    max-width:44ch;
+  }
+
+  .locationDistanceGrid{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:16px;
+  }
+
+  .locationDistanceCard{
+    min-height:214px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:24px 22px;
+    border-radius:24px;
+    background:linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,255,255,.36));
+    border:1px solid var(--loc-line);
+    box-shadow:var(--loc-shadow-sm);
+    transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  }
+
+  .locationDistanceCard:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--loc-shadow-md);
+    border-color:rgba(185,150,90,.18);
+  }
+
+  .locationDistanceCard strong{
+    display:block;
+    margin:0;
+    font-size:clamp(1.95rem, 3vw, 2.95rem);
+    line-height:.95;
+    letter-spacing:-.05em;
+    font-weight:500;
+    color:var(--loc-ink);
+  }
+
+  .locationDistanceCard h3{
+    margin:0;
+    font-size:1.05rem;
+    font-weight:600;
+    letter-spacing:.01em;
+    color:var(--loc-ink);
+  }
+
+  .locationDistanceCard p{
+    margin:10px 0 0;
+    font-size:.94rem;
+    line-height:1.68;
+    color:var(--loc-muted);
+  }
+
+  /* ATMOSPHERE */
+  .locationAtmospherePremium{
+    padding-top:98px;
+    padding-bottom:112px;
+  }
+
+  .locationAtmospherePanel{
+    position:relative;
+    border-radius:34px;
+    overflow:hidden;
+    min-height:640px;
+    background:#ccc1ae;
+    box-shadow:var(--loc-shadow-lg);
+  }
+
+  .locationAtmospherePanel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right, rgba(31,28,25,.64) 0%, rgba(31,28,25,.42) 38%, rgba(31,28,25,.10) 100%);
+    z-index:1;
+  }
+
+  .locationAtmospherePanel img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:saturate(.94) contrast(.98);
+  }
+
+  .locationAtmosphereContent{
+    position:relative;
+    z-index:2;
+    width:min(580px, calc(100% - 56px));
+    padding:64px 0 64px 42px;
+    color:#f3ede4;
+  }
+
+  .locationAtmosphereContent .locEyebrow{
+    color:rgba(243,237,228,.72);
+  }
+
+  .locationAtmosphereContent .locH2{
+    max-width:10ch;
+  }
+
+  .locationAtmosphereContent .locLead{
+    margin-top:24px;
+    color:rgba(243,237,228,.84);
+    max-width:34ch;
+  }
+
+  /* ADDRESS */
+  .locationAddressPremium{
+    padding-top:8px;
+    padding-bottom:120px;
+  }
+
+  .locationAddressShell{
+    display:grid;
+    grid-template-columns:minmax(0, .96fr) minmax(320px, .84fr);
+    gap:20px;
+    align-items:stretch;
+  }
+
+  .locationAddressCard,
+  .locationContactCard{
+    border-radius:30px;
+    padding:34px 32px;
+    background:linear-gradient(180deg, rgba(255,255,255,.54), rgba(255,255,255,.34));
+    border:1px solid var(--loc-line);
+    box-shadow:var(--loc-shadow-sm);
+  }
+
+  .locationAddressCard .locH2{
+    max-width:12ch;
+    margin-bottom:24px;
+  }
+
+  .locationAddressMeta{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:18px;
+    padding-top:26px;
+    border-top:1px solid var(--loc-line);
+  }
+
+  .locationAddressMetaBlock small{
+    display:block;
+    margin-bottom:8px;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--loc-soft);
+  }
+
+  .locationAddressMetaBlock strong{
+    display:block;
+    font-size:1.06rem;
+    line-height:1.46;
+    font-weight:600;
+    color:var(--loc-ink);
+  }
+
+  .locationAddressMetaBlock span{
+    display:block;
+    margin-top:8px;
+    font-size:.95rem;
+    line-height:1.7;
+    color:var(--loc-muted);
+  }
+
+  .locationContactCard{
+    background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+  }
+
+  .locationContactCard h3{
+    margin:0 0 14px;
+    font-size:1.72rem;
+    line-height:1.06;
+    letter-spacing:-.03em;
+    font-weight:500;
+    color:var(--loc-ink);
+    font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+  }
+
+  .locationContactCard p{
+    margin:0;
+    font-size:.99rem;
+    line-height:1.78;
+    color:var(--loc-muted);
+    max-width:34ch;
+  }
+
+  .locationActions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:28px;
+  }
+
+  .locationActions .btn{
+    min-height:48px;
+    padding-inline:20px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px){
+    .locationHeroInner,
+    .locationIntroGrid,
+    .locationMapGrid,
+    .locationAddressShell{
+      grid-template-columns:1fr;
+    }
+
+    .locationHeroCard{
+      justify-self:start;
+    }
+
+    .locationDistanceGrid{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
+    .locationMapVisual{
+      min-height:560px;
+    }
+
+    .locationDistanceHead{
+      flex-direction:column;
+      align-items:start;
+    }
+  }
+
+  @media (max-width: 760px){
+    :root{
+      --loc-wrap:min(100vw - 28px, 1000px);
+      --loc-wrap-narrow:min(100vw - 28px, 860px);
+      --loc-radius-lg:24px;
+      --loc-radius:22px;
+    }
+
+    .locSection{
+      padding:84px 0;
+    }
+
+    .locationHeroPremium{
+      min-height:auto;
+      padding-top:calc(var(--header-h, 90px) + 30px);
+      padding-bottom:38px;
+    }
+
+    .locationHeroInner{
+      gap:24px;
+    }
+
+    .locationHeroText .locLead{
+      margin-top:20px;
+    }
+
+    .locationHeroCard{
+      width:100%;
+      padding:22px 20px 22px;
+      border-radius:22px;
+    }
+
+    .locationMapShell{
+      padding:12px;
+      border-radius:24px;
+    }
+
+    .locationMapText{
+      padding:22px 18px;
+    }
+
+    .locationMapVisual{
+      min-height:420px;
+      border-radius:22px;
+    }
+
+    .locationMapCaption{
+      left:14px;
+      right:14px;
+      bottom:14px;
+      padding:14px;
+      border-radius:16px;
+      flex-direction:column;
+      align-items:flex-start;
+    }
+
+    .locationDistanceGrid,
+    .locationAddressMeta{
+      grid-template-columns:1fr;
+    }
+
+    .locationDistanceCard{
+      min-height:unset;
+    }
+
+    .locationAtmospherePanel{
+      min-height:520px;
+      border-radius:24px;
+    }
+
+    .locationAtmospherePanel::before{
+      background:linear-gradient(to top, rgba(31,28,25,.74) 0%, rgba(31,28,25,.38) 48%, rgba(31,28,25,.12) 100%);
+    }
+
+    .locationAtmosphereContent{
+      width:calc(100% - 28px);
+      padding:28px 0 28px 14px;
+    }
+
+    .locationAddressCard,
+    .locationContactCard{
+      padding:26px 20px;
+      border-radius:24px;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <section class="locationHeroPremium">
+      <div class="locationHeroMedia">
+        <img src="/assets/images/location/location-1.jpg" alt="Trancoso landscape near Casas da Vila Homes" />
+      </div>
+
+      <div class="locationHeroInner">
+        <div class="locationHeroText" data-reveal="left">
+          <p class="locEyebrow">Casas da Vila Homes • Trancoso</p>
+
+          <h1 class="locDisplay">
+            A quieter
+            position
+            inside
+            Trancoso.
+          </h1>
+
+          <p class="locLead">
+            Close to the Quadrado, close to the beaches, and yet removed from the noise of passing movement.  
+            The value of this address is not only where it is — but how it allows Trancoso to be lived.
+          </p>
+        </div>
+
+        <aside class="locationHeroCard" data-reveal="right">
+          <h2>The place defines the rhythm.</h2>
+          <p>
+            Casas da Vila is set within a more residential part of the village, where gardens, privacy and a slower scale of life still shape the everyday experience.
+          </p>
+
+          <div class="locationHeroMeta">
+            <span>Quadrado</span>
+            <span>Beaches</span>
+            <span>Private setting</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="locSection locationIntroPremium">
+      <div class="locWrap">
+        <div class="locationIntroGrid">
+          <div data-reveal="left">
+            <p class="locEyebrow">Position</p>
+            <h2 class="locH2">
+              Not remote.
+              Not exposed.
+              Precisely balanced.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="locLead">
+              In Trancoso, location is not measured only by distance. It is measured by atmosphere, access and the quality of what surrounds you.
+              Casas da Vila occupies a rare middle ground: close enough to the essential life of the village, and sufficiently reserved to preserve quietness, permanence and privacy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="locSection locationMapPremium">
+      <div class="locWrap">
+        <div class="locationMapShell">
+          <div class="locationMapGrid">
+
+            <div class="locationMapText" data-reveal="left">
+              <div class="locationMapTextTop">
+                <p class="locEyebrow">Spatial reading</p>
+
+                <h2 class="locH2">
+                  Everything important remains within reach.
+                </h2>
+
+                <p class="locBody">
+                  The project sits inside the village structure rather than outside it — allowing movement to happen naturally, without dependence on long crossings or a more disconnected routine.
+                </p>
+              </div>
+
+              <div class="locationMapPoints">
+                <div class="locationMapPoint">
+                  <strong>Village</strong>
+                  <span>The Quadrado remains part of the everyday geography, not a distant destination.</span>
+                </div>
+
+                <div class="locationMapPoint">
+                  <strong>Landscape</strong>
+                  <span>Beaches, trees and the wider natural setting remain present in the rhythm of arrival and return.</span>
+                </div>
+
+                <div class="locationMapPoint">
+                  <strong>Privacy</strong>
+                  <span>The address feels residential rather than transient, preserving a quieter mode of permanence.</span>
+                </div>
+              </div>
+            </div>
+
+            <figure class="locationMapVisual" data-reveal="right">
+              <img src="/assets/images/location/map.jpg" alt="Illustrated map of Trancoso with Casas da Vila highlighted" />
+              <div class="locationMapPin" aria-hidden="true"></div>
+
+              <figcaption class="locationMapCaption">
+                <div>
+                  <strong>Rua Piri, 25 — Trancoso</strong>
+                  <span>Village scale, close to the Quadrado and the beaches.</span>
+                </div>
+
+                <a href="https://maps.google.com/?q=Rua%20Piri%2C%2025%2C%20Trancoso" target="_blank" rel="noopener noreferrer">
+                  Open in Google Maps
+                </a>
+              </figcaption>
+            </figure>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="locSection locationDistancePremium">
+      <div class="locWrap">
+        <div class="locationDistanceHead" data-reveal="zoom">
+          <div>
+            <p class="locEyebrow">Proximity</p>
+            <h2 class="locH2">A village-scale daily life.</h2>
+          </div>
+
+          <p class="locBody">
+            What matters here is not only absolute distance, but the ease with which key points become part of a calmer, more walkable routine.
+          </p>
+        </div>
+
+        <div class="locationDistanceGrid">
+          <article class="locationDistanceCard" data-reveal="left">
+            <div>
+              <strong>5 min</strong>
+            </div>
+            <div>
+              <h3>Quadrado</h3>
+              <p>The social and cultural centre of Trancoso, with restaurants, architecture and village atmosphere.</p>
+            </div>
+          </article>
+
+          <article class="locationDistanceCard" data-reveal="zoom">
+            <div>
+              <strong>8 min</strong>
+            </div>
+            <div>
+              <h3>Nativos Beach</h3>
+              <p>The coastline remains close enough to shape the day naturally, without turning access into a logistical effort.</p>
+            </div>
+          </article>
+
+          <article class="locationDistanceCard" data-reveal="zoom">
+            <div>
+              <strong>15 min</strong>
+            </div>
+            <div>
+              <h3>Coqueiros Beach</h3>
+              <p>Another key point of the local experience, still within the village rhythm rather than outside it.</p>
+            </div>
+          </article>
+
+          <article class="locationDistanceCard" data-reveal="right">
+            <div>
+              <strong>45 min</strong>
+            </div>
+            <div>
+              <h3>Porto Seguro Airport</h3>
+              <p>The arrival remains practical, while the final stretch already begins the transition into the Trancoso atmosphere.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="locSection locationAtmospherePremium">
+      <div class="locWrap">
+        <div class="locationAtmospherePanel">
+          <img src="/assets/images/location/location-2.jpg" alt="Atmosphere of Trancoso near Casas da Vila Homes" />
+
+          <div class="locationAtmosphereContent" data-reveal="left">
+            <p class="locEyebrow">Atmosphere</p>
+
+            <h2 class="locH2">
+              The real luxury is how time behaves here.
+            </h2>
+
+            <p class="locLead">
+              Mornings unfold more slowly. Movement becomes lighter. The village remains near, but the house still feels protected from urgency.
+              This is what the location gives back: not spectacle, but a better quality of everyday life.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="locSection locationAddressPremium">
+      <div class="locWrap">
+        <div class="locationAddressShell">
+
+          <div class="locationAddressCard" data-reveal="left">
+            <p class="locEyebrow">Address</p>
+
+            <h2 class="locH2">
+              An address that supports the character of the project.
+            </h2>
+
+            <div class="locationAddressMeta">
+              <div class="locationAddressMetaBlock">
+                <small>Project</small>
+                <strong>Casas da Vila Homes</strong>
+                <span>Authorial residences in Trancoso shaped by gardens, privacy and permanence.</span>
+              </div>
+
+              <div class="locationAddressMetaBlock">
+                <small>Location</small>
+                <strong>Rua Piri, 25</strong>
+                <span>Trancoso • Bahia • Brazil</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="locationContactCard" data-reveal="right">
+            <p class="locEyebrow">Private Sales</p>
+
+            <h3>Request full information</h3>
+
+            <p>
+              Receive the project presentation, available houses and further details about layouts, pricing and current release conditions.
+            </p>
+
+            <div class="locationActions">
+              <a class="btn btnPrimary" href="/en/contact/">Request presentation</a>
+              <a class="btn btnGhost" href="/en/houses/">Explore houses</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Operação & Rental Pool | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Entenda a lógica de operação e rental pool de Casas da Vila Homes: uma residência que pode integrar uma operação estruturada de locação quando o proprietário não estiver em uso."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --rp-bg:#f6f1e8;
+      --rp-surface:rgba(255,255,255,.56);
+      --rp-surface-2:rgba(255,255,255,.38);
+      --rp-ink:#201c18;
+      --rp-muted:#6d655b;
+      --rp-soft:#8b8277;
+      --rp-line:rgba(32,28,24,.09);
+      --rp-accent:#b9965a;
+      --rp-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --rp-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --rp-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --rp-wrap:min(1180px, calc(100vw - 48px));
+      --rp-wrap-narrow:min(940px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--rp-ink);
+    }
+
+    main{overflow:hidden;}
+
+    .rpWrap{ width:var(--rp-wrap); margin:0 auto; }
+    .rpWrapNarrow{ width:var(--rp-wrap-narrow); margin:0 auto; }
+
+    .rpSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .rpSection::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .rpEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--rp-soft);
+    }
+
+    .rpDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.5rem, 7vw, 6.5rem);
+      line-height:.94;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .rpH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.2rem, 4.4vw, 4rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .rpLead{
+      margin:0;
+      font-size:clamp(1.04rem, 1.45vw, 1.22rem);
+      line-height:1.76;
+      color:var(--rp-muted);
+      max-width:60ch;
+    }
+
+    .rpBody{
+      margin:0;
+      font-size:1rem;
+      line-height:1.8;
+      color:var(--rp-muted);
+    }
+
+    .rpHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h,96px) + 42px) 0 64px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .rpHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.18) 0%, rgba(18,16,14,.12) 20%, rgba(18,16,14,.24) 58%, rgba(18,16,14,.54) 100%);
+      z-index:1;
+    }
+
+    .rpHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .rpHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.90) contrast(.95) brightness(.84) sepia(.04);
+    }
+
+    .rpHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--rp-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.14fr) minmax(300px,.86fr);
+      gap:42px;
+      align-items:end;
+    }
+
+    .rpHeroCopy{ color:rgba(244,239,231,.94); }
+    .rpHeroCopy .rpEyebrow{ color:rgba(244,239,231,.64); }
+    .rpHeroCopy .rpLead{
+      margin-top:22px;
+      max-width:34ch;
+      color:rgba(244,239,231,.80);
+    }
+
+    .rpHeroPanel{
+      justify-self:end;
+      width:min(100%,380px);
+      padding:24px 24px 22px;
+      border-radius:24px;
+      background:rgba(28,25,22,.24);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      color:rgba(244,239,231,.92);
+    }
+
+    .rpHeroPanel h2{
+      margin:0 0 10px;
+      font-size:.98rem;
+      line-height:1.34;
+      font-weight:600;
+    }
+
+    .rpHeroPanel p{
+      margin:0;
+      font-size:.95rem;
+      line-height:1.64;
+      color:rgba(244,239,231,.78);
+    }
+
+    .rpHeroMeta{
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.10);
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .rpHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(244,239,231,.74);
+      font-size:.72rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .rpIntro{
+      padding-top:96px;
+      padding-bottom:84px;
+    }
+
+    .rpIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .rpEditorial{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .rpEditorialFigure{
+      position:relative;
+      overflow:hidden;
+      min-height:620px;
+      border-radius:34px;
+      background:#d7cebf;
+      box-shadow:var(--rp-shadow-lg);
+    }
+
+    .rpEditorialFigure::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(24,20,17,.56) 0%, rgba(24,20,17,.22) 42%, rgba(24,20,17,.08) 100%);
+      z-index:1;
+    }
+
+    .rpEditorialFigure img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .rpEditorialCaption{
+      position:relative;
+      z-index:2;
+      width:min(540px, calc(100% - 56px));
+      padding:44px 0 44px 38px;
+      color:#f4efe7;
+    }
+
+    .rpEditorialCaption .rpEyebrow{ color:rgba(244,239,231,.70); }
+    .rpEditorialCaption .rpLead{
+      margin-top:18px;
+      color:rgba(244,239,231,.82);
+      max-width:31ch;
+    }
+
+    .rpGrid2{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .rpCard,
+    .rpWarmCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,255,255,.36));
+      border:1px solid var(--rp-line);
+      box-shadow:var(--rp-shadow-sm);
+    }
+
+    .rpWarmCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .rpCard h3,
+    .rpWarmCard h3{
+      margin:16px 0 12px;
+      font-size:1.7rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      color:var(--rp-ink);
+    }
+
+    .rpCard p,
+    .rpWarmCard p{
+      margin:0;
+      color:var(--rp-muted);
+      line-height:1.76;
+    }
+
+    .rpRows{
+      margin-top:24px;
+      border-top:1px solid var(--rp-line);
+    }
+
+    .rpRow{
+      display:grid;
+      grid-template-columns:140px 1fr;
+      gap:18px;
+      padding:18px 0;
+      border-bottom:1px solid var(--rp-line);
+    }
+
+    .rpRow:last-child{ border-bottom:0; }
+
+    .rpRow strong{
+      display:block;
+      font-size:.78rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--rp-ink);
+    }
+
+    .rpRow span{
+      display:block;
+      color:var(--rp-muted);
+      line-height:1.72;
+    }
+
+    .rpFeatureGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .rpFeatureCard{
+      padding:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:var(--rp-shadow-sm);
+    }
+
+    .rpFeatureIndex{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:var(--rp-ink);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .rpFeatureIndex::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:rgba(111,85,58,.4);
+    }
+
+    .rpFeatureCard h3{
+      margin:0 0 12px;
+      font-size:1.38rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .rpFeatureCard p{
+      margin:0;
+      color:var(--rp-muted);
+      line-height:1.76;
+    }
+
+    .rpClosing{
+      padding-top:0;
+      padding-bottom:120px;
+    }
+
+    .rpClosingGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .rpOverview{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,255,255,.36));
+      border:1px solid var(--rp-line);
+      box-shadow:var(--rp-shadow-sm);
+    }
+
+    .rpOverviewGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--rp-line);
+    }
+
+    .rpOverviewBlock small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--rp-soft);
+    }
+
+    .rpOverviewBlock strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.46;
+      font-weight:600;
+      color:var(--rp-ink);
+    }
+
+    .rpOverviewBlock span{
+      display:block;
+      margin-top:8px;
+      font-size:.95rem;
+      line-height:1.7;
+      color:var(--rp-muted);
+    }
+
+    .rpActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    @media (max-width:1100px){
+      .rpHeroInner,
+      .rpIntroGrid,
+      .rpGrid2,
+      .rpClosingGrid{
+        grid-template-columns:1fr;
+      }
+
+      .rpHeroPanel{ justify-self:start; }
+      .rpFeatureGrid,
+      .rpOverviewGrid{ grid-template-columns:1fr; }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --rp-wrap:min(100vw - 28px, 1000px);
+        --rp-wrap-narrow:min(100vw - 28px, 900px);
+      }
+
+      .rpSection{ padding:84px 0; }
+
+      .rpHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 24px);
+        padding-bottom:30px;
+      }
+
+      .rpEditorialFigure{
+        min-height:460px;
+        border-radius:24px;
+      }
+
+      .rpEditorialCaption{
+        width:calc(100% - 28px);
+        padding:28px 0 28px 14px;
+      }
+
+      .rpCard,
+      .rpWarmCard,
+      .rpOverview{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+
+      .rpRow{ grid-template-columns:1fr; }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Service",
+      "@id":"https://www.casasdavilahomes.com/pt/rental-pool/#service",
+      "name":"Operação & Rental Pool",
+      "serviceType":"Operação estruturada de locação",
+      "provider":{
+        "@id":"https://www.casasdavilahomes.com/#organization"
+      },
+      "areaServed":{
+        "@type":"Place",
+        "name":"Trancoso, Bahia, Brasil"
+      },
+      "url":"https://www.casasdavilahomes.com/pt/rental-pool/",
+      "description":"Modelo opcional de operação estruturada de locação para residências em Casas da Vila Homes."
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://www.casasdavilahomes.com/pt/rental-pool/#breadcrumb",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"Home",
+          "item":"https://www.casasdavilahomes.com/pt/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"Operação",
+          "item":"https://www.casasdavilahomes.com/pt/rental-pool/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <section class="rpHero">
+      <div class="rpHeroMedia">
+        <img src="/assets/images/rental-pool/hero.jpg" alt="Operação e rental pool em Casas da Vila Homes" />
+      </div>
+
+      <div class="rpHeroInner">
+        <div class="rpHeroCopy" data-reveal="left">
+          <p class="rpEyebrow">Operação & Rental Pool • Casas da Vila Homes</p>
+
+          <h1 class="rpDisplay">
+            Uma residência
+            que pode
+            operar
+            quando você
+            não está.
+          </h1>
+
+          <p class="rpLead">
+            O projeto admite uma lógica de uso que combina permanência residencial e operação estruturada de locação, preservando o caráter da casa e a qualidade da experiência.
+          </p>
+        </div>
+
+        <aside class="rpHeroPanel" data-reveal="right">
+          <h2>Uma extensão opcional do uso da propriedade.</h2>
+          <p>
+            Não se trata de um hotel tradicional, mas de uma operação organizada que permite integrar a residência a uma dinâmica de locação quando isso fizer sentido para o proprietário.
+          </p>
+
+          <div class="rpHeroMeta">
+            <span>Operação opcional</span>
+            <span>Booking estruturado</span>
+            <span>Hospitality</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="rpSection rpIntro">
+      <div class="rpWrap">
+        <div class="rpIntroGrid">
+          <div data-reveal="left">
+            <p class="rpEyebrow">Conceito operacional</p>
+            <h2 class="rpH2">
+              Uma casa que pode receber uso pessoal e operação com a mesma lógica de cuidado.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="rpLead">
+              Para proprietários que não pretendem utilizar a residência durante todo o ano, o rental pool representa uma possibilidade de ativação do imóvel dentro de uma estrutura já pensada para recepção, manutenção e hospitalidade. A operação é opcional, organizada e alinhada à linguagem do projeto.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rpSection rpEditorial">
+      <div class="rpWrap">
+        <figure class="rpEditorialFigure" data-reveal="zoom">
+          <img src="/assets/images/rental-pool/hospitality.jpg" alt="Hospitalidade e experiência em Casas da Vila Homes" />
+
+          <figcaption class="rpEditorialCaption">
+            <p class="rpEyebrow">Hospitalidade como infraestrutura</p>
+            <h2 class="rpH2">A operação existe para ampliar o uso da casa, não para descaracterizá-la.</h2>
+            <p class="rpLead">
+              Serviços, booking e manutenção se organizam como uma extensão de cuidado, permitindo que a residência opere com consistência quando não estiver em uso pelo proprietário.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="rpSection">
+      <div class="rpWrap">
+        <div class="rpGrid2">
+
+          <div class="rpCard" data-reveal="left">
+            <p class="rpEyebrow">Como funciona</p>
+            <h2 class="rpH2" style="margin-top:18px;">Uma lógica simples, apoiada por estrutura profissional.</h2>
+
+            <div class="rpRows">
+              <div class="rpRow">
+                <strong>Booking</strong>
+                <span>A comercialização da estadia pode ser integrada a uma lógica organizada de reservas e calendário.</span>
+              </div>
+
+              <div class="rpRow">
+                <strong>Operação</strong>
+                <span>Recepção, suporte e acompanhamento operacional podem ser conduzidos de forma estruturada, reduzindo fricção para o proprietário.</span>
+              </div>
+
+              <div class="rpRow">
+                <strong>Manutenção</strong>
+                <span>A casa permanece assistida em sua rotina de uso, reforçando padrão, conservação e continuidade da experiência.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="rpWarmCard" data-reveal="right">
+            <p class="rpEyebrow">Leitura correta</p>
+            <h3>Não é uma obrigação de locação. É uma possibilidade de ativação.</h3>
+            <p>
+              O proprietário decide quando quer operar, quando quer permanecer e em que medida pretende integrar a casa à lógica de locação.
+            </p>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="rpSection">
+      <div class="rpWrap">
+        <div class="rpFeatureGrid">
+
+          <article class="rpFeatureCard" data-reveal>
+            <div class="rpFeatureIndex">01 · Uso</div>
+            <h3>Para quem não ocupa o imóvel o ano inteiro</h3>
+            <p>
+              O rental pool faz sentido para proprietários que desejam uma residência em Trancoso, mas não pretendem utilizá-la continuamente ao longo do ano.
+            </p>
+          </article>
+
+          <article class="rpFeatureCard" data-reveal>
+            <div class="rpFeatureIndex">02 · Receita</div>
+            <h3>Possibilidade de renda complementar</h3>
+            <p>
+              A operação pode transformar períodos ociosos em uso rentável, sem alterar a natureza residencial e reservada da propriedade.
+            </p>
+          </article>
+
+          <article class="rpFeatureCard" data-reveal>
+            <div class="rpFeatureIndex">03 · Fricção</div>
+            <h3>Menos complexidade para o proprietário</h3>
+            <p>
+              Com booking e hospitalidade organizados, a lógica operacional reduz a carga direta de gestão e preserva a fluidez do ativo.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="rpSection rpClosing">
+      <div class="rpWrap">
+        <div class="rpClosingGrid">
+
+          <div class="rpOverview" data-reveal="left">
+            <p class="rpEyebrow">Síntese</p>
+            <h2 class="rpH2" style="margin-top:18px;">Uma residência com possibilidade de operação, sem perder sua natureza de casa.</h2>
+
+            <div class="rpOverviewGrid">
+              <div class="rpOverviewBlock">
+                <small>Natureza</small>
+                <strong>Residencial</strong>
+                <span>A operação nasce como extensão possível do uso da casa.</span>
+              </div>
+
+              <div class="rpOverviewBlock">
+                <small>Modelo</small>
+                <strong>Opcional</strong>
+                <span>O proprietário decide quando e como integrar o imóvel à locação.</span>
+              </div>
+
+              <div class="rpOverviewBlock">
+                <small>Suporte</small>
+                <strong>Estruturado</strong>
+                <span>Booking, hospitalidade e manutenção podem operar em conjunto.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="rpWarmCard" data-reveal="right">
+            <p class="rpEyebrow">Vendas Privadas</p>
+            <h3>Solicite a apresentação completa da operação.</h3>
+            <p>
+              Compartilhamos o racional do rental pool, a lógica de uso e as perspectivas operacionais diretamente, de acordo com o seu perfil de interesse.
+            </p>
+
+            <div class="rpActions">
+              <a class="btn btn-primary" href="/pt/contato/">Solicitar apresentação</a>
+              <a class="btn btn-outline" href="/pt/investimento/">Ver investimento</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

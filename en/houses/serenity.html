@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Casa Serenidade | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Discover Casa Serenidade at Casas da Vila Homes — a more contemplative typology with 2 suites, private garden and rooftop pool in selected units."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --house-bg:#f6f1e8;
+      --house-surface:rgba(255,255,255,.54);
+      --house-surface-2:rgba(255,255,255,.36);
+      --house-ink:#201c18;
+      --house-muted:#6d655b;
+      --house-soft:#8b8277;
+      --house-line:rgba(32,28,24,.09);
+      --house-line-strong:rgba(32,28,24,.15);
+      --house-accent:#b9965a;
+      --house-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --house-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --house-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --house-wrap:min(1180px, calc(100vw - 48px));
+      --house-wrap-narrow:min(900px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--house-ink);
+    }
+
+    main{ overflow:hidden; }
+
+    .houseWrap{
+      width:var(--house-wrap);
+      margin:0 auto;
+    }
+
+    .houseSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .houseSection::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .houseEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--house-soft);
+    }
+
+    .houseDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.7rem, 8vw, 7rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .houseH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.35rem, 4.5vw, 4.2rem);
+      line-height:.98;
+      letter-spacing:-.042em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .houseLead{
+      margin:0;
+      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height:1.76;
+      color:var(--house-muted);
+      max-width:62ch;
+    }
+
+    .houseHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h, 96px) + 46px) 0 76px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .houseHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.10) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 60%, rgba(18,16,14,.56) 100%);
+      z-index:1;
+    }
+
+    .houseHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .houseHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.94) contrast(.98) brightness(.95);
+      transform:scale(1.01);
+    }
+
+    .houseHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--house-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+      gap:44px;
+      align-items:end;
+    }
+
+    .houseHeroCopy{
+      color:#f4efe7;
+    }
+
+    .houseHeroCopy .houseEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .houseHeroCopy .houseLead{
+      margin-top:28px;
+      color:rgba(244,239,231,.84);
+      max-width:35ch;
+    }
+
+    .houseHeroPanel{
+      justify-self:end;
+      width:min(100%,390px);
+      padding:28px;
+      border-radius:24px;
+      color:#f4efe7;
+      background:rgba(35,31,28,.24);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+    }
+
+    .houseHeroPanel h2{
+      margin:0 0 12px;
+      font-size:1rem;
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .houseHeroPanel p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.72;
+      color:rgba(244,239,231,.82);
+    }
+
+    .houseHeroMeta{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .houseHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font-size:.74rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(244,239,231,.78);
+    }
+
+    .houseIntro{
+      padding-top:102px;
+      padding-bottom:84px;
+    }
+
+    .houseIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .houseIntroGrid .houseLead{
+      padding-top:18px;
+    }
+
+    .houseOpening{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .houseOpeningFigure{
+      position:relative;
+      overflow:hidden;
+      min-height:640px;
+      border-radius:34px;
+      background:#d7cebf;
+      box-shadow:var(--house-shadow-lg);
+    }
+
+    .houseOpeningFigure::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(24,20,17,.54) 0%, rgba(24,20,17,.22) 42%, rgba(24,20,17,.08) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .houseOpeningFigure img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .houseOpeningCaption{
+      position:relative;
+      z-index:2;
+      width:min(540px, calc(100% - 56px));
+      padding:44px 0 44px 38px;
+      color:#f4efe7;
+    }
+
+    .houseOpeningCaption .houseEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .houseOpeningCaption .houseLead{
+      margin-top:20px;
+      color:rgba(244,239,231,.84);
+      max-width:31ch;
+    }
+
+    .houseConceptCard,
+    .houseExperienceItem,
+    .houseOverviewCard,
+    .houseSalesCard{
+      border-radius:28px;
+    }
+
+    @media (max-width:1100px){
+      .houseHeroInner,
+      .houseIntroGrid{
+        grid-template-columns:1fr;
+      }
+
+      .houseHeroPanel{
+        justify-self:start;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --house-wrap:min(100vw - 28px, 1000px);
+      }
+
+      .houseSection{
+        padding:84px 0;
+      }
+
+      .houseHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 30px);
+        padding-bottom:36px;
+      }
+
+      .houseOpeningFigure{
+        min-height:460px;
+        border-radius:24px;
+      }
+
+      .houseOpeningCaption{
+        width:calc(100% - 28px);
+        padding:28px 0 28px 14px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"SingleFamilyResidence",
+      "@id":"https://www.casasdavilahomes.com/en/houses/serenity.html#product",
+      "name":"Casa Serenidade | Casas da Vila Homes",
+      "description":"A more contemplative residence at Casas da Vila Homes, with 2 suites, private garden and rooftop pool in selected units.",
+      "brand":{
+        "@type":"Brand",
+        "name":"Casas da Vila Homes"
+      },
+      "category":"High-end residence",
+      "url":"https://www.casasdavilahomes.com/en/houses/serenity.html",
+      "image":"https://www.casasdavilahomes.com/assets/images/houses/serenidade/hero.jpg",
+      "additionalProperty":[
+        {
+          "@type":"PropertyValue",
+          "name":"Location",
+          "value":"Trancoso, Bahia, Brazil"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Project",
+          "value":"Casas da Vila Homes"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Typology",
+          "value":"2 suites"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Distinctive feature",
+          "value":"Private garden and rooftop pool in selected units"
+        }
+      ]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://www.casasdavilahomes.com/en/houses/serenity.html#breadcrumb",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"Home",
+          "item":"https://www.casasdavilahomes.com/en/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"The Houses",
+          "item":"https://www.casasdavilahomes.com/en/houses/"
+        },
+        {
+          "@type":"ListItem",
+          "position":3,
+          "name":"Casa Serenidade",
+          "item":"https://www.casasdavilahomes.com/en/houses/serenity.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="houseHero">
+      <div class="houseHeroMedia">
+        <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casa Serenidade at Casas da Vila Homes" />
+      </div>
+
+      <div class="houseHeroInner">
+        <div class="houseHeroCopy" data-reveal="left">
+          <p class="houseEyebrow">Casa Serenidade • Casas da Vila Homes</p>
+
+          <h1 class="houseDisplay">
+            Private
+            garden,
+            serene
+            verticality
+            and a rare rooftop.
+          </h1>
+
+          <p class="houseLead">
+            Casa Serenidade translates a more contemplative reading of the collection, with 2 suites and a composition that values elevation, privacy and a quieter way of living.
+          </p>
+        </div>
+
+        <aside class="houseHeroPanel" data-reveal="right">
+          <h2>The most introspective typology in the collection.</h2>
+          <p>
+            Serenidade organises the house through a more reserved spatial logic, where private garden, verticality and rooftop in selected units create a calmer and rarer experience of permanence.
+          </p>
+
+          <div class="houseHeroMeta">
+            <span>2 suites</span>
+            <span>Private garden</span>
+            <span>Rooftop + pool</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="houseSection houseIntro">
+      <div class="houseWrap">
+        <div class="houseIntroGrid">
+          <div data-reveal="left">
+            <p class="houseEyebrow">Concept</p>
+            <h2 class="houseH2">
+              A house revealed through layers.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="houseLead">
+              In Serenidade, the house is organised in a more reserved way, with a spatial reading that values verticality, elevation and silence. In selected units, the rooftop expands the residential experience by introducing an upper layer of permanence, privacy and contemplation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING IMAGE -->
+    <section class="houseSection houseOpening">
+      <div class="houseWrap">
+        <figure class="houseOpeningFigure" data-reveal="zoom">
+          <img src="/assets/images/houses/serenidade/hero.jpg" alt="Atmosphere of Casa Serenidade" />
+
+          <figcaption class="houseOpeningCaption">
+            <p class="houseEyebrow">Elevation and silence</p>
+            <h2 class="houseH2">A typology in which the experience of the house expands gradually and with greater reserve.</h2>
+            <p class="houseLead">
+              In Serenidade, the private garden anchors the house to the plot, while the upper level introduces a rarer and more contemplative layer of permanence.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONCEPTS -->
+    <section class="houseSection houseConcepts">
+      <div class="houseWrap">
+        <div class="houseConceptGrid">
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">01 · Verticality</div>
+            <h3>A more reserved reading</h3>
+            <p>
+              The composition of the house favours a more introspective experience, where spaces are organised through greater gradation, silence and privacy.
+            </p>
+          </article>
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">02 · Rooftop</div>
+            <h3>An upper plane of permanence</h3>
+            <p>
+              In selected units, the rooftop with pool expands the house and creates a space of contemplation that feels quieter, rarer and more exclusive.
+            </p>
+          </article>
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">03 · Garden</div>
+            <h3>Privacy at plot level</h3>
+            <p>
+              The private garden reinforces the autonomy of the residence and complements the experience of permanence in a more intimate and protected register.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+<section class="houseSection houseGallery">
+  <div class="houseWrap">
+
+    <div class="houseGalleryEditorial">
+
+      <figure class="galleryMain" data-reveal>
+        <img src="/assets/images/houses/serenidade/sereniidade-1.jpg" alt="Casa Serenidade façade" />
+      </figure>
+
+      <div class="gallerySide">
+        <figure data-reveal>
+          <img src="/assets/images/houses/serenidade/sereniidade-2.jpg" alt="Casa Serenidade rooftop" />
+        </figure>
+
+        <figure data-reveal>
+          <img src="/assets/images/houses/serenidade/sereniade-3.jpg" alt="Casa Serenidade architectural detail" />
+        </figure>
+      </div>
+
+    </div>
+
+  </div>
+</section>    <!-- EXPERIENCE -->
+    <section class="houseSection houseExperience">
+      <div class="houseWrap">
+        <div class="houseExperienceGrid">
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Elevation</span>
+            <h3>Rooftop as an extension of the house</h3>
+            <p>
+              The typology expands into the upper level, where the rooftop introduces a different rhythm to the experience of inhabiting the residence.
+            </p>
+          </article>
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Privacy</span>
+            <h3>A quieter presence</h3>
+            <p>
+              Serenidade favours a more reserved use, with a stronger sense of visual protection and greater distance from the immediate surroundings.
+            </p>
+          </article>
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Atmosphere</span>
+            <h3>Living with more calm</h3>
+            <p>
+              The residence translates a way of inhabiting in which architecture, garden and elevation are organised into a more contemplative experience.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="houseSection houseClosing">
+      <div class="houseWrap">
+        <div class="houseClosingGrid">
+
+          <div class="houseOverviewCard" data-reveal="left">
+            <p class="houseEyebrow">Availability</p>
+
+            <h2 class="houseH2" style="margin-top:18px;">
+              A residence shaped by privacy, elevation and permanence in a more contemplative register.
+            </h2>
+
+            <div class="houseOverviewGrid">
+              <div class="houseOverviewBlock">
+                <small>Configuration</small>
+                <strong>2 suites</strong>
+                <span>With private garden and a more reserved reading of the implantation.</span>
+              </div>
+
+              <div class="houseOverviewBlock">
+                <small>Distinctive feature</small>
+                <strong>Rooftop with pool</strong>
+                <span>Available in selected units as an upper layer of permanence.</span>
+              </div>
+
+              <div class="houseOverviewBlock">
+                <small>Delivery</small>
+                <strong>2027</strong>
+                <span>According to the specific timeline of each unit.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="houseSalesCard" data-reveal="right">
+            <p class="houseEyebrow">Private Sales</p>
+
+            <h3>Receive the full presentation of the residence.</h3>
+
+            <p>
+              Check availability, implantation and the complete details of Casa Serenidade through the presentation material.
+            </p>
+
+            <div class="houseActions">
+              <a class="btn btn-primary" href="/en/contact/">Request presentation</a>
+              <a class="btn btn-outline" href="/en/houses/">View other houses</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Investment | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Investment perspective, selected availability and private sales access for Casas da Vila Homes in Trancoso."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --invest-bg:#f6f1e8;
+      --invest-surface:rgba(255,255,255,.54);
+      --invest-surface-2:rgba(255,255,255,.36);
+      --invest-ink:#201c18;
+      --invest-muted:#6d655b;
+      --invest-soft:#8b8277;
+      --invest-line:rgba(32,28,24,.09);
+      --invest-line-strong:rgba(32,28,24,.15);
+      --invest-accent:#b9965a;
+      --invest-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --invest-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --invest-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --invest-wrap:min(1180px, calc(100vw - 48px));
+      --invest-wrap-narrow:min(900px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--invest-ink);
+    }
+
+    main{ overflow:hidden; }
+
+    .investWrap{
+      width:var(--invest-wrap);
+      margin:0 auto;
+    }
+
+    .investSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .investSection::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .investEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--invest-soft);
+    }
+
+    .investDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.7rem, 8vw, 7rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .investH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.35rem, 4.5vw, 4.2rem);
+      line-height:.98;
+      letter-spacing:-.042em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .investLead{
+      margin:0;
+      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height:1.76;
+      color:var(--invest-muted);
+      max-width:62ch;
+    }
+
+    .investBody{
+      margin:0;
+      font-size:1rem;
+      line-height:1.8;
+      color:var(--invest-muted);
+    }
+
+    /* HERO */
+    .investHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h, 96px) + 46px) 0 76px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .investHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(18,16,14,.10) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 60%, rgba(18,16,14,.54) 100%);
+      z-index:1;
+    }
+
+    .investHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .investHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.94) contrast(.98) brightness(.94);
+      transform:scale(1.01);
+    }
+
+    .investHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--invest-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+      gap:44px;
+      align-items:end;
+    }
+
+    .investHeroCopy{
+      color:#f4efe7;
+    }
+
+    .investHeroCopy .investEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .investHeroCopy .investLead{
+      margin-top:28px;
+      color:rgba(244,239,231,.84);
+      max-width:35ch;
+    }
+
+    .investHeroPanel{
+      justify-self:end;
+      width:min(100%,390px);
+      padding:28px;
+      border-radius:24px;
+      color:#f4efe7;
+      background:rgba(35,31,28,.24);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+    }
+
+    .investHeroPanel h2{
+      margin:0 0 12px;
+      font-size:1rem;
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .investHeroPanel p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.72;
+      color:rgba(244,239,231,.82);
+    }
+
+    .investHeroMeta{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .investHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font-size:.74rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(244,239,231,.78);
+    }
+
+    /* INTRO */
+    .investIntro{
+      padding-top:102px;
+      padding-bottom:84px;
+    }
+
+    .investIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .investIntroGrid .investLead{
+      padding-top:18px;
+    }
+
+    /* VALUE BAND */
+    .investValueBand{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .investValuePanel{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      padding:40px;
+      background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);
+      color:#fff;
+      box-shadow:0 26px 70px rgba(34,28,23,.22);
+    }
+
+    .investValuePanel::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -24% auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);
+    }
+
+    .investValuePanel > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .investValuePanel .investEyebrow{
+      color:rgba(255,255,255,.72);
+    }
+
+    .investValuePanel .investH2{
+      max-width:12ch;
+    }
+
+    .investValuePanel .investLead{
+      margin-top:18px;
+      color:rgba(255,255,255,.80);
+      max-width:56ch;
+    }
+
+    /* REFERENCES */
+    .investReference{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .investReferenceGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .investReferenceCard,
+    .investNoteCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg,rgba(255,255,255,.54),rgba(255,255,255,.34));
+      border:1px solid var(--invest-line);
+      box-shadow:var(--invest-shadow-sm);
+    }
+
+    .investRanges{
+      display:grid;
+      gap:0;
+      margin-top:24px;
+      border-top:1px solid var(--invest-line);
+    }
+
+    .investRangeRow{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      padding:18px 0;
+      border-bottom:1px solid var(--invest-line);
+    }
+
+    .investRangeRow:last-child{
+      border-bottom:0;
+    }
+
+    .investRangeRow strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.4;
+      color:var(--invest-ink);
+    }
+
+    .investRangeRow span{
+      display:block;
+      margin-top:6px;
+      color:var(--invest-muted);
+      line-height:1.65;
+    }
+
+    .investRangeTag{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(185,150,90,.10);
+      border:1px solid rgba(185,150,90,.18);
+      color:var(--invest-ink);
+      font-size:.76rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .investNoteCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .investNoteCard h3{
+      margin:16px 0 12px;
+      font-size:1.72rem;
+      line-height:1.06;
+      letter-spacing:-.03em;
+      font-weight:500;
+      color:var(--invest-ink);
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .investNoteCard p{
+      margin:0;
+      color:var(--invest-muted);
+      line-height:1.76;
+    }
+
+    /* ADVANTAGES */
+    .investAdvantages{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .investAdvGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .investAdvCard{
+      padding:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:var(--invest-shadow-sm);
+    }
+
+    .investAdvIndex{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:var(--invest-ink);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .investAdvIndex::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:rgba(111,85,58,.4);
+    }
+
+    .investAdvCard h3{
+      margin:0 0 12px;
+      font-size:1.4rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .investAdvCard p{
+      margin:0;
+      color:var(--invest-muted);
+      line-height:1.76;
+    }
+
+    /* CLOSING CTA */
+    .investClosing{
+      padding-top:0;
+      padding-bottom:120px;
+    }
+
+    .investClosingGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .investOverviewCard,
+    .investSalesCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg,rgba(255,255,255,.54),rgba(255,255,255,.34));
+      border:1px solid var(--invest-line);
+      box-shadow:var(--invest-shadow-sm);
+    }
+
+    .investOverviewGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--invest-line);
+    }
+
+    .investOverviewBlock small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--invest-soft);
+    }
+
+    .investOverviewBlock strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.46;
+      font-weight:600;
+      color:var(--invest-ink);
+    }
+
+    .investOverviewBlock span{
+      display:block;
+      margin-top:8px;
+      font-size:.95rem;
+      line-height:1.7;
+      color:var(--invest-muted);
+    }
+
+    .investSalesCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .investSalesCard h3{
+      margin:16px 0 12px;
+      font-size:1.72rem;
+      line-height:1.06;
+      letter-spacing:-.03em;
+      font-weight:500;
+      color:var(--invest-ink);
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .investSalesCard p{
+      margin:0;
+      color:var(--invest-muted);
+      line-height:1.76;
+      max-width:32ch;
+    }
+
+    .investActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    @media (max-width:1100px){
+      .investHeroInner,
+      .investIntroGrid,
+      .investReferenceGrid,
+      .investClosingGrid{
+        grid-template-columns:1fr;
+      }
+
+      .investHeroPanel{
+        justify-self:start;
+      }
+
+      .investAdvGrid,
+      .investOverviewGrid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --invest-wrap:min(100vw - 28px, 1000px);
+        --invest-wrap-narrow:min(100vw - 28px, 900px);
+      }
+
+      .investSection{
+        padding:84px 0;
+      }
+
+      .investHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 30px);
+        padding-bottom:36px;
+      }
+
+      .investValuePanel,
+      .investReferenceCard,
+      .investNoteCard,
+      .investOverviewCard,
+      .investSalesCard{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+
+      .investRangeRow{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "@id":"https://www.casasdavilahomes.com/en/investment/#webpage",
+      "url":"https://www.casasdavilahomes.com/en/investment/",
+      "name":"Investment | Casas da Vila Homes",
+      "description":"Investment perspective, selected availability and private access to commercial information about Casas da Vila Homes in Trancoso.",
+      "inLanguage":"en",
+      "isPartOf":{
+        "@id":"https://www.casasdavilahomes.com/#website"
+      }
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://www.casasdavilahomes.com/en/investment/#breadcrumb",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"Home",
+          "item":"https://www.casasdavilahomes.com/en/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"Investment",
+          "item":"https://www.casasdavilahomes.com/en/investment/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="investHero">
+      <div class="investHeroMedia">
+        <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casas da Vila Homes investment perspective" />
+      </div>
+
+      <div class="investHeroInner">
+        <div class="investHeroCopy" data-reveal="left">
+          <p class="investEyebrow">Investment • Casas da Vila Homes</p>
+
+          <h1 class="investDisplay">
+            Selected
+            availability,
+            presented
+            with clarity
+            and restraint.
+          </h1>
+
+          <p class="investLead">
+            Casas da Vila Homes is not offered through mass-market exposure. Investment information is shared in a more contextual and precise way, respecting both the stage of the project and the profile of each buyer.
+          </p>
+        </div>
+
+        <aside class="investHeroPanel" data-reveal="right">
+          <h2>A private-sales approach, not a public-sales format.</h2>
+          <p>
+            Commercial dialogue is structured with discretion, preserving the residential character of the project and the scarcity inherent to its scale.
+          </p>
+
+          <div class="investHeroMeta">
+            <span>Pre-launch</span>
+            <span>Selected availability</span>
+            <span>Private Sales</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="investSection investIntro">
+      <div class="investWrap">
+        <div class="investIntroGrid">
+          <div data-reveal="left">
+            <p class="investEyebrow">Commercial perspective</p>
+            <h2 class="investH2">
+              Beyond pricing, a matter of positioning.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="investLead">
+              Investment in Casas da Vila Homes goes beyond price per square metre. It is defined by the conjunction of location, architecture, private gardens and a scale of development that remains inherently limited. For this reason, commercial information is shared progressively, considering typology, timing of entry and the profile of the buyer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE BAND -->
+    <section class="investSection investValueBand">
+      <div class="investWrap">
+        <div class="investValuePanel" data-reveal="zoom">
+          <p class="investEyebrow">Investment rationale</p>
+
+          <h2 class="investH2" style="margin-top:18px;">
+            Entry at this stage is not only about price. It is about position within a rare residential collection.
+          </h2>
+
+          <p class="investLead">
+            The relevance of pre-launch lies in optionality: earlier selection, stronger placement within the project and greater flexibility in how the decision is structured.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REFERENCE -->
+    <section class="investSection investReference">
+      <div class="investWrap">
+        <div class="investReferenceGrid">
+
+          <div class="investReferenceCard" data-reveal="left">
+            <p class="investEyebrow">Value reference</p>
+
+            <h2 class="investH2" style="margin-top:18px;">
+              Indicative positioning by typology.
+            </h2>
+
+            <div class="investRanges">
+              <div class="investRangeRow">
+                <div>
+                  <strong>Casa Serenidade</strong>
+                  <span>Entry positioning within the collection, shaped by rooftop in selected homes and a more contemplative residential profile.</span>
+                </div>
+                <div class="investRangeTag">Upon request</div>
+              </div>
+
+              <div class="investRangeRow">
+                <div>
+                  <strong>Casa Brisa Suave</strong>
+                  <span>Intermediate positioning, defined by stronger ground connection, private garden and pool-led daily living.</span>
+                </div>
+                <div class="investRangeTag">Upon request</div>
+              </div>
+
+              <div class="investRangeRow">
+                <div>
+                  <strong>Casa Céu</strong>
+                  <span>Upper positioning within the project, associated with broader programme, bungalow and the most expansive residential expression.</span>
+                </div>
+                <div class="investRangeTag">Upon request</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="investNoteCard" data-reveal="right">
+            <p class="investEyebrow">Commercial note</p>
+
+            <h3>Information is shared in context.</h3>
+
+            <p>
+              Pricing, conditions and current release terms may evolve according to project stage, selected house and timing of entry. For that reason, the most accurate information is presented directly through private sales.
+            </p>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVANTAGES -->
+    <section class="investSection investAdvantages">
+      <div class="investWrap">
+        <div class="investAdvGrid">
+
+          <article class="investAdvCard" data-reveal>
+            <div class="investAdvIndex">01 · Timing</div>
+            <h3>Earlier position</h3>
+            <p>
+              Pre-launch offers greater flexibility and the opportunity to secure a stronger place within the collection before later-stage adjustments.
+            </p>
+          </article>
+
+          <article class="investAdvCard" data-reveal>
+            <div class="investAdvIndex">02 · Structuring</div>
+            <h3>Conditions shaped individually</h3>
+            <p>
+              Commercial terms are not treated as a generic table, but are considered according to buyer profile, house typology and decision horizon.
+            </p>
+          </article>
+
+          <article class="investAdvCard" data-reveal>
+            <div class="investAdvIndex">03 · Scarcity</div>
+            <h3>Limited residential scale</h3>
+            <p>
+              The project does not rely on volume. Its value is tied precisely to the fact that the number of houses remains finite and carefully controlled.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+<section class="section seoBlock seoBlockSoft">
+  <div class="container">
+
+    <div class="seoInner">
+
+      <span class="eyebrow">Related reading</span>
+
+      <h2 class="h2" style="margin-top:18px;">
+        Further insight into Trancoso investment
+      </h2>
+
+      <div class="seoLinks">
+
+        <a href="/en/blog/trancoso-investment/" class="seoLink">
+          Trancoso investment: what to consider before buying
+        </a>
+
+        <a href="/en/blog/rental-pool-trancoso/" class="seoLink">
+          Rental pool: when a home becomes an asset
+        </a>
+
+        <a data-localized-path="shared" class="seoLink">
+          Explore shared living areas
+        </a>
+
+        <a data-localized-path="houses" class="seoLink">
+          View house typologies
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+    <!-- CLOSING -->
+    <section class="investSection investClosing">
+      <div class="investWrap">
+        <div class="investClosingGrid">
+
+          <div class="investOverviewCard" data-reveal="left">
+            <p class="investEyebrow">Full presentation</p>
+
+            <h2 class="investH2" style="margin-top:18px;">
+              Access detailed information on availability, typologies and investment perspective.
+            </h2>
+
+            <div class="investOverviewGrid">
+              <div class="investOverviewBlock">
+                <small>Availability</small>
+                <strong>Selected release</strong>
+                <span>Shared according to project stage and current positioning.</span>
+              </div>
+
+              <div class="investOverviewBlock">
+                <small>Typologies</small>
+                <strong>Three profiles</strong>
+                <span>Distinct residential propositions within the same collection.</span>
+              </div>
+
+              <div class="investOverviewBlock">
+                <small>Approach</small>
+                <strong>Private dialogue</strong>
+                <span>Information presented directly and with greater precision.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="investSalesCard" data-reveal="right">
+            <p class="investEyebrow">Private Sales</p>
+
+            <h3>Request access to the full material.</h3>
+
+            <p>
+              Our team will share information directly, tailored to your profile, timing and level of interest in the project.
+            </p>
+
+            <div class="investActions">
+              <a class="btn btn-primary" href="/en/contact/">Request presentation</a>
+              <a class="btn btn-outline" href="/en/houses/">View typologies</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

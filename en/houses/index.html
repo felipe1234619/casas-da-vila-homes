@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Houses | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Discover the three house typologies at Casas da Vila Homes in Trancoso — Serenidade, Brisa Suave and Casa Céu — each offering a distinct residential experience."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --houses-bg:#f6f1e8;
+      --houses-surface:rgba(255,255,255,.52);
+      --houses-surface-2:rgba(255,255,255,.36);
+      --houses-ink:#201c18;
+      --houses-muted:#6d655b;
+      --houses-soft:#8b8277;
+      --houses-line:rgba(32,28,24,.09);
+      --houses-line-strong:rgba(32,28,24,.15);
+      --houses-accent:#b9965a;
+      --houses-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --houses-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --houses-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --houses-radius:28px;
+      --houses-radius-lg:36px;
+      --houses-wrap:min(1180px, calc(100vw - 48px));
+      --houses-wrap-narrow:min(900px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--houses-ink);
+    }
+
+    main{ overflow:hidden; }
+
+    .housesWrap{
+      width:var(--houses-wrap);
+      margin:0 auto;
+    }
+
+    .housesWrapNarrow{
+      width:var(--houses-wrap-narrow);
+      margin:0 auto;
+    }
+
+    .housesSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .housesSection::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .housesEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--houses-soft);
+    }
+
+    .housesDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.6rem, 8vw, 7rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .housesH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.35rem, 4.5vw, 4.3rem);
+      line-height:.98;
+      letter-spacing:-.042em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .housesLead{
+      margin:0;
+      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height:1.76;
+      color:var(--houses-muted);
+      max-width:62ch;
+    }
+
+    .housesBody{
+      margin:0;
+      font-size:1rem;
+      line-height:1.82;
+      color:var(--houses-muted);
+    }
+
+    /* HERO */
+    .housesHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h, 96px) + 46px) 0 76px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .housesHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.10) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 60%, rgba(18,16,14,.52) 100%);
+      z-index:1;
+    }
+
+    .housesHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .housesHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.94) contrast(.98) brightness(.95);
+      transform:scale(1.01);
+    }
+
+    .housesHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--houses-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+      gap:44px;
+      align-items:end;
+    }
+
+    .housesHeroCopy{
+      color:#f4efe7;
+    }
+
+    .housesHeroCopy .housesEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .housesHeroCopy .housesLead{
+      margin-top:28px;
+      color:rgba(244,239,231,.84);
+      max-width:34ch;
+    }
+
+    .housesHeroPanel{
+      justify-self:end;
+      width:min(100%,390px);
+      padding:28px;
+      border-radius:24px;
+      color:#f4efe7;
+      background:rgba(35,31,28,.24);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+    }
+
+    .housesHeroPanel h2{
+      margin:0 0 12px;
+      font-size:1rem;
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .housesHeroPanel p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.72;
+      color:rgba(244,239,231,.82);
+    }
+
+    .housesHeroMeta{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .housesHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font-size:.74rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(244,239,231,.78);
+    }
+
+    /* INTRO */
+    .housesIntro{
+      padding-top:102px;
+      padding-bottom:80px;
+    }
+
+    .housesIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .housesIntroGrid .housesLead{
+      padding-top:18px;
+    }
+
+    /* OPENING IMAGE */
+    .housesOpening{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .housesOpeningFigure{
+      position:relative;
+      overflow:hidden;
+      min-height:620px;
+      border-radius:34px;
+      background:#d7cebf;
+      box-shadow:var(--houses-shadow-lg);
+    }
+
+    .housesOpeningFigure::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(24,20,17,.54) 0%, rgba(24,20,17,.22) 40%, rgba(24,20,17,.08) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .housesOpeningFigure img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .housesOpeningCaption{
+      position:relative;
+      z-index:2;
+      width:min(520px, calc(100% - 56px));
+      padding:44px 0 44px 38px;
+      color:#f4efe7;
+    }
+
+    .housesOpeningCaption .housesEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .housesOpeningCaption .housesLead{
+      margin-top:20px;
+      color:rgba(244,239,231,.84);
+      max-width:30ch;
+    }
+
+    /* HOUSE INTRO */
+    .housesCollectionIntro{
+      padding-top:0;
+      padding-bottom:34px;
+    }
+
+    .housesSectionIntro{
+      max-width:760px;
+    }
+
+    /* HOUSE GRID */
+    .house-grid-premium{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:24px;
+    }
+
+    .house-card{
+      overflow:hidden;
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.44));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 18px 50px rgba(32,24,18,.08);
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .house-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 24px 70px rgba(32,24,18,.12);
+      border-color:rgba(185,150,90,.22);
+    }
+
+    .house-card .house-media{
+      position:relative;
+      margin:0;
+      min-height:360px;
+      overflow:hidden;
+      background:#d8cfbf;
+    }
+
+    .house-card .house-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(16,12,10,.04) 0%, rgba(16,12,10,.12) 46%, rgba(16,12,10,.38) 100%);
+      pointer-events:none;
+    }
+
+    .house-card .house-media img{
+      width:100%;
+      height:100%;
+      min-height:360px;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.01);
+      transition:transform .8s ease;
+    }
+
+    .house-card:hover .house-media img{
+      transform:scale(1.045);
+    }
+
+    .house-card .house-meta-top{
+      position:absolute;
+      left:18px;
+      right:18px;
+      top:18px;
+      z-index:2;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .house-card .house-badge{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      color:#fff;
+      font-size:.74rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .house-card .house-overlay-copy{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      color:#fff;
+    }
+
+    .house-card .house-overlay-copy h3{
+      margin:0;
+      font-size:1.5rem;
+      line-height:1.02;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .house-card .house-overlay-copy p{
+      margin:10px 0 0;
+      max-width:29ch;
+      color:rgba(255,255,255,.84);
+      font-size:.95rem;
+      line-height:1.6;
+    }
+
+    .house-card .card-inner{
+      padding:22px 22px 24px;
+    }
+
+    .house-card .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .house-card .meta .pill{
+      background:rgba(185,150,90,.10);
+      border:1px solid rgba(185,150,90,.18);
+    }
+
+    .house-card .copy{
+      min-height:72px;
+      color:var(--houses-muted);
+      line-height:1.7;
+    }
+
+    .house-card .btn{
+      margin-top:18px;
+    }
+
+    /* CLOSING */
+    .housesClosing{
+      padding-top:96px;
+      padding-bottom:120px;
+    }
+
+    .housesClosingBand{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      padding:42px;
+      background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);
+      color:#fff;
+      box-shadow:0 26px 70px rgba(34,28,23,.22);
+    }
+
+    .housesClosingBand::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -24% auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);
+    }
+
+    .housesClosingBand > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .housesClosingBand .housesEyebrow{
+      color:rgba(255,255,255,.72);
+    }
+
+    .housesClosingBand .housesH2{
+      max-width:12ch;
+    }
+
+    .housesClosingBand .housesLead{
+      margin-top:18px;
+      color:rgba(255,255,255,.80);
+      max-width:54ch;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .housesHeroInner,
+      .housesIntroGrid{
+        grid-template-columns:1fr;
+      }
+
+      .housesHeroPanel{
+        justify-self:start;
+      }
+
+      .house-grid-premium{
+        grid-template-columns:1fr;
+      }
+
+      .house-card .house-media,
+      .house-card .house-media img{
+        min-height:420px;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --houses-wrap:min(100vw - 28px, 1000px);
+        --houses-wrap-narrow:min(100vw - 28px, 900px);
+      }
+
+      .housesSection{
+        padding:84px 0;
+      }
+
+      .housesHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 30px);
+        padding-bottom:36px;
+      }
+
+      .housesOpeningFigure{
+        min-height:460px;
+        border-radius:24px;
+      }
+
+      .housesOpeningCaption{
+        width:calc(100% - 28px);
+        padding:28px 0 28px 14px;
+      }
+
+      .house-card .house-media,
+      .house-card .house-media img{
+        min-height:320px;
+      }
+
+      .house-card .house-overlay-copy h3{
+        font-size:1.34rem;
+      }
+
+      .housesClosingBand{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="housesHero">
+      <div class="housesHeroMedia">
+        <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casas da Vila Homes in Trancoso" />
+      </div>
+
+      <div class="housesHeroInner">
+        <div class="housesHeroCopy" data-reveal="left">
+          <p class="housesEyebrow">The Houses • Casas da Vila Homes</p>
+
+          <h1 class="housesDisplay">
+            Three ways
+            of living
+            the same
+            place.
+          </h1>
+
+          <p class="housesLead">
+            Serenidade, Brisa Suave and Casa Céu are not simple variations. They are distinct interpretations of privacy, garden, pool and permanence within the same architectural collection.
+          </p>
+        </div>
+
+        <aside class="housesHeroPanel" data-reveal="right">
+          <h2>A residential collection with distinct rhythms.</h2>
+          <p>
+            Each house type shares the same authorial language, while offering a different spatial logic, scale of living and relationship with the exterior.
+          </p>
+
+          <div class="housesHeroMeta">
+            <span>2–3 suites</span>
+            <span>Private gardens</span>
+            <span>Pools</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="housesSection housesIntro">
+      <div class="housesWrap">
+        <div class="housesIntroGrid">
+          <div data-reveal="left">
+            <p class="housesEyebrow">Reading the collection</p>
+            <h2 class="housesH2">
+              Not a sequence of houses, but three residential characters.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="housesLead">
+              The project is organised around three typologies that share the same architectural language while differing in the way they occupy the plot, organise programme and shape everyday living.
+              The decision is not merely technical. It is a choice of rhythm, use and relationship with space.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING IMAGE -->
+    <section class="housesSection housesOpening">
+      <div class="housesWrap">
+        <figure class="housesOpeningFigure" data-reveal="zoom">
+          <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Residential atmosphere at Casas da Vila Homes" />
+
+          <figcaption class="housesOpeningCaption">
+            <p class="housesEyebrow">Architecture and atmosphere</p>
+            <h2 class="housesH2">A shared language, interpreted through different ways of inhabiting.</h2>
+            <p class="housesLead">
+              The houses vary in presence, openness and programme, while preserving the same material discipline, tropical calm and residential discretion.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SECTION INTRO -->
+    <section class="housesSection housesCollectionIntro">
+      <div class="housesWrap">
+        <div class="housesSectionIntro" data-reveal="left">
+          <p class="housesEyebrow">The houses</p>
+
+          <h2 class="housesH2" style="margin-top:18px;">
+            Three ways of inhabiting the same place.
+          </h2>
+
+          <p class="housesLead" style="margin-top:18px;">
+            Each typology interprets the project through its own spatial logic, a distinct mode of living and a particular relationship with the surroundings.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOUSE GRID -->
+    <section class="housesSection" style="padding-top:0;">
+      <div class="housesWrap">
+        <div class="house-grid-premium">
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casa Serenidade at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Serenidade</span>
+                <span class="house-badge">2 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Serenidade</h3>
+                <p>A quieter vertical composition with private garden and rooftop in selected homes.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">2 suites</span>
+                <span class="pill">Rooftop + pool</span>
+              </div>
+
+              <p class="copy">
+                A more contemplative interpretation of the collection, shaped by gentle verticality, private exterior space and a calmer architectural rhythm.
+              </p>
+
+              <a class="btn btn-outline" href="/en/houses/serenity.html">Explore house</a>
+            </div>
+          </article>
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casa Brisa Suave at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Brisa Suave</span>
+                <span class="house-badge">2 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Brisa Suave</h3>
+                <p>A more horizontal house with direct continuity between living, garden and pool.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">2 suites</span>
+                <span class="pill">Ground-level pool</span>
+              </div>
+
+              <p class="copy">
+                A typology defined by fluid daily living, stronger ground connection and a more open relation between interior and exterior.
+              </p>
+
+              <a class="btn btn-outline" href="/en/houses/breeze.html">Explore house</a>
+            </div>
+          </article>
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casa Céu at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Casa Céu</span>
+                <span class="house-badge">3 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Céu</h3>
+                <p>The most expansive residence, with bungalow, pool and a broader architectural presence.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">3 suites</span>
+                <span class="pill">Bungalow</span>
+              </div>
+
+              <p class="copy">
+                The largest interpretation in the collection, combining broader scale, stronger presence and a more open residential programme.
+              </p>
+
+              <a class="btn btn-outline" href="/en/houses/sky.html">Explore house</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="housesSection housesClosing">
+      <div class="housesWrap">
+        <div class="housesClosingBand" data-reveal="zoom">
+          <p class="housesEyebrow">Choosing a house</p>
+
+          <h2 class="housesH2" style="margin-top:18px;">
+            The house you choose defines how you experience the project.
+          </h2>
+
+          <p class="housesLead">
+            More contemplative, more horizontal or more expansive — each typology organises daily life differently while preserving the same architectural language and residential calm.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

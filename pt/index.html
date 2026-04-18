@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Casas da Vila Homes | Condomínio de casas em Trancoso</title>
+  <meta name="description" content="Casas da Vila Homes é um condomínio de casas em Trancoso com tipologias autorais, jardins privativos, piscinas e uma experiência de moradia desenhada com sofisticação discreta." />
+  <link rel="canonical" href="https://www.casasdavila.com/pt/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://www.casasdavila.com/pt/" />
+  <link rel="alternate" hreflang="en" href="https://www.casasdavila.com/en/" />
+  <link rel="stylesheet" href="/assets/css/global.css" />
+
+  
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    .home-hero{min-height:100svh;}
+    .hero-stage{position:relative;padding:clamp(18px,3vw,30px);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 80px rgba(0,0,0,.18);overflow:hidden}
+    .hero-stage::before{content:"";position:absolute;inset:auto -10% -30% auto;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.12),transparent 70%)}
+    .hero-stage::after{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.06),transparent 28%,transparent 74%,rgba(255,255,255,.05));pointer-events:none}
+    .hero-kicker{display:inline-flex;align-items:center;gap:12px;margin:0 0 20px;color:rgba(255,255,255,.78);font-size:.82rem;letter-spacing:.16em;text-transform:uppercase}
+    .hero-kicker::before{content:"";width:42px;height:1px;background:rgba(255,255,255,.36)}
+    .hero-copy .display{max-width:13ch}
+    .hero-copy .lead{max-width:58ch}
+    .hero-note{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:22px;color:rgba(255,255,255,.74);font-size:.92rem}
+    .hero-note div{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+    .hero-panel .metric-row span:first-child{color:rgba(255,255,255,.60)}
+    .hero-panel .metric-row span:last-child{color:#fff}
+    .section-intro{max-width:780px;margin-bottom:30px}
+    .editorial-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(280px,.92fr);gap:26px;align-items:start}
+    .editorial-copy{display:grid;gap:18px}
+    .editorial-copy .copy{font-size:1.05rem}
+    .chapter-card{padding:30px;border-radius:28px;background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));border:1px solid rgba(255,255,255,.42);box-shadow:var(--shadow-soft)}
+    .chapter-index{display:inline-flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--brand-deep);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase}
+    .chapter-index::before{content:"";width:34px;height:1px;background:rgba(111,85,58,.4)}
+    .signature-band{position:relative;overflow:hidden;border-radius:34px;padding:clamp(30px,4vw,42px);background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);color:#fff;box-shadow:0 26px 70px rgba(34,28,23,.22)}
+    .signature-band::after{content:"";position:absolute;inset:auto -10% -24% auto;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%)}
+    .signature-band > *{position:relative;z-index:2}
+    .signature-band .h2{max-width:12ch}
+    .signature-band .copy{color:rgba(255,255,255,.78);max-width:58ch}
+.house-grid-premium{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:24px;
+}
+
+.house-card{
+  overflow:hidden;
+  border-radius:30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.44));
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:0 18px 50px rgba(32,24,18,.08);
+  transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+
+.house-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 24px 70px rgba(32,24,18,.12);
+  border-color:rgba(185,150,90,.22);
+}
+
+.house-card .house-media{
+  position:relative;
+  margin:0;
+  min-height:320px;
+  overflow:hidden;
+  background:#d8cfbf;
+}
+
+.house-card .house-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to bottom, rgba(16,12,10,.04) 0%, rgba(16,12,10,.12) 46%, rgba(16,12,10,.34) 100%);
+  pointer-events:none;
+}
+
+.house-card .house-media img{
+  width:100%;
+  height:100%;
+  min-height:320px;
+  object-fit:cover;
+  display:block;
+  transform:scale(1.01);
+  transition:transform .8s ease;
+}
+
+.house-card:hover .house-media img{
+  transform:scale(1.045);
+}
+
+.house-card .house-meta-top{
+  position:absolute;
+  left:18px;
+  right:18px;
+  top:18px;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.house-card .house-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:0 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:#fff;
+  font-size:.74rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.house-card .house-overlay-copy{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  z-index:2;
+  color:#fff;
+}
+
+.house-card .house-overlay-copy h3{
+  margin:0;
+  font-size:1.5rem;
+  line-height:1.02;
+  letter-spacing:-.03em;
+  font-weight:500;
+  font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+}
+
+.house-card .house-overlay-copy p{
+  margin:10px 0 0;
+  max-width:28ch;
+  color:rgba(255,255,255,.84);
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+.house-card .card-inner{
+  padding:22px 22px 24px;
+}
+
+.house-card .meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.house-card .meta .pill{
+  background:rgba(185,150,90,.10);
+  border:1px solid rgba(185,150,90,.18);
+}
+
+.house-card .h3{
+  margin-bottom:12px;
+}
+
+.house-card .copy{
+  min-height:72px;
+}
+
+.house-card .btn{
+  margin-top:18px;
+}
+
+@media (max-width:1080px){
+  .house-grid-premium{
+    grid-template-columns:1fr;
+  }
+
+  .house-card .house-media,
+  .house-card .house-media img{
+    min-height:360px;
+  }
+}
+
+@media (max-width:820px){
+  .house-card .house-media,
+  .house-card .house-media img{
+    min-height:300px;
+  }
+
+  .house-card .house-overlay-copy h3{
+    font-size:1.34rem;
+  }
+}
+    .experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .experience-item{padding:30px;border-radius:26px;background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.46);box-shadow:var(--shadow-soft)}
+    .experience-item .pill{margin-bottom:18px}
+    .availability-board{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:24px;align-items:start}
+    .availability-list{display:grid;gap:14px}
+    .availability-row{display:grid;grid-template-columns:1.15fr .8fr .7fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}
+    .availability-row:last-child{border-bottom:0}
+    .availability-row strong{display:block;font-size:1rem}
+    .availability-row span{display:block;color:var(--muted);line-height:1.6}
+    .availability-note{font-size:.92rem;color:var(--muted);margin-top:14px}
+    .location-panel{padding:34px;border-radius:30px;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.42));border:1px solid rgba(255,255,255,.44);box-shadow:var(--shadow-soft)}
+    .location-panel .copy + .copy{margin-top:16px}
+    .final-cta{position:relative;overflow:hidden}
+    .final-cta .copy{max-width:58ch}
+    .final-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,123,84,.08),rgba(61,76,67,.12));pointer-events:none}
+    @media (max-width:1080px){.editorial-grid,.availability-board,.experience-grid{grid-template-columns:1fr}.availability-row{grid-template-columns:1fr 1fr}.hero-note{grid-template-columns:1fr}}
+    @media (max-width:820px){.availability-row{grid-template-columns:1fr}.hero-stage{padding:22px}.home-hero .hero-inner{padding-bottom:34px}}
+  </style>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "@id":"https://www.casasdavilahomes.com/#organization",
+      "name":"Casas da Vila Homes",
+      "url":"https://www.casasdavilahomes.com/",
+      "logo":"https://www.casasdavilahomes.com/assets/meta/og/og-home.jpg",
+      "sameAs":[
+        "https://www.instagram.com/casasdavilahomes"
+      ]
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://www.casasdavilahomes.com/#website",
+      "url":"https://www.casasdavilahomes.com/",
+      "name":"Casas da Vila Homes",
+      "publisher":{
+        "@id":"https://www.casasdavilahomes.com/#organization"
+      },
+      "inLanguage":"pt-BR"
+    },
+    {
+      "@type":"RealEstateListing",
+      "@id":"https://www.casasdavilahomes.com/#listing",
+      "name":"Casas da Vila Homes",
+      "url":"https://www.casasdavilahomes.com/pt/",
+      "description":"Coleção residencial em Trancoso com casas de alto padrão, jardins privativos, áreas sociais, operação opcional de rental pool e abordagem arquitetônica autoral.",
+      "inLanguage":"pt-BR",
+      "category":"Empreendimento residencial",
+      "about":{
+        "@type":"Place",
+        "name":"Trancoso, Bahia, Brasil"
+      },
+      "provider":{
+        "@id":"https://www.casasdavilahomes.com/#organization"
+      }
+    },
+    {
+      "@type":"Product",
+      "@id":"https://www.casasdavilahomes.com/#product",
+      "name":"Casas da Vila Homes",
+      "description":"Projeto residencial em Trancoso com tipologias de casas, áreas sociais e possibilidade de operação estruturada de locação.",
+      "brand":{
+        "@type":"Brand",
+        "name":"Casas da Vila Homes"
+      },
+      "category":"Real Estate Development",
+      "url":"https://www.casasdavilahomes.com/pt/",
+      "image":"https://www.casasdavilahomes.com/assets/meta/og/og-home.jpg",
+      "additionalProperty":[
+        {
+          "@type":"PropertyValue",
+          "name":"Localização",
+          "value":"Trancoso, Bahia, Brasil"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Tipologias",
+          "value":"Casa Serenidade, Casa Brisa Suave, Casa Céu"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Áreas sociais",
+          "value":"Piscina central, lounges, sauna, jardins"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Operação",
+          "value":"Rental pool opcional"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Sustentabilidade",
+          "value":"Projeto concebido com diretrizes para certificação EDGE"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <div class="site-shell">
+    <div id="site-header"></div>
+
+<main>
+  <section class="hero home-hero">
+    <div class="hero-inner">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <div class="hero-stage">
+            <span class="hero-kicker">Casas da Vila Homes · Trancoso</span>
+            <h1 class="display">Casas para viver Trancoso com mais silêncio, matéria e identidade.</h1>
+            <p class="lead" style="margin-top:24px;">
+              Casas da Vila Homes reúne tipologias autorais, jardins privativos, piscinas e uma implantação pensada para criar uma experiência de moradia mais reservada, mais silenciosa e mais duradoura em Trancoso.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/pt/projeto/">Conheça o projeto</a>
+              <a class="btn btn-secondary" href="/pt/contato/">Solicitar apresentação</a>
+            </div>
+            <div class="hero-note">
+              <div>Uma proposta de moradia orientada por privacidade, proporção e permanência.</div>
+              <div>Três tipologias autorais que revelam diferentes formas de habitar o mesmo lugar.</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-panel" data-reveal>
+          <div class="small-label">Visão geral</div>
+          <div class="metric-list" style="margin-top:12px;">
+            <div class="metric-row"><span>Tipologias</span><span>Serenidade · Brisa Suave · Casa Céu</span></div>
+            <div class="metric-row"><span>Configurações</span><span>Casas de 2 e 3 suítes</span></div>
+            <div class="metric-row"><span>Diferenciais</span><span>Jardins, piscinas e rooftop em unidades selecionadas</span></div>
+            <div class="metric-row"><span>Entrega</span><span>2027, conforme unidade</span></div>
+          </div>
+          <p style="margin-top:18px;">
+            Um empreendimento concebido para unir arquitetura, implantação e uma forma mais qualificada de permanecer em Trancoso.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+<div class="container">
+
+  <div class="section-intro" data-reveal>
+    <span class="eyebrow page-eyebrow">As casas</span>
+
+    <h2 class="h2" style="margin-top:18px;">
+      Três maneiras de habitar o mesmo lugar.
+    </h2>
+
+    <p class="page-lead lead">
+      Cada tipologia interpreta o projeto a partir de uma lógica espacial própria,
+      de um modo de uso distinto e de uma relação particular com o entorno.
+    </p>
+  </div>
+
+</div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container grid-4">
+      <article class="card kpi" data-reveal>
+        <div class="card-inner">
+          <div class="value">2–3</div>
+          <div class="label">Suítes por tipologia</div>
+        </div>
+      </article>
+      <article class="card kpi" data-reveal>
+        <div class="card-inner">
+          <div class="value">270m²+</div>
+          <div class="label">Áreas privativas totais em unidades selecionadas</div>
+        </div>
+      </article>
+      <article class="card kpi" data-reveal>
+        <div class="card-inner">
+          <div class="value">Rooftop</div>
+          <div class="label">Presente em unidades Serenidade</div>
+        </div>
+      </article>
+      <article class="card kpi" data-reveal>
+        <div class="card-inner">
+          <div class="value">2027</div>
+          <div class="label">Entregas previstas conforme unidade</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-intro" data-reveal>
+        <span class="eyebrow page-eyebrow">O conjunto</span>
+        <h2 class="h2" style="margin-top:18px;">Arquitetura, privacidade e permanência em Trancoso.</h2>
+        <p class="page-lead lead">
+          Casas da Vila Homes reúne tipologias autorais, jardins privativos, piscinas e uma implantação pensada para criar uma experiência mais silenciosa, mais reservada e mais duradoura de habitar.
+        </p>
+      </div>
+
+<div class="house-grid-premium">
+
+  <article class="house-card" data-reveal>
+    <figure class="house-media">
+      <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casa Serenidade em Casas da Vila Homes" />
+
+      <div class="house-meta-top">
+        <span class="house-badge">Serenidade</span>
+        <span class="house-badge">2 suítes</span>
+      </div>
+
+      <div class="house-overlay-copy">
+        <h3>Casa Serenidade</h3>
+        <p>Uma composição mais silenciosa, com jardim privativo e rooftop em unidades selecionadas.</p>
+      </div>
+    </figure>
+
+    <div class="card-inner">
+      <div class="meta">
+        <span class="pill">2 suítes</span>
+        <span class="pill">Rooftop + piscina</span>
+      </div>
+
+      <p class="copy">
+        Uma interpretação mais contemplativa do projeto, marcada por verticalidade suave, privacidade de jardim e áreas externas elevadas.
+      </p>
+
+      <a class="btn btn-outline" href="/pt/houses/serenidade.html">Ver tipologia</a>
+    </div>
+  </article>
+
+  <article class="house-card" data-reveal>
+    <figure class="house-media">
+      <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casa Brisa Suave em Casas da Vila Homes" />
+
+      <div class="house-meta-top">
+        <span class="house-badge">Brisa Suave</span>
+        <span class="house-badge">2 suítes</span>
+      </div>
+
+      <div class="house-overlay-copy">
+        <h3>Casa Brisa Suave</h3>
+        <p>Uma casa mais horizontal, com continuidade direta entre estar, jardim e piscina.</p>
+      </div>
+    </figure>
+
+    <div class="card-inner">
+      <div class="meta">
+        <span class="pill">2 suítes</span>
+        <span class="pill">Piscina térrea</span>
+      </div>
+
+      <p class="copy">
+        Uma tipologia definida por fluidez cotidiana, relação mais direta com o solo e uma convivência mais calma com o exterior.
+      </p>
+
+      <a class="btn btn-outline" href="/pt/houses/brisa-suave.html">Ver tipologia</a>
+    </div>
+  </article>
+
+  <article class="house-card" data-reveal>
+    <figure class="house-media">
+      <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casa Céu em Casas da Vila Homes" />
+
+      <div class="house-meta-top">
+        <span class="house-badge">Casa Céu</span>
+        <span class="house-badge">3 suítes</span>
+      </div>
+
+      <div class="house-overlay-copy">
+        <h3>Casa Céu</h3>
+        <p>A residência mais ampla, com bangalô, piscina e presença arquitetônica mais aberta.</p>
+      </div>
+    </figure>
+
+    <div class="card-inner">
+      <div class="meta">
+        <span class="pill">3 suítes</span>
+        <span class="pill">Bangalô + piscina</span>
+      </div>
+
+      <p class="copy">
+        A interpretação mais expansiva do projeto, com maior amplitude, presença mais marcante e bangalô independente.
+      </p>
+
+      <a class="btn btn-outline" href="/pt/houses/ceu.html">Ver tipologia</a>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container signature-band" data-reveal>
+      <span class="eyebrow">Direção arquitetônica</span>
+      <h2 class="h2" style="margin-top:18px;">Contemporânea na linguagem, tropical na presença, silenciosa na forma de se afirmar.</h2>
+      <p class="copy" style="margin-top:18px;">
+        O projeto combina luz, vegetação, texturas naturais e proporção para construir uma experiência de moradia sofisticada sem ostentação — mais silenciosa, mais autoral e mais duradoura.
+      </p>
+    </div>
+  </section>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container experience-grid">
+      <article class="experience-item" data-reveal>
+        <span class="pill">Escala humana</span>
+        <h3 class="h3">Mais casa, mais respiro</h3>
+        <p class="copy">
+          O conjunto privilegia proporção, afastamento entre unidades e uma experiência menos saturada, mais íntima e mais estável.
+        </p>
+      </article>
+      <article class="experience-item" data-reveal>
+        <span class="pill">Materialidade</span>
+        <h3 class="h3">Arquitetura que permanece</h3>
+        <p class="copy">
+          Madeira, pedra, sombra, vegetação e luz compõem uma linguagem pensada para amadurecer bem com o uso e com o tempo.
+        </p>
+      </article>
+      <article class="experience-item" data-reveal>
+        <span class="pill">Discrição</span>
+        <h3 class="h3">Informação na medida certa</h3>
+        <p class="copy">
+          Implantação, tipologias e disponibilidade aparecem com clareza, preservando a atmosfera e a sofisticação do projeto.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container availability-board">
+      <div class="glass-panel" data-reveal>
+        <span class="small-label">Disponibilidade selecionada</span>
+        <h2 class="h2" style="margin-top:18px;">Informação suficiente para apoiar a decisão.</h2>
+
+        <div class="availability-list" style="margin-top:18px;">
+          <div class="availability-row">
+            <div>
+              <strong>Casa Serenidade</strong>
+              <span>Casas de 2 suítes com jardim e rooftop em unidades selecionadas.</span>
+            </div>
+            <div>
+              <strong>Entrega prevista</strong>
+              <span>2027, conforme unidade</span>
+            </div>
+            <div>
+              <strong>Faixa comercial</strong>
+              <span>Sob consulta</span>
+            </div>
+          </div>
+
+          <div class="availability-row">
+            <div>
+              <strong>Casa Brisa Suave</strong>
+              <span>Casas de 2 suítes com piscina térrea e relação mais horizontal com o lote.</span>
+            </div>
+            <div>
+              <strong>Entrega prevista</strong>
+              <span>2027, conforme unidade</span>
+            </div>
+            <div>
+              <strong>Faixa comercial</strong>
+              <span>Sob consulta</span>
+            </div>
+          </div>
+
+          <div class="availability-row">
+            <div>
+              <strong>Casa Céu</strong>
+              <span>Tipologia de 3 suítes com bangalô, piscina e escala ampliada.</span>
+            </div>
+            <div>
+              <strong>Entrega prevista</strong>
+              <span>2027, conforme unidade</span>
+            </div>
+            <div>
+              <strong>Faixa comercial</strong>
+              <span>Sob consulta</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="availability-note">
+          Informações completas de valores, condições e disponibilidade são apresentadas de forma reservada no material comercial do empreendimento.
+        </p>
+      </div>
+
+      <div class="location-panel" data-reveal>
+        <span class="small-label">Trancoso</span>
+        <h3 class="h3" style="margin-top:18px;">Não apenas destino. Um modo de permanecer.</h3>
+        <p class="copy">
+          O valor do projeto também está na forma como ele se coloca em Trancoso: com mais silêncio, mais privacidade e uma relação menos transitória com o lugar.
+        </p>
+        <p class="copy">
+          Mais do que proximidade ou localização, o que importa aqui é a qualidade da permanência.
+        </p>
+        <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn btn-outline" href="/pt/localizacao/">Explorar localização</a>
+          <a class="btn btn-outline" href="/pt/investimento/">Ver investimento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="section seoBlock">
+  <div class="container">
+
+    <div class="seoInner">
+
+      <span class="eyebrow">Leitura ampliada</span>
+
+      <h2 class="h2" style="margin-top:18px;">
+        Investimento, uso e operação em Trancoso
+      </h2>
+
+      <p class="lead">
+        A compreensão de um projeto residencial em Trancoso passa por diferentes camadas — localização, arquitetura, uso e potencial de operação.
+      </p>
+
+      <div class="seoLinks">
+
+        <a data-localized-path="investment" class="seoLink">
+          Como avaliar um investimento em Trancoso
+        </a>
+
+        <a href="/pt/blog/investimento-trancoso/" class="seoLink">
+          O que observar antes de comprar
+        </a>
+
+        <a data-localized-path="operations" class="seoLink">
+          Entender o modelo de operação
+        </a>
+
+        <a href="/pt/blog/rental-pool-trancoso/" class="seoLink">
+          Quando a casa também pode operar
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+  <section class="section">
+    <div class="container cta-band final-cta" data-reveal>
+      <div class="card-inner grid-2" style="align-items:center; position:relative; z-index:2;">
+        <div>
+          <span class="eyebrow page-eyebrow">Private Sales</span>
+          <h2 class="h2" style="margin-top:18px;">Receba a apresentação completa do empreendimento.</h2>
+          <p class="copy" style="margin-top:18px;">
+            Conheça as tipologias, a implantação do conjunto e a disponibilidade atual das casas por meio do material completo de apresentação.
+          </p>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-start; align-items:center;">
+          <a class="btn btn-primary" href="/pt/contato/">Receber apresentação</a>
+          <a class="btn btn-outline" href="/pt/casas/">Conhecer as casas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+    <div id="site-footer"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shared Living | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Discover the social areas of Casas da Vila Homes: central pool, lounges, sauna and gardens as an extension of the residential experience in Trancoso."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --sc-bg:#f6f1e8;
+      --sc-surface:rgba(255,255,255,.56);
+      --sc-surface-2:rgba(255,255,255,.38);
+      --sc-ink:#201c18;
+      --sc-muted:#6d655b;
+      --sc-soft:#8b8277;
+      --sc-line:rgba(32,28,24,.09);
+      --sc-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --sc-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --sc-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --sc-wrap:min(1180px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--sc-ink);
+    }
+
+    main{overflow:hidden;}
+    .scWrap{ width:var(--sc-wrap); margin:0 auto; }
+
+    .scSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .scSection::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .scEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--sc-soft);
+    }
+
+    .scDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.5rem, 7vw, 6.4rem);
+      line-height:.94;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .scH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.2rem, 4.4vw, 4rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .scLead{
+      margin:0;
+      font-size:clamp(1.04rem, 1.45vw, 1.22rem);
+      line-height:1.76;
+      color:var(--sc-muted);
+      max-width:60ch;
+    }
+
+    .scHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h,96px) + 42px) 0 64px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .scHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.18) 0%, rgba(18,16,14,.12) 20%, rgba(18,16,14,.24) 58%, rgba(18,16,14,.54) 100%);
+      z-index:1;
+    }
+
+    .scHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .scHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.90) contrast(.95) brightness(.84) sepia(.04);
+    }
+
+    .scHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--sc-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.14fr) minmax(300px,.86fr);
+      gap:42px;
+      align-items:end;
+    }
+
+    .scHeroCopy{ color:rgba(244,239,231,.94); }
+    .scHeroCopy .scEyebrow{ color:rgba(244,239,231,.64); }
+    .scHeroCopy .scLead{
+      margin-top:22px;
+      max-width:34ch;
+      color:rgba(244,239,231,.80);
+    }
+
+    .scHeroPanel{
+      justify-self:end;
+      width:min(100%,380px);
+      padding:24px 24px 22px;
+      border-radius:24px;
+      background:rgba(28,25,22,.24);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      color:rgba(244,239,231,.92);
+    }
+
+    .scHeroPanel h2{
+      margin:0 0 10px;
+      font-size:.98rem;
+      line-height:1.34;
+      font-weight:600;
+    }
+
+    .scHeroPanel p{
+      margin:0;
+      font-size:.95rem;
+      line-height:1.64;
+      color:rgba(244,239,231,.78);
+    }
+
+    .scHeroMeta{
+      margin-top:16px;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.10);
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+
+    .scHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(244,239,231,.74);
+      font-size:.72rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .scIntro{
+      padding-top:96px;
+      padding-bottom:84px;
+    }
+
+    .scIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .scGallery{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .scGalleryGrid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr .85fr;
+      gap:18px;
+    }
+
+    .scGalleryCard{
+      position:relative;
+      overflow:hidden;
+      min-height:290px;
+      border-radius:28px;
+      background:#d7cebf;
+      box-shadow:var(--sc-shadow-md);
+    }
+
+    .scGalleryCard.tall{
+      min-height:598px;
+      grid-row:span 2;
+    }
+
+    .scGalleryCard img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .scFeatureGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .scFeatureCard{
+      padding:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:var(--sc-shadow-sm);
+    }
+
+    .scFeatureIndex{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:var(--sc-ink);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .scFeatureIndex::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:rgba(111,85,58,.4);
+    }
+
+    .scFeatureCard h3{
+      margin:0 0 12px;
+      font-size:1.38rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .scFeatureCard p{
+      margin:0;
+      color:var(--sc-muted);
+      line-height:1.76;
+    }
+
+    .scGrid2{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .scCard,
+    .scWarmCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.56), rgba(255,255,255,.36));
+      border:1px solid var(--sc-line);
+      box-shadow:var(--sc-shadow-sm);
+    }
+
+    .scWarmCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .scCard h3,
+    .scWarmCard h3{
+      margin:16px 0 12px;
+      font-size:1.7rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      color:var(--sc-ink);
+    }
+
+    .scCard p,
+    .scWarmCard p{
+      margin:0;
+      color:var(--sc-muted);
+      line-height:1.76;
+    }
+
+    .scOverviewGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--sc-line);
+    }
+
+    .scOverviewBlock small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--sc-soft);
+    }
+
+    .scOverviewBlock strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.46;
+      font-weight:600;
+      color:var(--sc-ink);
+    }
+
+    .scOverviewBlock span{
+      display:block;
+      margin-top:8px;
+      font-size:.95rem;
+      line-height:1.7;
+      color:var(--sc-muted);
+    }
+
+    .scActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    @media (max-width:1100px){
+      .scHeroInner,
+      .scIntroGrid,
+      .scGrid2{
+        grid-template-columns:1fr;
+      }
+
+      .scHeroPanel{ justify-self:start; }
+      .scFeatureGrid,
+      .scOverviewGrid{ grid-template-columns:1fr; }
+
+      .scGalleryGrid{
+        grid-template-columns:1fr;
+      }
+
+      .scGalleryCard.tall{
+        min-height:340px;
+        grid-row:auto;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --sc-wrap:min(100vw - 28px, 1000px);
+      }
+
+      .scSection{ padding:84px 0; }
+
+      .scHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 24px);
+        padding-bottom:30px;
+      }
+
+      .scCard,
+      .scWarmCard{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+
+      .scGalleryCard{
+        min-height:260px;
+        border-radius:22px;
+      }
+    }
+    /* =========================================================
+   SOCIAL EN — GALLERY + CARDS FIX
+   ========================================================= */
+
+.scGalleryEditorialSection{
+  padding-top:0;
+  padding-bottom:42px;
+}
+
+.scGalleryEditorial{
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:24px;
+  align-items:stretch;
+}
+
+.scGalleryMain{
+  margin:0;
+  min-height:620px;
+  border-radius:32px;
+  overflow:hidden;
+  background:#d7cebf;
+  box-shadow:var(--sc-shadow-lg);
+}
+
+.scGalleryMain img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.scGallerySide{
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  gap:24px;
+}
+
+.scGallerySide figure{
+  margin:0;
+  min-height:298px;
+  border-radius:28px;
+  overflow:hidden;
+  background:#d7cebf;
+  box-shadow:var(--sc-shadow-md);
+}
+
+.scGallerySide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* cards abaixo da galeria */
+.scFeatureSectionTight{
+  padding-top:0;
+  padding-bottom:96px;
+}
+
+.scFeatureGridEditorial{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  align-items:stretch;
+}
+
+.scFeatureGridEditorial .scFeatureCard{
+  min-height:100%;
+  padding:30px 28px;
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(255,255,255,.64), rgba(255,255,255,.42));
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:var(--sc-shadow-sm);
+}
+
+.scFeatureGridEditorial .scFeatureCard h3{
+  min-height:2.4em;
+}
+
+/* tablet */
+@media (max-width:1100px){
+  .scGalleryEditorial{
+    grid-template-columns:1fr;
+  }
+
+  .scGalleryMain{
+    min-height:420px;
+  }
+
+  .scGallerySide{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+
+  .scGallerySide figure{
+    min-height:240px;
+  }
+
+  .scFeatureGridEditorial{
+    grid-template-columns:1fr;
+  }
+
+  .scFeatureGridEditorial .scFeatureCard h3{
+    min-height:auto;
+  }
+}
+
+/* mobile */
+@media (max-width:820px){
+  .scGalleryEditorialSection{
+    padding-bottom:28px;
+  }
+
+  .scGalleryMain{
+    min-height:320px;
+    border-radius:24px;
+  }
+
+  .scGallerySide{
+    grid-template-columns:1fr;
+    grid-template-rows:auto;
+    gap:18px;
+  }
+
+  .scGallerySide figure{
+    min-height:220px;
+    border-radius:22px;
+  }
+
+  .scFeatureSectionTight{
+    padding-bottom:84px;
+  }
+
+  .scFeatureGridEditorial .scFeatureCard{
+    padding:26px 20px;
+    border-radius:24px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <section class="scHero">
+      <div class="scHeroMedia">
+        <img src="/assets/images/social-area/hero.jpg" alt="Social areas at Casas da Vila Homes" />
+      </div>
+
+      <div class="scHeroInner">
+        <div class="scHeroCopy" data-reveal="left">
+          <p class="scEyebrow">Shared Living • Casas da Vila Homes</p>
+
+          <h1 class="scDisplay">
+            Spaces
+            that extend
+            the residence.
+          </h1>
+
+          <p class="scLead">
+            The central pool, lounges, sauna and gardens compose a rhythm of permanence that does not compete with the residence — it expands it.
+          </p>
+        </div>
+
+        <aside class="scHeroPanel" data-reveal="right">
+          <h2>Social spaces designed as an extension of everyday life.</h2>
+          <p>
+            More than amenities, these spaces were conceived to support different rhythms of use, between encounter, rest and contemplation.
+          </p>
+
+          <div class="scHeroMeta">
+            <span>Central pool</span>
+            <span>Lounges</span>
+            <span>Sauna</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="scSection scIntro">
+      <div class="scWrap">
+        <div class="scIntroGrid">
+          <div data-reveal="left">
+            <p class="scEyebrow">Shared experience</p>
+            <h2 class="scH2">
+              The social areas are not complementary. They are part of the way of inhabiting.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="scLead">
+              At Casas da Vila Homes, the shared spaces were designed to extend the use of the residence and broaden the experience of the development. Pool, lounges, sauna and gardens structure moments of permanence that reinforce the project’s quiet and residential character.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="scSection scGallery scGalleryEditorialSection">
+  <div class="scWrap">
+    <div class="scGalleryEditorial">
+
+      <figure class="scGalleryMain" data-reveal>
+        <img src="/assets/images/social-area/pool-1.jpg" alt="Central pool at Casas da Vila Homes" />
+      </figure>
+
+      <div class="scGallerySide">
+        <figure data-reveal>
+          <img src="/assets/images/social-area/lounge-1.jpg" alt="Social lounge at Casas da Vila Homes" />
+        </figure>
+
+        <figure data-reveal>
+          <img src="/assets/images/social-area/sauna-1.jpg" alt="Sauna at Casas da Vila Homes" />
+        </figure>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="scSection scFeatureSectionTight">
+  <div class="scWrap">
+    <div class="scFeatureGrid scFeatureGridEditorial">
+
+      <article class="scFeatureCard" data-reveal>
+        <div class="scFeatureIndex">01 · Pool</div>
+        <h3>The centre of outdoor permanence</h3>
+        <p>
+          The central pool organises open-air conviviality and becomes a point of convergence between landscape, rest and everyday rhythm.
+        </p>
+      </article>
+
+      <article class="scFeatureCard" data-reveal>
+        <div class="scFeatureIndex">02 · Lounges</div>
+        <h3>Spaces for pause and encounter</h3>
+        <p>
+          The lounges extend exterior life with a quieter language, allowing meeting, reading, rest and observation of the surroundings.
+        </p>
+      </article>
+
+      <article class="scFeatureCard" data-reveal>
+        <div class="scFeatureIndex">03 · Sauna</div>
+        <h3>Well-being as a natural extension</h3>
+        <p>
+          The sauna does not appear as an accessory, but as an additional layer of comfort within the project’s experience of permanence.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+    <section class="scSection">
+      <div class="scWrap">
+        <div class="scGrid2">
+
+          <div class="scCard" data-reveal="left">
+            <p class="scEyebrow">Rhythm of use</p>
+            <h2 class="scH2" style="margin-top:18px;">Different moments of the day, one shared language of permanence.</h2>
+
+            <div class="scOverviewGrid">
+              <div class="scOverviewBlock">
+                <small>Morning</small>
+                <strong>Pool and garden</strong>
+                <span>The spaces accompany a lighter and quieter use, in dialogue with vegetation and natural light.</span>
+              </div>
+
+              <div class="scOverviewBlock">
+                <small>Afternoon</small>
+                <strong>Lounges and encounter</strong>
+                <span>The shared areas absorb longer permanence, rest and conviviality without rupture with the residence.</span>
+              </div>
+
+              <div class="scOverviewBlock">
+                <small>Evening</small>
+                <strong>A more reserved atmosphere</strong>
+                <span>Lighting and spatial composition favour continuity, contemplation and a more introspective use.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="scWarmCard" data-reveal="right">
+            <p class="scEyebrow">Reading of the project</p>
+            <h3>More than common areas, an extension of the residential experience.</h3>
+            <p>
+              Unlike developments in which shared spaces operate as compensation, here they expand the quality of permanence and reinforce the identity of the collection.
+            </p>
+
+            <div class="scActions">
+              <a class="btn btn-primary" href="/en/contact/">Request presentation</a>
+              <a class="btn btn-outline" href="/en/project/">View the project</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

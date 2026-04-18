@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Project | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Concept, architecture and residential direction for Casas da Vila Homes in Trancoso — a quieter project shaped by privacy, gardens and permanence."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --project-bg:#f6f1e8;
+      --project-surface:rgba(255,255,255,.54);
+      --project-surface-2:rgba(255,255,255,.36);
+      --project-ink:#201c18;
+      --project-muted:#6d655b;
+      --project-soft:#8b8277;
+      --project-line:rgba(32,28,24,.09);
+      --project-line-strong:rgba(32,28,24,.15);
+      --project-accent:#b9965a;
+      --project-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --project-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --project-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --project-radius:28px;
+      --project-radius-lg:36px;
+      --project-wrap:min(1180px, calc(100vw - 48px));
+      --project-wrap-narrow:min(900px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--project-ink);
+    }
+
+    main{ overflow:hidden; }
+
+    .projectWrap{
+      width:var(--project-wrap);
+      margin:0 auto;
+    }
+
+    .projectWrapNarrow{
+      width:var(--project-wrap-narrow);
+      margin:0 auto;
+    }
+
+    .projectSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .projectSection::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .projectEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--project-soft);
+    }
+
+    .projectDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.7rem, 8vw, 7.1rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .projectH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.35rem, 4.5vw, 4.3rem);
+      line-height:.98;
+      letter-spacing:-.042em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .projectLead{
+      margin:0;
+      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height:1.76;
+      color:var(--project-muted);
+      max-width:62ch;
+    }
+
+    .projectBody{
+      margin:0;
+      font-size:1rem;
+      line-height:1.82;
+      color:var(--project-muted);
+    }
+
+    /* HERO */
+    .projectHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h, 96px) + 46px) 0 76px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .projectHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.10) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 60%, rgba(18,16,14,.54) 100%);
+      z-index:1;
+    }
+
+    .projectHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .projectHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.94) contrast(.98) brightness(.95);
+      transform:scale(1.01);
+    }
+
+    .projectHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--project-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+      gap:44px;
+      align-items:end;
+    }
+
+    .projectHeroCopy{
+      color:#f4efe7;
+    }
+
+    .projectHeroCopy .projectEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .projectHeroCopy .projectLead{
+      margin-top:28px;
+      color:rgba(244,239,231,.84);
+      max-width:34ch;
+    }
+
+    .projectHeroPanel{
+      justify-self:end;
+      width:min(100%,390px);
+      padding:28px;
+      border-radius:24px;
+      color:#f4efe7;
+      background:rgba(35,31,28,.24);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+    }
+
+    .projectHeroPanel h2{
+      margin:0 0 12px;
+      font-size:1rem;
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .projectHeroPanel p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.72;
+      color:rgba(244,239,231,.82);
+    }
+
+    .projectHeroMeta{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .projectHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font-size:.74rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(244,239,231,.78);
+    }
+
+    /* INTRO */
+    .projectIntro{
+      padding-top:102px;
+      padding-bottom:80px;
+    }
+
+    .projectIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .projectIntroGrid .projectLead{
+      padding-top:18px;
+    }
+
+    /* IMAGE BAND */
+    .projectOpening{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .projectOpeningFigure{
+      position:relative;
+      overflow:hidden;
+      min-height:640px;
+      border-radius:34px;
+      background:#d7cebf;
+      box-shadow:var(--project-shadow-lg);
+    }
+
+    .projectOpeningFigure::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(24,20,17,.56) 0%, rgba(24,20,17,.24) 42%, rgba(24,20,17,.08) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .projectOpeningFigure img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .projectOpeningCaption{
+      position:relative;
+      z-index:2;
+      width:min(540px, calc(100% - 56px));
+      padding:44px 0 44px 38px;
+      color:#f4efe7;
+    }
+
+    .projectOpeningCaption .projectEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .projectOpeningCaption .projectLead{
+      margin-top:20px;
+      color:rgba(244,239,231,.84);
+      max-width:31ch;
+    }
+
+    /* CONCEPTS */
+    .projectConcepts{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .projectConceptGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .projectConceptCard{
+      padding:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:var(--project-shadow-sm);
+    }
+
+    .projectConceptIndex{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:var(--project-ink);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .projectConceptIndex::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:rgba(111,85,58,.4);
+    }
+
+    .projectConceptCard h3{
+      margin:0 0 12px;
+      font-size:1.4rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .projectConceptCard p{
+      margin:0;
+      color:var(--project-muted);
+      line-height:1.76;
+    }
+
+    /* SIGNATURE */
+    .projectSignature{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .projectSignatureBand{
+      position:relative;
+      overflow:hidden;
+      border-radius:34px;
+      padding:42px;
+      background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);
+      color:#fff;
+      box-shadow:0 26px 70px rgba(34,28,23,.22);
+    }
+
+    .projectSignatureBand::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -24% auto;
+      width:360px;
+      height:360px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);
+    }
+
+    .projectSignatureBand > *{
+      position:relative;
+      z-index:2;
+    }
+
+    .projectSignatureBand .projectEyebrow{
+      color:rgba(255,255,255,.72);
+    }
+
+    .projectSignatureBand .projectH2{
+      max-width:13ch;
+    }
+
+    .projectSignatureBand .projectLead{
+      margin-top:18px;
+      color:rgba(255,255,255,.80);
+      max-width:54ch;
+    }
+
+    /* TYPOLOGIES */
+    .projectTypologies{
+      padding-top:18px;
+      padding-bottom:34px;
+    }
+
+    .projectSectionIntro{
+      max-width:760px;
+    }
+
+    .house-grid-premium{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:24px;
+    }
+
+    .house-card{
+      overflow:hidden;
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.44));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:0 18px 50px rgba(32,24,18,.08);
+      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .house-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 24px 70px rgba(32,24,18,.12);
+      border-color:rgba(185,150,90,.22);
+    }
+
+    .house-card .house-media{
+      position:relative;
+      margin:0;
+      min-height:340px;
+      overflow:hidden;
+      background:#d8cfbf;
+    }
+
+    .house-card .house-media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(16,12,10,.04) 0%, rgba(16,12,10,.12) 46%, rgba(16,12,10,.38) 100%);
+      pointer-events:none;
+    }
+
+    .house-card .house-media img{
+      width:100%;
+      height:100%;
+      min-height:340px;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.01);
+      transition:transform .8s ease;
+    }
+
+    .house-card:hover .house-media img{
+      transform:scale(1.045);
+    }
+
+    .house-card .house-meta-top{
+      position:absolute;
+      left:18px;
+      right:18px;
+      top:18px;
+      z-index:2;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .house-card .house-badge{
+      display:inline-flex;
+      align-items:center;
+      min-height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.14);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      color:#fff;
+      font-size:.74rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .house-card .house-overlay-copy{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:2;
+      color:#fff;
+    }
+
+    .house-card .house-overlay-copy h3{
+      margin:0;
+      font-size:1.5rem;
+      line-height:1.02;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .house-card .house-overlay-copy p{
+      margin:10px 0 0;
+      max-width:29ch;
+      color:rgba(255,255,255,.84);
+      font-size:.95rem;
+      line-height:1.6;
+    }
+
+    .house-card .card-inner{
+      padding:22px 22px 24px;
+    }
+
+    .house-card .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:16px;
+    }
+
+    .house-card .meta .pill{
+      background:rgba(185,150,90,.10);
+      border:1px solid rgba(185,150,90,.18);
+    }
+
+    .house-card .copy{
+      min-height:72px;
+      color:var(--project-muted);
+      line-height:1.7;
+    }
+
+    /* EXPERIENCE */
+    .projectExperience{
+      padding-top:96px;
+      padding-bottom:96px;
+    }
+
+    .projectExperienceGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .projectExperienceItem{
+      padding:30px;
+      border-radius:26px;
+      background:rgba(255,255,255,.48);
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--project-shadow-sm);
+    }
+
+    .projectExperienceItem .pill{
+      margin-bottom:18px;
+    }
+
+    .projectExperienceItem h3{
+      margin:0 0 12px;
+      font-size:1.35rem;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .projectExperienceItem p{
+      margin:0;
+      color:var(--project-muted);
+      line-height:1.76;
+    }
+
+    /* CTA */
+    .projectCta{
+      padding-top:0;
+      padding-bottom:120px;
+    }
+
+    .projectCtaGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .projectOverviewCard,
+    .projectSalesCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg,rgba(255,255,255,.54),rgba(255,255,255,.34));
+      border:1px solid var(--project-line);
+      box-shadow:var(--project-shadow-sm);
+    }
+
+    .projectOverviewCard .projectH2{
+      max-width:12ch;
+    }
+
+    .projectOverviewGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--project-line);
+    }
+
+    .projectOverviewBlock small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--project-soft);
+    }
+
+    .projectOverviewBlock strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.46;
+      font-weight:600;
+      color:var(--project-ink);
+    }
+
+    .projectOverviewBlock span{
+      display:block;
+      margin-top:8px;
+      font-size:.95rem;
+      line-height:1.7;
+      color:var(--project-muted);
+    }
+
+    .projectSalesCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .projectSalesCard h3{
+      margin:16px 0 12px;
+      font-size:1.72rem;
+      line-height:1.06;
+      letter-spacing:-.03em;
+      font-weight:500;
+      color:var(--project-ink);
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .projectSalesCard p{
+      margin:0;
+      color:var(--project-muted);
+      line-height:1.76;
+      max-width:32ch;
+    }
+
+    .projectActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .projectHeroInner,
+      .projectIntroGrid,
+      .projectCtaGrid{
+        grid-template-columns:1fr;
+      }
+
+      .projectHeroPanel{
+        justify-self:start;
+      }
+
+      .projectConceptGrid,
+      .house-grid-premium,
+      .projectExperienceGrid{
+        grid-template-columns:1fr;
+      }
+
+      .projectOverviewGrid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --project-wrap:min(100vw - 28px, 1000px);
+        --project-wrap-narrow:min(100vw - 28px, 900px);
+      }
+
+      .projectSection{
+        padding:84px 0;
+      }
+
+      .projectHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 30px);
+        padding-bottom:36px;
+      }
+
+      .projectOpeningFigure{
+        min-height:460px;
+        border-radius:24px;
+      }
+
+      .projectOpeningCaption{
+        width:calc(100% - 28px);
+        padding:28px 0 28px 14px;
+      }
+
+      .house-card .house-media,
+      .house-card .house-media img{
+        min-height:320px;
+      }
+
+      .house-card .house-overlay-copy h3{
+        font-size:1.34rem;
+      }
+
+      .projectSignatureBand,
+      .projectOverviewCard,
+      .projectSalesCard{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="projectHero">
+      <div class="projectHeroMedia">
+        <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casas da Vila Homes in Trancoso" />
+      </div>
+
+      <div class="projectHeroInner">
+        <div class="projectHeroCopy" data-reveal="left">
+          <p class="projectEyebrow">The Project • Casas da Vila Homes</p>
+
+          <h1 class="projectDisplay">
+            Architecture,
+            privacy
+            and a quieter
+            way of living.
+          </h1>
+
+          <p class="projectLead">
+            Casas da Vila Homes brings together authored house typologies, private gardens and a layout designed for permanence, proportion and discretion in Trancoso.
+          </p>
+        </div>
+
+        <aside class="projectHeroPanel" data-reveal="right">
+          <h2>A residential project shaped by calm and proportion.</h2>
+          <p>
+            More than a collection of units, the project is structured as a quieter residential composition, where gardens, spacing and materiality define the experience of living.
+          </p>
+
+          <div class="projectHeroMeta">
+            <span>3 typologies</span>
+            <span>2–3 suites</span>
+            <span>2027 delivery</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="projectSection projectIntro">
+      <div class="projectWrap">
+        <div class="projectIntroGrid">
+          <div data-reveal="left">
+            <p class="projectEyebrow">Manifesto</p>
+            <h2 class="projectH2">
+              Not a project driven by repetition, but by a reading of place.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="projectLead">
+              The project begins with a simple idea: less noise, more presence. Homes not shaped for immediate impact, but for permanence. Instead of formal excess, architecture works through proportion, shadow, ventilation and materiality to sustain a quieter and more enduring way of living.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING IMAGE -->
+    <section class="projectSection projectOpening">
+      <div class="projectWrap">
+        <figure class="projectOpeningFigure" data-reveal="zoom">
+          <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casas da Vila Homes architectural atmosphere" />
+
+          <figcaption class="projectOpeningCaption">
+            <p class="projectEyebrow">Architecture and implantation</p>
+            <h2 class="projectH2">A project organised through gardens, spacing and residential calm.</h2>
+            <p class="projectLead">
+              Rather than density, the project prioritises interval. Rather than visual excess, it works through atmosphere, proportion and the slow clarity of a more mature architecture.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONCEPTS -->
+    <section class="projectSection projectConcepts">
+      <div class="projectWrap">
+        <div class="projectConceptGrid">
+
+          <article class="projectConceptCard" data-reveal>
+            <div class="projectConceptIndex">01 · Layout</div>
+            <h3>More space between homes</h3>
+            <p>
+              The masterplan prioritises distance, gardens and visual autonomy, moving away from density-driven developments and preserving a stronger sense of privacy.
+            </p>
+          </article>
+
+          <article class="projectConceptCard" data-reveal>
+            <div class="projectConceptIndex">02 · Materiality</div>
+            <h3>Wood, stone, light and vegetation</h3>
+            <p>
+              Materials belong to everyday life rather than to decorative gesture. The result is a tactile, quieter and more timeless residential presence.
+            </p>
+          </article>
+
+          <article class="projectConceptCard" data-reveal>
+            <div class="projectConceptIndex">03 · Permanence</div>
+            <h3>A more mature relationship with Trancoso</h3>
+            <p>
+              The value of the project lies not only in the houses themselves, but in the way the whole sustains privacy, rhythm and continuity of life.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNATURE -->
+    <section class="projectSection projectSignature">
+      <div class="projectWrap">
+        <div class="projectSignatureBand" data-reveal="zoom">
+          <p class="projectEyebrow">Architectural direction</p>
+
+          <h2 class="projectH2" style="margin-top:18px;">
+            Contemporary in language, tropical in presence, discreet in the way it asserts itself.
+          </h2>
+
+          <p class="projectLead">
+            Casas da Vila Homes combines authored architecture, vegetation, warm light and careful implantation to sustain a refined residential experience without excess.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOLOGIES INTRO -->
+    <section class="projectSection projectTypologies">
+      <div class="projectWrap">
+        <div class="projectSectionIntro" data-reveal="left">
+          <p class="projectEyebrow">Typologies</p>
+
+          <h2 class="projectH2" style="margin-top:18px;">
+            Three interpretations of the same architecture.
+          </h2>
+
+          <p class="projectLead" style="margin-top:18px;">
+            Serenidade, Brisa Suave and Casa Céu explore different relationships between interior space, garden, pool and scale, while preserving the same residential language.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOLOGIES GRID -->
+    <section class="projectSection" style="padding-top:0;">
+      <div class="projectWrap">
+        <div class="house-grid-premium">
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casa Serenidade at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Serenidade</span>
+                <span class="house-badge">2 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Serenidade</h3>
+                <p>A more contemplative interpretation, balancing verticality, private gardens and rooftop in selected units.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">2 suites</span>
+                <span class="pill">Rooftop + pool</span>
+              </div>
+
+              <p class="copy">
+                A more introspective typology, shaped by gentle verticality, elevated outdoor space and a calmer residential rhythm.
+              </p>
+            </div>
+          </article>
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casa Brisa Suave at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Brisa Suave</span>
+                <span class="house-badge">2 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Brisa Suave</h3>
+                <p>A more horizontal layout, connecting interior spaces directly with garden and pool.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">2 suites</span>
+                <span class="pill">Ground-level pool</span>
+              </div>
+
+              <p class="copy">
+                A typology defined by flow, stronger contact with the ground and a more open continuity between house and exterior.
+              </p>
+            </div>
+          </article>
+
+          <article class="house-card" data-reveal>
+            <figure class="house-media">
+              <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casa Céu at Casas da Vila Homes" />
+
+              <div class="house-meta-top">
+                <span class="house-badge">Casa Céu</span>
+                <span class="house-badge">3 suites</span>
+              </div>
+
+              <div class="house-overlay-copy">
+                <h3>Casa Céu</h3>
+                <p>The largest typology, offering more scale and a broader architectural presence.</p>
+              </div>
+            </figure>
+
+            <div class="card-inner">
+              <div class="meta">
+                <span class="pill">3 suites</span>
+                <span class="pill">Expanded layout</span>
+              </div>
+
+              <p class="copy">
+                The most expansive interpretation in the project, combining stronger amplitude, broader programme and a more open residential expression.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="projectSection projectExperience">
+      <div class="projectWrap">
+        <div class="projectExperienceGrid">
+
+          <article class="projectExperienceItem" data-reveal>
+            <span class="pill">Human scale</span>
+            <h3>More home, less density</h3>
+            <p>
+              The project prioritises proportion, spatial breathing and a more intimate residential atmosphere, avoiding visual saturation.
+            </p>
+          </article>
+
+          <article class="projectExperienceItem" data-reveal>
+            <span class="pill">Language</span>
+            <h3>Architecture that ages well</h3>
+            <p>
+              Material choices, shading and form are designed for longevity, supporting a project that matures rather than merely impresses.
+            </p>
+          </article>
+
+          <article class="projectExperienceItem" data-reveal>
+            <span class="pill">Permanence</span>
+            <h3>A more stable way of living</h3>
+            <p>
+              More than a temporary stay, the project supports continuity, residential depth and a stronger connection to place.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="projectSection projectCta">
+      <div class="projectWrap">
+        <div class="projectCtaGrid">
+
+          <div class="projectOverviewCard" data-reveal="left">
+            <p class="projectEyebrow">Project overview</p>
+
+            <h2 class="projectH2" style="margin-top:18px;">
+              A project that sustains value through space, proportion and silence.
+            </h2>
+
+            <div class="projectOverviewGrid">
+              <div class="projectOverviewBlock">
+                <small>Layout</small>
+                <strong>Private gardens</strong>
+                <span>Spatial autonomy and greater distance between homes.</span>
+              </div>
+
+              <div class="projectOverviewBlock">
+                <small>Typologies</small>
+                <strong>Three readings</strong>
+                <span>Distinct interpretations of the same architectural language.</span>
+              </div>
+
+              <div class="projectOverviewBlock">
+                <small>Delivery</small>
+                <strong>2027</strong>
+                <span>According to the specific timeline of each unit.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="projectSalesCard" data-reveal="right">
+            <p class="projectEyebrow">Private Sales</p>
+
+            <h3>Request the full project presentation.</h3>
+
+            <p>
+              Access detailed information on layout, typologies and current availability through the complete presentation material.
+            </p>
+
+            <div class="projectActions">
+              <a class="btn btn-primary" href="/en/contact/">Request presentation</a>
+              <a class="btn btn-outline" href="/en/houses/">Discover the houses</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>

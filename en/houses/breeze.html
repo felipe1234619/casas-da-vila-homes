@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Casa Brisa Suave | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Discover Casa Brisa Suave at Casas da Vila Homes — a more horizontal residence with ground-level pool, private garden and a natural continuity between interior and exterior."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    :root{
+      --house-bg:#f6f1e8;
+      --house-surface:rgba(255,255,255,.54);
+      --house-surface-2:rgba(255,255,255,.36);
+      --house-ink:#201c18;
+      --house-muted:#6d655b;
+      --house-soft:#8b8277;
+      --house-line:rgba(32,28,24,.09);
+      --house-line-strong:rgba(32,28,24,.15);
+      --house-accent:#b9965a;
+      --house-shadow-sm:0 10px 30px rgba(26,20,14,.06);
+      --house-shadow-md:0 18px 60px rgba(26,20,14,.08);
+      --house-shadow-lg:0 24px 90px rgba(26,20,14,.12);
+      --house-wrap:min(1180px, calc(100vw - 48px));
+      --house-wrap-narrow:min(900px, calc(100vw - 48px));
+    }
+
+    body{
+      background:
+        radial-gradient(circle at top left, rgba(185,150,90,.05), transparent 28%),
+        linear-gradient(180deg, #f7f3ec 0%, #f4efe7 100%);
+      color:var(--house-ink);
+    }
+
+    main{ overflow:hidden; }
+
+    .houseWrap{
+      width:var(--house-wrap);
+      margin:0 auto;
+    }
+
+    .houseWrapNarrow{
+      width:var(--house-wrap-narrow);
+      margin:0 auto;
+    }
+
+    .houseSection{
+      position:relative;
+      padding:110px 0;
+    }
+
+    .houseSection::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(32,28,24,.05), transparent);
+      pointer-events:none;
+    }
+
+    .houseEyebrow{
+      display:inline-block;
+      margin:0 0 18px;
+      font-size:.72rem;
+      line-height:1;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--house-soft);
+    }
+
+    .houseDisplay{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(3.7rem, 8vw, 7rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:400;
+      max-width:10ch;
+      text-wrap:balance;
+    }
+
+    .houseH2{
+      margin:0;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      font-size:clamp(2.35rem, 4.5vw, 4.2rem);
+      line-height:.98;
+      letter-spacing:-.042em;
+      font-weight:400;
+      text-wrap:balance;
+    }
+
+    .houseLead{
+      margin:0;
+      font-size:clamp(1.08rem, 1.5vw, 1.28rem);
+      line-height:1.76;
+      color:var(--house-muted);
+      max-width:62ch;
+    }
+
+    .houseBody{
+      margin:0;
+      font-size:1rem;
+      line-height:1.8;
+      color:var(--house-muted);
+    }
+
+    /* HERO */
+    .houseHero{
+      position:relative;
+      min-height:100svh;
+      padding:calc(var(--header-h, 96px) + 46px) 0 76px;
+      display:flex;
+      align-items:flex-end;
+      background:#d7cebf;
+    }
+
+    .houseHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(to bottom, rgba(18,16,14,.10) 0%, rgba(18,16,14,.08) 20%, rgba(18,16,14,.24) 60%, rgba(18,16,14,.56) 100%);
+      z-index:1;
+    }
+
+    .houseHeroMedia{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+
+    .houseHeroMedia img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center center;
+      display:block;
+      filter:saturate(.94) contrast(.98) brightness(.95);
+      transform:scale(1.01);
+    }
+
+    .houseHeroInner{
+      position:relative;
+      z-index:2;
+      width:var(--house-wrap);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1.18fr) minmax(300px,.82fr);
+      gap:44px;
+      align-items:end;
+    }
+
+    .houseHeroCopy{
+      color:#f4efe7;
+    }
+
+    .houseHeroCopy .houseEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .houseHeroCopy .houseLead{
+      margin-top:28px;
+      color:rgba(244,239,231,.84);
+      max-width:35ch;
+    }
+
+    .houseHeroPanel{
+      justify-self:end;
+      width:min(100%,390px);
+      padding:28px;
+      border-radius:24px;
+      color:#f4efe7;
+      background:rgba(35,31,28,.24);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      box-shadow:0 18px 50px rgba(0,0,0,.10);
+    }
+
+    .houseHeroPanel h2{
+      margin:0 0 12px;
+      font-size:1rem;
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:.01em;
+    }
+
+    .houseHeroPanel p{
+      margin:0;
+      font-size:.97rem;
+      line-height:1.72;
+      color:rgba(244,239,231,.82);
+    }
+
+    .houseHeroMeta{
+      margin-top:18px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .houseHeroMeta span{
+      display:inline-flex;
+      align-items:center;
+      min-height:34px;
+      padding:0 13px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      font-size:.74rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:rgba(244,239,231,.78);
+    }
+
+    /* INTRO */
+    .houseIntro{
+      padding-top:102px;
+      padding-bottom:84px;
+    }
+
+    .houseIntroGrid{
+      display:grid;
+      grid-template-columns:minmax(0,.96fr) minmax(0,1.04fr);
+      gap:56px;
+      align-items:start;
+    }
+
+    .houseIntroGrid .houseLead{
+      padding-top:18px;
+    }
+
+    /* IMAGE BAND */
+    .houseOpening{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .houseOpeningFigure{
+      position:relative;
+      overflow:hidden;
+      min-height:640px;
+      border-radius:34px;
+      background:#d7cebf;
+      box-shadow:var(--house-shadow-lg);
+    }
+
+    .houseOpeningFigure::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to right, rgba(24,20,17,.54) 0%, rgba(24,20,17,.22) 42%, rgba(24,20,17,.08) 100%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    .houseOpeningFigure img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .houseOpeningCaption{
+      position:relative;
+      z-index:2;
+      width:min(540px, calc(100% - 56px));
+      padding:44px 0 44px 38px;
+      color:#f4efe7;
+    }
+
+    .houseOpeningCaption .houseEyebrow{
+      color:rgba(244,239,231,.74);
+    }
+
+    .houseOpeningCaption .houseLead{
+      margin-top:20px;
+      color:rgba(244,239,231,.84);
+      max-width:31ch;
+    }
+
+    /* CONCEPTS */
+    .houseConcepts{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .houseConceptGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .houseConceptCard{
+      padding:30px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:var(--house-shadow-sm);
+    }
+
+    .houseConceptIndex{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:18px;
+      color:var(--house-ink);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .houseConceptIndex::before{
+      content:"";
+      width:34px;
+      height:1px;
+      background:rgba(111,85,58,.4);
+    }
+
+    .houseConceptCard h3{
+      margin:0 0 12px;
+      font-size:1.4rem;
+      line-height:1.08;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .houseConceptCard p{
+      margin:0;
+      color:var(--house-muted);
+      line-height:1.76;
+    }
+
+    /* GALLERY */
+    .houseGallery{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .houseGalleryGrid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr .85fr;
+      gap:18px;
+    }
+
+    .houseGalleryCard{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      min-height:280px;
+      background:#d7cebf;
+      box-shadow:var(--house-shadow-md);
+    }
+
+    .houseGalleryCard.tall{
+      min-height:580px;
+    }
+
+    .houseGalleryCard img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .8s ease;
+    }
+
+    .houseGalleryCard:hover img{
+      transform:scale(1.04);
+    }
+
+    /* EXPERIENCE */
+    .houseExperience{
+      padding-top:0;
+      padding-bottom:96px;
+    }
+
+    .houseExperienceGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;
+    }
+
+    .houseExperienceItem{
+      padding:30px;
+      border-radius:26px;
+      background:rgba(255,255,255,.48);
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--house-shadow-sm);
+    }
+
+    .houseExperienceItem .pill{
+      margin-bottom:18px;
+    }
+
+    .houseExperienceItem h3{
+      margin:0 0 12px;
+      font-size:1.35rem;
+      line-height:1.1;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .houseExperienceItem p{
+      margin:0;
+      color:var(--house-muted);
+      line-height:1.76;
+    }
+
+    /* CTA */
+    .houseClosing{
+      padding-top:0;
+      padding-bottom:120px;
+    }
+
+    .houseClosingGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(300px,.95fr);
+      gap:24px;
+      align-items:start;
+    }
+
+    .houseOverviewCard,
+    .houseSalesCard{
+      border-radius:30px;
+      padding:34px 32px;
+      background:linear-gradient(180deg,rgba(255,255,255,.54),rgba(255,255,255,.34));
+      border:1px solid var(--house-line);
+      box-shadow:var(--house-shadow-sm);
+    }
+
+    .houseOverviewGrid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+      margin-top:24px;
+      padding-top:24px;
+      border-top:1px solid var(--house-line);
+    }
+
+    .houseOverviewBlock small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--house-soft);
+    }
+
+    .houseOverviewBlock strong{
+      display:block;
+      font-size:1.02rem;
+      line-height:1.46;
+      font-weight:600;
+      color:var(--house-ink);
+    }
+
+    .houseOverviewBlock span{
+      display:block;
+      margin-top:8px;
+      font-size:.95rem;
+      line-height:1.7;
+      color:var(--house-muted);
+    }
+
+    .houseSalesCard{
+      background:linear-gradient(180deg, rgba(236,228,214,.88), rgba(232,223,207,.68));
+    }
+
+    .houseSalesCard h3{
+      margin:16px 0 12px;
+      font-size:1.72rem;
+      line-height:1.06;
+      letter-spacing:-.03em;
+      font-weight:500;
+      color:var(--house-ink);
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+    }
+
+    .houseSalesCard p{
+      margin:0;
+      color:var(--house-muted);
+      line-height:1.76;
+      max-width:32ch;
+    }
+
+    .houseActions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+
+    @media (max-width:1100px){
+      .houseHeroInner,
+      .houseIntroGrid,
+      .houseClosingGrid{
+        grid-template-columns:1fr;
+      }
+
+      .houseHeroPanel{
+        justify-self:start;
+      }
+
+      .houseConceptGrid,
+      .houseExperienceGrid,
+      .houseOverviewGrid{
+        grid-template-columns:1fr;
+      }
+
+      .houseGalleryGrid{
+        grid-template-columns:1fr;
+      }
+
+      .houseGalleryCard.tall{
+        min-height:340px;
+      }
+    }
+
+    @media (max-width:820px){
+      :root{
+        --house-wrap:min(100vw - 28px, 1000px);
+        --house-wrap-narrow:min(100vw - 28px, 900px);
+      }
+
+      .houseSection{
+        padding:84px 0;
+      }
+
+      .houseHero{
+        min-height:auto;
+        padding-top:calc(var(--header-h, 90px) + 30px);
+        padding-bottom:36px;
+      }
+
+      .houseOpeningFigure{
+        min-height:460px;
+        border-radius:24px;
+      }
+
+      .houseOpeningCaption{
+        width:calc(100% - 28px);
+        padding:28px 0 28px 14px;
+      }
+
+      .houseGalleryCard,
+      .houseGalleryCard.tall{
+        min-height:260px;
+        border-radius:22px;
+      }
+
+      .houseOverviewCard,
+      .houseSalesCard{
+        border-radius:24px;
+        padding:28px 20px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"SingleFamilyResidence",
+      "@id":"https://www.casasdavilahomes.com/en/houses/breeze.html#product",
+      "name":"Casa Brisa Suave | Casas da Vila Homes",
+      "description":"A residence with a stronger connection to the ground, 2 suites, private garden and pool, shaped by a more open and fluid daily rhythm.",
+      "brand":{
+        "@type":"Brand",
+        "name":"Casas da Vila Homes"
+      },
+      "category":"High-end residence",
+      "url":"https://www.casasdavilahomes.com/en/houses/breeze.html",
+      "image":"https://www.casasdavilahomes.com/assets/images/houses/brisa-suave/hero.jpg",
+      "additionalProperty":[
+        {
+          "@type":"PropertyValue",
+          "name":"Location",
+          "value":"Trancoso, Bahia, Brazil"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Project",
+          "value":"Casas da Vila Homes"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Typology",
+          "value":"2 suites"
+        },
+        {
+          "@type":"PropertyValue",
+          "name":"Distinctive feature",
+          "value":"Private garden and pool"
+        }
+      ]
+    },
+    {
+      "@type":"BreadcrumbList",
+      "@id":"https://www.casasdavilahomes.com/en/houses/breeze.html#breadcrumb",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"Home",
+          "item":"https://www.casasdavilahomes.com/en/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"The Houses",
+          "item":"https://www.casasdavilahomes.com/en/houses/"
+        },
+        {
+          "@type":"ListItem",
+          "position":3,
+          "name":"Casa Brisa Suave",
+          "item":"https://www.casasdavilahomes.com/en/houses/breeze.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+  <div id="site-header"></div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="houseHero">
+      <div class="houseHeroMedia">
+        <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casa Brisa Suave at Casas da Vila Homes" />
+      </div>
+
+      <div class="houseHeroInner">
+        <div class="houseHeroCopy" data-reveal="left">
+          <p class="houseEyebrow">Casa Brisa Suave • Casas da Vila Homes</p>
+
+          <h1 class="houseDisplay">
+            Ground-level
+            pool,
+            garden
+            and a house
+            open to the plot.
+          </h1>
+
+          <p class="houseLead">
+            Brisa Suave proposes a more horizontal way of living, with direct continuity between the social areas, veranda, pool and private garden — a house designed to live the exterior with natural ease.
+          </p>
+        </div>
+
+        <aside class="houseHeroPanel" data-reveal="right">
+          <h2>A typology defined by flow and ground presence.</h2>
+          <p>
+            Unlike the more vertical readings of the collection, Brisa Suave affirms a stronger continuity with the ground, the garden and everyday outdoor living.
+          </p>
+
+          <div class="houseHeroMeta">
+            <span>2 suites</span>
+            <span>Ground-level pool</span>
+            <span>Private garden</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="houseSection houseIntro">
+      <div class="houseWrap">
+        <div class="houseIntroGrid">
+          <div data-reveal="left">
+            <p class="houseEyebrow">Concept</p>
+            <h2 class="houseH2">
+              A house that unfolds on the plane of the garden.
+            </h2>
+          </div>
+
+          <div data-reveal="right">
+            <p class="houseLead">
+              Unlike the more vertical typologies, Brisa Suave develops in a more open and continuous way, bringing interior and exterior into closer relation. The ground-level pool and garden do not function as appendices: they structure the everyday experience of the house and define its particular way of being lived.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPENING IMAGE -->
+    <section class="houseSection houseOpening">
+      <div class="houseWrap">
+        <figure class="houseOpeningFigure" data-reveal="zoom">
+          <img src="/assets/images/houses/brisa-suave/brisa-1.jpg" alt="Atmosphere of Casa Brisa Suave" />
+
+          <figcaption class="houseOpeningCaption">
+            <p class="houseEyebrow">Horizontality and permanence</p>
+            <h2 class="houseH2">A typology in which the exterior becomes part of domestic life from the first gesture.</h2>
+            <p class="houseLead">
+              The relation between veranda, pool and garden is not presented as a leisure episode, but as part of the spatial organisation and daily rhythm of the residence itself.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CONCEPTS -->
+    <section class="houseSection houseConcepts">
+      <div class="houseWrap">
+        <div class="houseConceptGrid">
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">01 · Implantation</div>
+            <h3>Direct relation to the plot</h3>
+            <p>
+              The house is positioned in a more horizontal way, creating physical and visual continuity between interior, veranda, pool and garden.
+            </p>
+          </article>
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">02 · Social area</div>
+            <h3>Natural integration</h3>
+            <p>
+              Living, kitchen and outdoor areas connect without rupture, favouring conviviality, ease of circulation and a more fluid daily use.
+            </p>
+          </article>
+
+          <article class="houseConceptCard" data-reveal>
+            <div class="houseConceptIndex">03 · Pool</div>
+            <h3>Ground-level continuity</h3>
+            <p>
+              The pool occupies a central position in the reading of the house, reinforcing the typology’s open character and the continuity of outdoor life.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+<section class="houseSection houseGallery">
+  <div class="houseWrap">
+
+    <div class="houseGalleryEditorial">
+
+      <figure class="galleryMain" data-reveal>
+        <img src="/assets/images/houses/brisa-suave/brisa-2.jpg" alt="Casa Brisa Suave garden and façade" />
+      </figure>
+
+      <div class="gallerySide">
+        <figure data-reveal>
+          <img src="/assets/images/houses/brisa-suave/brisa-4.jpg" alt="Casa Brisa Suave exterior area" />
+        </figure>
+
+        <figure data-reveal>
+          <img src="/assets/images/houses/brisa-suave/brisa-1.jpg" alt="Casa Brisa Suave main view" />
+        </figure>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+    <!-- EXPERIENCE -->
+    <section class="houseSection houseExperience">
+      <div class="houseWrap">
+        <div class="houseExperienceGrid">
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Horizontality</span>
+            <h3>A more open house</h3>
+            <p>
+              Fewer level changes, more spatial continuity and a domestic reading that feels simpler, clearer and more comfortable.
+            </p>
+          </article>
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Exterior</span>
+            <h3>Outdoor life as routine</h3>
+            <p>
+              Garden and pool belong to the everyday life of the house, not only to leisure time or occasional use.
+            </p>
+          </article>
+
+          <article class="houseExperienceItem" data-reveal>
+            <span class="pill">Use</span>
+            <h3>Fluid conviviality</h3>
+            <p>
+              The typology favours gathering, permanence and a more natural circulation between social and outdoor spaces.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="houseSection houseClosing">
+      <div class="houseWrap">
+        <div class="houseClosingGrid">
+
+          <div class="houseOverviewCard" data-reveal="left">
+            <p class="houseEyebrow">Availability</p>
+
+            <h2 class="houseH2" style="margin-top:18px;">
+              A house designed for those who value garden, pool and conviviality as part of daily life.
+            </h2>
+
+            <div class="houseOverviewGrid">
+              <div class="houseOverviewBlock">
+                <small>Configuration</small>
+                <strong>2 suites</strong>
+                <span>With integrated social areas and a more open relation to the plot.</span>
+              </div>
+
+              <div class="houseOverviewBlock">
+                <small>Distinctive feature</small>
+                <strong>Ground-level pool</strong>
+                <span>With direct relation to the garden and to the daily experience of the house.</span>
+              </div>
+
+              <div class="houseOverviewBlock">
+                <small>Delivery</small>
+                <strong>2027</strong>
+                <span>According to the specific timeline of each unit.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="houseSalesCard" data-reveal="right">
+            <p class="houseEyebrow">Private Sales</p>
+
+            <h3>Receive the full presentation of the residence.</h3>
+
+            <p>
+              Check availability, implantation and the complete details of Casa Brisa Suave through the presentation material.
+            </p>
+
+            <div class="houseActions">
+              <a class="btn btn-primary" href="/en/contact/">Request presentation</a>
+              <a class="btn btn-outline" href="/en/houses/">View other houses</a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
