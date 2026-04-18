@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Casas da Vila Homes — Site bilíngue base
 
 Estrutura criada para VS Code + Vercel com:
