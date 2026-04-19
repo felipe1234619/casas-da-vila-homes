@@ -228,3 +228,141 @@ const hreflangMatrix = {
     "x-default": "/en/blog/trancoso-real-estate-investment/"
   }
 };
+export const SEO_MAP = {
+
+  /* HUBS */
+  "/pt/hub/": {
+    title: "Trancoso: guia de investimento e imóveis | Casas da Vila Homes",
+    description: "Entenda preços, melhor momento de compra, escassez e posicionamento no mercado imobiliário de Trancoso.",
+    canonical: "https://www.casasdavilahomes.com/pt/hub/",
+    alternates: {
+      "pt-BR": "/pt/hub/",
+      "en": "/en/hub/",
+      "x-default": "/en/hub/"
+    }
+  },
+
+  "/en/hub/": {
+    title: "Trancoso real estate guide: prices, timing & value",
+    description: "A structured guide to buying and investing in Trancoso: prices, timing, scarcity and long-term positioning.",
+    canonical: "https://www.casasdavilahomes.com/en/hub/",
+    alternates: {
+      "en": "/en/hub/",
+      "pt-BR": "/pt/hub/",
+      "x-default": "/en/hub/"
+    }
+  },
+
+  /* BLOG PT */
+  "/pt/blog/investir-em-trancoso/": {
+    title: "Investir em Trancoso: guia completo de valor e escassez",
+    description: "Como investir em Trancoso: entenda escassez, arquitetura, timing e posicionamento para decisões mais sólidas.",
+    canonical: "https://www.casasdavilahomes.com/pt/blog/investir-em-trancoso/",
+    alternates: {
+      "pt-BR": "/pt/blog/investir-em-trancoso/",
+      "en": "/en/blog/trancoso-investment/",
+      "x-default": "/en/blog/trancoso-investment/"
+    }
+  },
+
+  "/pt/blog/quanto-custa-casa-trancoso/": {
+    title: "Quanto custa uma casa em Trancoso em 2026?",
+    description: "Veja quanto custa comprar uma casa em Trancoso e o que realmente define o valor além do preço por m².",
+    canonical: "https://www.casasdavilahomes.com/pt/blog/quanto-custa-casa-trancoso/",
+    alternates: {
+      "pt-BR": "/pt/blog/quanto-custa-casa-trancoso/",
+      "en": "/en/blog/house-prices-trancoso/",
+      "x-default": "/en/blog/house-prices-trancoso/"
+    }
+  },
+
+  "/pt/blog/melhor-epoca-trancoso/": {
+    title: "Melhor época para investir em Trancoso (guia real)",
+    description: "Descubra o melhor momento para investir em Trancoso considerando escassez, oferta e timing de entrada.",
+    canonical: "https://www.casasdavilahomes.com/pt/blog/melhor-epoca-trancoso/",
+    alternates: {
+      "pt-BR": "/pt/blog/melhor-epoca-trancoso/",
+      "en": "/en/blog/best-time-invest-trancoso/",
+      "x-default": "/en/blog/best-time-invest-trancoso/"
+    }
+  },
+
+  "/pt/blog/vale-a-pena-comprar-casa-trancoso/": {
+    title: "Vale a pena comprar casa em Trancoso?",
+    description: "Entenda quando vale a pena comprar uma casa em Trancoso e quais fatores realmente importam na decisão.",
+    canonical: "https://www.casasdavilahomes.com/pt/blog/vale-a-pena-comprar-casa-trancoso/",
+    alternates: {
+      "pt-BR": "/pt/blog/vale-a-pena-comprar-casa-trancoso/",
+      "en": "/en/blog/is-it-worth-buying-house-trancoso/",
+      "x-default": "/en/blog/is-it-worth-buying-house-trancoso/"
+    }
+  },
+
+  "/pt/blog/trancoso-investimento-imobiliario/": {
+    title: "Investimento imobiliário em Trancoso: guia estratégico",
+    description: "Uma análise estruturada do investimento imobiliário em Trancoso: escassez, arquitetura e valor no longo prazo.",
+    canonical: "https://www.casasdavilahomes.com/pt/blog/trancoso-investimento-imobiliario/",
+    alternates: {
+      "pt-BR": "/pt/blog/trancoso-investimento-imobiliario/",
+      "en": "/en/blog/trancoso-real-estate-investment/",
+      "x-default": "/en/blog/trancoso-real-estate-investment/"
+    }
+  },
+
+  /* BLOG EN */
+  "/en/blog/trancoso-investment/": {
+    title: "Trancoso investment: how to read value in a limited market",
+    description: "A structured approach to investing in Trancoso through scarcity, positioning and long-term value.",
+    canonical: "https://www.casasdavilahomes.com/en/blog/trancoso-investment/",
+    alternates: {
+      "en": "/en/blog/trancoso-investment/",
+      "pt-BR": "/pt/blog/investir-em-trancoso/",
+      "x-default": "/en/blog/trancoso-investment/"
+    }
+  },
+
+  "/en/blog/house-prices-trancoso/": {
+    title: "House prices in Trancoso: what shapes value",
+    description: "Understand what defines house prices in Trancoso beyond square meter pricing.",
+    canonical: "https://www.casasdavilahomes.com/en/blog/house-prices-trancoso/",
+    alternates: {
+      "en": "/en/blog/house-prices-trancoso/",
+      "pt-BR": "/pt/blog/quanto-custa-casa-trancoso/",
+      "x-default": "/en/blog/house-prices-trancoso/"
+    }
+  },
+
+  "/en/blog/best-time-invest-trancoso/": {
+    title: "Best time to invest in Trancoso",
+    description: "Timing, scarcity and positioning: when to invest in Trancoso real estate.",
+    canonical: "https://www.casasdavilahomes.com/en/blog/best-time-invest-trancoso/",
+    alternates: {
+      "en": "/en/blog/best-time-invest-trancoso/",
+      "pt-BR": "/pt/blog/melhor-epoca-trancoso/",
+      "x-default": "/en/blog/best-time-invest-trancoso/"
+    }
+  },
+
+  "/en/blog/is-it-worth-buying-house-trancoso/": {
+    title: "Is it worth buying a house in Trancoso?",
+    description: "A real analysis of whether buying a house in Trancoso makes sense.",
+    canonical: "https://www.casasdavilahomes.com/en/blog/is-it-worth-buying-house-trancoso/",
+    alternates: {
+      "en": "/en/blog/is-it-worth-buying-house-trancoso/",
+      "pt-BR": "/pt/blog/vale-a-pena-comprar-casa-trancoso/",
+      "x-default": "/en/blog/is-it-worth-buying-house-trancoso/"
+    }
+  },
+
+  "/en/blog/trancoso-real-estate-investment/": {
+    title: "Trancoso real estate investment guide",
+    description: "A deeper look at real estate investment in Trancoso and long-term value.",
+    canonical: "https://www.casasdavilahomes.com/en/blog/trancoso-real-estate-investment/",
+    alternates: {
+      "en": "/en/blog/trancoso-real-estate-investment/",
+      "pt-BR": "/pt/blog/trancoso-investimento-imobiliario/",
+      "x-default": "/en/blog/trancoso-real-estate-investment/"
+    }
+  }
+
+};

@@ -11,6 +11,74 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- HUB -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/hub/</loc>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/hub/</loc>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- BLOG HUB -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- BLOG PT -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/investir-em-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/quanto-custa-casa-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/melhor-epoca-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/vale-a-pena-comprar-casa-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/trancoso-investimento-imobiliario/</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- BLOG EN -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/trancoso-investment/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/house-prices-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/best-time-invest-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/is-it-worth-buying-house-trancoso/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/trancoso-real-estate-investment/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/rental-pool-trancoso/</loc>
+    <priority>0.85</priority>
+  </url>
+
   <!-- PROJETO -->
   <url>
     <loc>https://www.casasdavilahomes.com/pt/projeto/</loc>
@@ -27,27 +95,6 @@
     <loc>https://www.casasdavilahomes.com/en/houses/</loc>
   </url>
 
-  <!-- CASAS INDIVIDUAIS -->
-  <url>
-    <loc>https://www.casasdavilahomes.com/pt/casas/brisa-suave.html</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/pt/casas/serenidade.html</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/pt/casas/ceu.html</loc>
-  </url>
-
-  <url>
-    <loc>https://www.casasdavilahomes.com/en/houses/breeze.html</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/en/houses/serenity.html</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/en/houses/sky.html</loc>
-  </url>
-
   <!-- SOCIAL -->
   <url>
     <loc>https://www.casasdavilahomes.com/pt/social/</loc>
@@ -56,7 +103,7 @@
     <loc>https://www.casasdavilahomes.com/en/social/</loc>
   </url>
 
-  <!-- RENTAL POOL -->
+  <!-- RENTAL -->
   <url>
     <loc>https://www.casasdavilahomes.com/pt/rental-pool/</loc>
   </url>
@@ -86,21 +133,6 @@
   </url>
   <url>
     <loc>https://www.casasdavilahomes.com/en/contact/</loc>
-  </url>
-
-  <!-- BLOG -->
-  <url>
-    <loc>https://www.casasdavilahomes.com/pt/blog/investimento-trancoso/</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/pt/blog/rental-pool-trancoso/</loc>
-  </url>
-
-  <url>
-    <loc>https://www.casasdavilahomes.com/en/blog/trancoso-investment/</loc>
-  </url>
-  <url>
-    <loc>https://www.casasdavilahomes.com/en/blog/rental-pool-trancoso/</loc>
   </url>
 
 </urlset>
