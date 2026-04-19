@@ -1,16 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-seo-page="home">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Casas da Vila Homes | Residential homes in Trancoso</title>
-  <meta name="description" content="Casas da Vila Homes is a residential collection in Trancoso shaped by distinct house typologies, private gardens, pools and a quieter architectural proposition." />
-  <link rel="canonical" href="https://www.casasdavila.com/en/" />
-  <link rel="alternate" hreflang="pt-BR" href="https://www.casasdavila.com/pt/" />
-  <link rel="alternate" hreflang="en" href="https://www.casasdavila.com/en/" />
+
   <link rel="stylesheet" href="/assets/css/global.css" />
+
   <script defer src="/assets/js/header-loader.js"></script>
   <script defer src="/assets/js/main.js"></script>
+
+  <script defer src="/assets/meta/seo/seo-map.js"></script>
+  <script defer src="/assets/meta/seo/schema-base.js"></script>
+  <script defer src="/assets/meta/seo/seo-loader.js"></script>
+</head>
   <style>
     .home-hero{min-height:100svh;}
     .hero-stage{position:relative;padding:clamp(18px,3vw,30px);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 80px rgba(0,0,0,.18);overflow:hidden}
@@ -189,6 +191,7 @@
 
   .house-card .house-overlay-copy h3{
     font-size:1.34rem;
+
   }
 }    .experience-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
     .experience-item{padding:30px;border-radius:26px;background:rgba(255,255,255,.48);border:1px solid rgba(255,255,255,.46);box-shadow:var(--shadow-soft)}
@@ -207,8 +210,42 @@
     .final-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,123,84,.08),rgba(61,76,67,.12));pointer-events:none}
     @media (max-width:1080px){.editorial-grid,.availability-board,.experience-grid{grid-template-columns:1fr}.availability-row{grid-template-columns:1fr 1fr}.hero-note{grid-template-columns:1fr}}
     @media (max-width:820px){.availability-row{grid-template-columns:1fr}.hero-stage{padding:22px}.home-hero .hero-inner{padding-bottom:34px}}
+  .manifesto-title{
+  max-width: 16.5ch;
+  letter-spacing: -0.03em;
+}
+  .manifesto-title{
+  max-width:16.5ch;
+  letter-spacing:-0.03em;
+  text-wrap:balance;
+}
+
+@media (max-width:1080px){
+  .manifesto-title{
+    max-width:15.8ch;
+  }
+}
+
+@media (max-width:820px){
+  .manifesto-title{
+    max-width:100%;
+    font-size:clamp(2.2rem, 8vw, 3.4rem);
+    line-height:.98;
+    letter-spacing:-0.035em;
+    text-wrap:pretty;
+  }
+}
+
+@media (max-width:560px){
+  .manifesto-title{
+    font-size:clamp(2rem, 9vw, 2.8rem);
+    line-height:1;
+    letter-spacing:-0.03em;
+  }
+}
   </style>
-  <script type="application/ld+json">
+  
+<script type="application/ld+json">
 {
   "@context":"https://schema.org",
   "@graph":[
@@ -219,7 +256,7 @@
       "url":"https://www.casasdavilahomes.com/",
       "logo":"https://www.casasdavilahomes.com/assets/meta/og/og-home.jpg",
       "sameAs":[
-        "https://www.instagram.com/casasdavilahomes"
+        "https://www.instagram.com/casasdavila"
       ]
     },
     {
@@ -227,102 +264,48 @@
       "@id":"https://www.casasdavilahomes.com/#website",
       "url":"https://www.casasdavilahomes.com/",
       "name":"Casas da Vila Homes",
-      "publisher":{
-        "@id":"https://www.casasdavilahomes.com/#organization"
-      },
       "inLanguage":"en"
-    },
-    {
-      "@type":"RealEstateListing",
-      "@id":"https://www.casasdavilahomes.com/#listing",
-      "name":"Casas da Vila Homes",
-      "url":"https://www.casasdavilahomes.com/en/",
-      "description":"Residential collection in Trancoso featuring high-end homes, private gardens, shared living areas, optional rental pool operations and authored architecture.",
-      "inLanguage":"en",
-      "category":"Residential Development",
-      "about":{
-        "@type":"Place",
-        "name":"Trancoso, Bahia, Brazil"
-      },
-      "provider":{
-        "@id":"https://www.casasdavilahomes.com/#organization"
-      }
-    },
-    {
-      "@type":"Product",
-      "@id":"https://www.casasdavilahomes.com/#product",
-      "name":"Casas da Vila Homes",
-      "description":"Residential project in Trancoso with house typologies, shared amenities and optional structured rental operations.",
-      "brand":{
-        "@type":"Brand",
-        "name":"Casas da Vila Homes"
-      },
-      "category":"Real Estate Development",
-      "url":"https://www.casasdavilahomes.com/en/",
-      "image":"https://www.casasdavilahomes.com/assets/meta/og/og-home.jpg",
-      "additionalProperty":[
-        {
-          "@type":"PropertyValue",
-          "name":"Location",
-          "value":"Trancoso, Bahia, Brazil"
-        },
-        {
-          "@type":"PropertyValue",
-          "name":"Typologies",
-          "value":"Casa Serenidade, Casa Brisa Suave, Casa Céu"
-        },
-        {
-          "@type":"PropertyValue",
-          "name":"Shared Areas",
-          "value":"Central pool, lounges, sauna, gardens"
-        },
-        {
-          "@type":"PropertyValue",
-          "name":"Operations",
-          "value":"Optional rental pool"
-        },
-        {
-          "@type":"PropertyValue",
-          "name":"Sustainability",
-          "value":"Project conceived with EDGE certification guidelines"
-        }
-      ]
     }
   ]
 }
+</script>
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@graph":[
+  "@type":"FAQPage",
+  "mainEntity":[
     {
-      "@type":"WebPage",
-      "@id":"https://www.casasdavilahomes.com/en/social/#webpage",
-      "url":"https://www.casasdavilahomes.com/en/social/",
-      "name":"Shared Living | Casas da Vila Homes",
-      "description":"Central pool, lounges, sauna and gardens as an extension of the residential experience at Casas da Vila Homes.",
-      "inLanguage":"en",
-      "about":{
-        "@type":"Place",
-        "name":"Shared areas of Casas da Vila Homes"
+      "@type":"Question",
+      "name":"How to evaluate a Trancoso investment",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"A stronger residential investment in Trancoso is not defined by price alone, but by architectural quality, scarcity, positioning within the project and long-term relevance."
       }
     },
     {
-      "@type":"BreadcrumbList",
-      "@id":"https://www.casasdavilahomes.com/en/social/#breadcrumb",
-      "itemListElement":[
-        {
-          "@type":"ListItem",
-          "position":1,
-          "name":"Home",
-          "item":"https://www.casasdavilahomes.com/en/"
-        },
-        {
-          "@type":"ListItem",
-          "position":2,
-          "name":"Shared Living",
-          "item":"https://www.casasdavilahomes.com/en/social/"
-        }
-      ]
+      "@type":"Question",
+      "name":"What to consider before buying",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Before buying, it is important to observe the relation to the site, typology, privacy, potential use, operational flexibility and the consistency of the project as a whole."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Understand operations",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"In projects with optional rental pool logic, operation matters because it affects flexibility of use, care standards, hospitality structure and long-term asset reading."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"When a home becomes an asset",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"A home becomes more than a residence when it combines personal use, architectural identity, scarcity and the possibility of structured operation without compromising its residential character."
+      }
     }
   ]
 }
@@ -390,9 +373,9 @@
       <div data-reveal>
         <span class="eyebrow page-eyebrow">Manifesto</span>
 
-        <h2 class="h2" style="margin-top:18px;">
-          Not a catalogue of units. A statement of place.
-        </h2>
+<h2 class="h2 manifesto-title" style="margin-top:18px;">
+  Not a catalogue of units. A statement of place.
+</h2>
       </div>
 
       <div class="editorial-copy" data-reveal>
@@ -573,7 +556,6 @@
       </p>
 
     </div>
-    </div>
   </section>
 
   <!-- EXPERIENCE -->
@@ -609,9 +591,8 @@
 
     </div>
   </section>
-<section class="section seoBlock">
+<section class="section seoBlock seoBlockSoft">
   <div class="container">
-
     <div class="seoInner">
 
       <span class="eyebrow">Further reading</span>
@@ -624,28 +605,39 @@
         Understanding a residential project in Trancoso involves location, architecture, use and operational potential.
       </p>
 
-      <div class="seoLinks">
+      <div class="seoFaq">
 
-        <a data-localized-path="investment" class="seoLink">
-          How to evaluate a Trancoso investment
-        </a>
+        <details class="seoFaqItem">
+          <summary>How to evaluate a Trancoso investment</summary>
+          <div class="seoFaqAnswer">
+            A stronger residential investment in Trancoso is not defined by price alone, but by architectural quality, scarcity, positioning within the project and long-term relevance.
+          </div>
+        </details>
 
-        <a href="/en/blog/trancoso-investment/" class="seoLink">
-          What to consider before buying
-        </a>
+        <details class="seoFaqItem">
+          <summary>What to consider before buying</summary>
+          <div class="seoFaqAnswer">
+            Before buying, it is important to observe the relation to the site, typology, privacy, potential use, operational flexibility and the consistency of the project as a whole.
+          </div>
+        </details>
 
-        <a data-localized-path="operations" class="seoLink">
-          Understand operations
-        </a>
+        <details class="seoFaqItem">
+          <summary>Understand operations</summary>
+          <div class="seoFaqAnswer">
+            In projects with optional rental pool logic, operation matters because it affects flexibility of use, care standards, hospitality structure and long-term asset reading.
+          </div>
+        </details>
 
-        <a href="/en/blog/rental-pool-trancoso/" class="seoLink">
-          When a home becomes an asset
-        </a>
+        <details class="seoFaqItem">
+          <summary>When a home becomes an asset</summary>
+          <div class="seoFaqAnswer">
+            A home becomes more than a residence when it combines personal use, architectural identity, scarcity and the possibility of structured operation without compromising its residential character.
+          </div>
+        </details>
 
       </div>
 
     </div>
-
   </div>
 </section>
   <!-- CTA -->
