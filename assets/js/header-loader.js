@@ -51,7 +51,13 @@ function getLocalizedPath(key, lang) {
       view_houses: '/pt/casas/',
       view_shared: '/pt/social/',
       view_operations: '/pt/rental-pool/',
-
+      // hub + blog
+      hub: '/pt/hub/',
+      blog_investment: '/pt/blog/investir-em-trancoso/',
+      blog_prices: '/pt/blog/quanto-custa-casa-trancoso/',
+      blog_timing: '/pt/blog/melhor-epoca-trancoso/',
+      blog_worth: '/pt/blog/vale-a-pena-comprar-casa-trancoso/',
+      blog_realestate: '/pt/blog/trancoso-investimento-imobiliario/',
       // casas individuais
       breeze: '/pt/casas/brisa-suave.html',
       sky: '/pt/casas/ceu.html',
@@ -80,7 +86,13 @@ function getLocalizedPath(key, lang) {
       view_houses: '/en/houses/',
       view_shared: '/en/social/',
       view_operations: '/en/rental-pool/',
-
+      // hub + blog
+      hub: '/en/hub/',
+      blog_investment: '/en/blog/trancoso-investment/',
+      blog_prices: '/en/blog/house-prices-trancoso/',
+      blog_timing: '/en/blog/best-time-invest-trancoso/',
+      blog_worth: '/en/blog/is-it-worth-buying-house-trancoso/',
+      blog_realestate: '/en/blog/trancoso-real-estate-investment/',
       // individual houses
       breeze: '/en/houses/breeze.html',
       sky: '/en/houses/sky.html',
@@ -308,7 +320,14 @@ function setupFooterI18n() {
       view_houses: 'Conhecer as casas',
       view_shared: 'Ver áreas sociais',
       view_operations: 'Entender a operação',
+      insights_title: 'Trancoso Insights',
 
+      hub: 'Hub',
+      blog_investment: 'Investir em Trancoso',
+      blog_prices: 'Quanto custa uma casa',
+      blog_timing: 'Melhor época para investir',
+      blog_worth: 'Vale a pena comprar?',
+      blog_realestate: 'Investimento imobiliário',
       rights: 'Todos os direitos reservados.',
 
       footer_copy:
@@ -335,7 +354,14 @@ function setupFooterI18n() {
       view_houses: 'View the houses',
       view_shared: 'See shared living',
       view_operations: 'Understand operations',
+      insights_title: 'Trancoso Insights',
 
+      hub: 'Hub',
+      blog_investment: 'Invest in Trancoso',
+      blog_prices: 'House prices in Trancoso',
+      blog_timing: 'Best time to invest',
+      blog_worth: 'Is it worth buying?',
+      blog_realestate: 'Real estate investment',
       rights: 'All rights reserved.',
 
       footer_copy:

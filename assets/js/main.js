@@ -71,3 +71,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   requestTick();
 })();
+const footerInsights = {
+  pt: [
+    { label: "Investir em Trancoso", href: "/pt/blog/investir-em-trancoso/" },
+    { label: "Quanto custa uma casa", href: "/pt/blog/quanto-custa-casa-trancoso/" },
+    { label: "Melhor época para investir", href: "/pt/blog/melhor-epoca-trancoso/" },
+    { label: "Vale a pena comprar?", href: "/pt/blog/vale-a-pena-comprar-casa-trancoso/" },
+    { label: "Investimento imobiliário", href: "/pt/blog/trancoso-investimento-imobiliario/" }
+  ],
+  en: [
+    { label: "Trancoso investment", href: "/en/blog/trancoso-investment/" },
+    { label: "House prices", href: "/en/blog/house-prices-trancoso/" },
+    { label: "Best time to invest", href: "/en/blog/best-time-invest-trancoso/" },
+    { label: "Is it worth buying?", href: "/en/blog/is-it-worth-buying-house-trancoso/" },
+    { label: "Real estate investment", href: "/en/blog/trancoso-real-estate-investment/" }
+  ]
+};
+
+(function () {
+  const lang = document.documentElement.lang.startsWith("pt") ? "pt" : "en";
+  const container = document.getElementById("footer-insights-links");
+
+  if (!container) return;
+
+  container.innerHTML = footerInsights[lang]
+    .map(link => `<a href="${link.href}">${link.label}</a>`)
+    .join("");
+})();

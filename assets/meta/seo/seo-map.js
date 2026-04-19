@@ -201,3 +201,30 @@ window.__SEO_MAP__ = {
     }
   }
 };
+const hreflangMatrix = {
+  "/pt/blog/investir-em-trancoso/": {
+    "pt-BR": "/pt/blog/investir-em-trancoso/",
+    "en": "/en/blog/trancoso-investment/",
+    "x-default": "/en/blog/trancoso-investment/"
+  },
+  "/pt/blog/quanto-custa-casa-trancoso/": {
+    "pt-BR": "/pt/blog/quanto-custa-casa-trancoso/",
+    "en": "/en/blog/house-prices-trancoso/",
+    "x-default": "/en/blog/house-prices-trancoso/"
+  },
+  "/pt/blog/melhor-epoca-trancoso/": {
+    "pt-BR": "/pt/blog/melhor-epoca-trancoso/",
+    "en": "/en/blog/best-time-invest-trancoso/",
+    "x-default": "/en/blog/best-time-invest-trancoso/"
+  },
+  "/pt/blog/vale-a-pena-comprar-casa-trancoso/": {
+    "pt-BR": "/pt/blog/vale-a-pena-comprar-casa-trancoso/",
+    "en": "/en/blog/is-it-worth-buying-house-trancoso/",
+    "x-default": "/en/blog/is-it-worth-buying-house-trancoso/"
+  },
+  "/pt/blog/trancoso-investimento-imobiliario/": {
+    "pt-BR": "/pt/blog/trancoso-investimento-imobiliario/",
+    "en": "/en/blog/trancoso-real-estate-investment/",
+    "x-default": "/en/blog/trancoso-real-estate-investment/"
+  }
+};

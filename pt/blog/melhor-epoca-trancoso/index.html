@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="pt-BR" data-seo-page="blog">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Melhor época para investir em Trancoso | Casas da Vila Homes</title>
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/meta/seo/seo-map.js"></script>
+  <script defer src="/assets/meta/seo/schema-base.js"></script>
+  <script defer src="/assets/meta/seo/seo-loader.js"></script>
+    <style>
+    .articleHero{
+      padding:calc(var(--header-h,96px) + 42px) 0 34px;
+    }
+    .articleWrap{
+      width:min(1120px, calc(100vw - 40px));
+      margin:0 auto;
+    }
+    .articleIntro{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+      gap:26px;
+      align-items:end;
+    }
+    .articleKicker{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .articleKicker::before{
+      content:"";
+      width:38px;
+      height:1px;
+      background:rgba(111,85,58,.35);
+    }
+    .articleTitle{
+      margin:0;
+      max-width:11ch;
+      font-size:clamp(3rem,7vw,5.8rem);
+      line-height:.94;
+      letter-spacing:-.05em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      text-wrap:balance;
+    }
+    .articleLead{
+      margin:22px 0 0;
+      max-width:58ch;
+      font-size:1.08rem;
+      line-height:1.8;
+      color:var(--muted);
+    }
+    .articleMetaCard{
+      padding:26px;
+      border-radius:26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.44));
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--shadow-soft);
+    }
+    .articleMetaCard small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--soft);
+    }
+    .articleMetaCard strong{
+      display:block;
+      font-size:1rem;
+      line-height:1.5;
+      color:var(--ink);
+    }
+    .articleMetaCard span{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.95rem;
+    }
+    .articleMetaGrid{
+      display:grid;
+      gap:18px;
+    }
+    .articleBody{
+      padding:18px 0 100px;
+    }
+    .articleGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(260px,.34fr);
+      gap:34px;
+      align-items:start;
+    }
+    .articleContent{
+      min-width:0;
+    }
+    .articleContent section + section{
+      margin-top:46px;
+    }
+    .articleContent h2{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      text-wrap:balance;
+    }
+    .articleContent h3{
+      margin:22px 0 10px;
+      font-size:1.35rem;
+      line-height:1.12;
+      letter-spacing:-.03em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      color:var(--ink);
+    }
+    .articleContent p{
+      margin:0 0 16px;
+      font-size:1.02rem;
+      line-height:1.86;
+      color:var(--muted);
+      max-width:70ch;
+    }
+    .articleContent ul{
+      margin:0 0 18px 18px;
+      padding:0;
+      color:var(--muted);
+    }
+    .articleContent li{
+      margin:0 0 10px;
+      line-height:1.8;
+    }
+    .articleContent a{
+      color:var(--ink);
+      text-decoration:none;
+      border-bottom:1px solid rgba(32,28,24,.16);
+      transition:border-color .25s ease, color .25s ease;
+    }
+    .articleContent a:hover{
+      color:#000;
+      border-color:rgba(32,28,24,.4);
+    }
+    .articleHighlight{
+      padding:28px;
+      border-radius:28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.46));
+      border:1px solid rgba(255,255,255,.5);
+      box-shadow:var(--shadow-soft);
+    }
+    .articleHighlight h3{
+      margin-top:0;
+    }
+    .articlePull{
+      padding:34px;
+      border-radius:30px;
+      background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);
+      color:#fff;
+      box-shadow:0 26px 70px rgba(34,28,23,.22);
+      position:relative;
+      overflow:hidden;
+    }
+    .articlePull::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -24% auto;
+      width:340px;
+      height:340px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);
+    }
+    .articlePull > *{
+      position:relative;
+      z-index:2;
+    }
+    .articlePull p{
+      color:rgba(255,255,255,.86);
+      max-width:34ch;
+      margin:0;
+      font-size:1.1rem;
+      line-height:1.72;
+    }
+    .articleAside{
+      position:sticky;
+      top:calc(var(--header-h,96px) + 22px);
+      display:grid;
+      gap:18px;
+    }
+    .articleAsideCard{
+      padding:24px 22px;
+      border-radius:24px;
+      background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--shadow-soft);
+    }
+    .articleAsideCard h3{
+      margin:0 0 10px;
+      font-size:1.08rem;
+      line-height:1.2;
+      font-weight:600;
+      color:var(--ink);
+    }
+    .articleAsideCard p,
+    .articleAsideCard li{
+      font-size:.95rem;
+      line-height:1.72;
+      color:var(--muted);
+    }
+    .articleAsideCard ul{
+      margin:0;
+      padding-left:18px;
+    }
+    .articleAsideCard .btn{
+      margin-top:8px;
+      width:100%;
+      justify-content:center;
+    }
+    .articleFaq{
+      display:grid;
+      gap:12px;
+      margin-top:10px;
+    }
+    .articleFaq details{
+      padding:18px 18px 16px;
+      border-radius:20px;
+      background:rgba(255,255,255,.58);
+      border:1px solid rgba(255,255,255,.5);
+    }
+    .articleFaq summary{
+      cursor:pointer;
+      list-style:none;
+      font-size:1rem;
+      line-height:1.5;
+      color:var(--ink);
+      font-weight:600;
+    }
+    .articleFaq summary::-webkit-details-marker{display:none;}
+    .articleFaq .answer{
+      margin-top:12px;
+      color:var(--muted);
+      line-height:1.78;
+      font-size:.98rem;
+    }
+    .articleRelated{
+      margin-top:54px;
+      padding:30px;
+      border-radius:30px;
+      background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.46));
+      border:1px solid rgba(255,255,255,.48);
+      box-shadow:var(--shadow-soft);
+    }
+    .articleRelated h2{
+      margin-bottom:14px;
+    }
+    .articleRelatedLinks{
+      display:grid;
+      gap:0;
+      margin-top:18px;
+      border-top:1px solid var(--line);
+    }
+    .articleRelatedLinks a{
+      display:block;
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+      text-decoration:none;
+      color:var(--ink);
+      line-height:1.6;
+    }
+    .articleRelatedLinks a:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+    }
+    @media (max-width:1080px){
+      .articleIntro,
+      .articleGrid{
+        grid-template-columns:1fr;
+      }
+      .articleAside{
+        position:static;
+      }
+      .articleTitle{
+        max-width:12ch;
+      }
+    }
+    @media (max-width:820px){
+      .articleHero{
+        padding-top:calc(var(--header-h,90px) + 30px);
+      }
+      .articleWrap{
+        width:min(100vw - 28px, 1120px);
+      }
+      .articleTitle{
+        max-width:100%;
+        font-size:clamp(2.4rem,10vw,4rem);
+      }
+      .articleMetaCard,
+      .articleHighlight,
+      .articlePull,
+      .articleAsideCard,
+      .articleRelated{
+        border-radius:22px;
+        padding:22px 18px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main>
+    <section class="articleHero">
+      <div class="articleWrap">
+        <div class="articleIntro" data-reveal>
+          <div>
+            <span class="articleKicker">Blog · Estratégia de investimento</span>
+            <h1 class="articleTitle">Melhor época para investir em Trancoso: timing, escassez e posicionamento.</h1>
+            <p class="articleLead">
+              Em mercados limitados como Trancoso, o melhor momento de entrada não é definido apenas por calendário, mas pela combinação entre escassez, estágio do projeto, capacidade de escolha e posicionamento no longo prazo.
+            </p>
+          </div>
+
+          <aside class="articleMetaCard">
+            <div class="articleMetaGrid">
+              <div>
+                <small>Foco</small>
+                <strong>Timing de entrada</strong>
+                <span>Como entender o momento ideal além da lógica de preço imediato.</span>
+              </div>
+              <div>
+                <small>Contexto</small>
+                <strong>Escassez + estágio + seleção</strong>
+                <span>O tempo como variável estratégica em um mercado de oferta limitada.</span>
+              </div>
+              <div>
+                <small>Continue</small>
+                <strong><a href="/pt/investimento/">Ver visão de investimento</a></strong>
+                <span>Entenda como timing se conecta à lógica patrimonial.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="articleBody">
+      <div class="articleWrap">
+        <div class="articleGrid">
+
+          <article class="articleContent">
+
+            <section data-reveal>
+              <h2>Por que “timing” importa mais em mercados limitados</h2>
+              <p>
+                Em mercados urbanos amplos, o tempo pode ser compensado por volume. Em Trancoso, isso não acontece. A oferta é naturalmente restrita, e cada projeto representa uma coleção finita de possibilidades. Isso significa que o momento de entrada impacta diretamente a capacidade de escolha e o posicionamento do ativo.
+              </p>
+              <p>
+                Esperar pode significar pagar mais — mas, mais importante, pode significar ter menos opções. Em um mercado onde escassez é estrutural, timing é também acesso.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <div class="articlePull">
+                <p>
+                  Em Trancoso, o melhor momento de investir não é quando o preço parece menor, mas quando a capacidade de escolha é maior.
+                </p>
+              </div>
+            </section>
+
+            <section data-reveal>
+              <h2>O primeiro fator: estágio do projeto</h2>
+              <p>
+                Projetos em estágio inicial oferecem mais liberdade de escolha. Tipologias, posições dentro do terreno, orientação, privacidade e relação com áreas externas ainda estão disponíveis para seleção mais estratégica.
+              </p>
+              <p>
+                À medida que o projeto evolui, essas decisões já foram tomadas por outros compradores. O preço pode evoluir, mas a principal mudança está na redução da variedade disponível.
+              </p>
+              <div class="articleHighlight">
+                <h3>Entrada antecipada não é apenas preço</h3>
+                <p>
+                  Entrar cedo não significa apenas acessar valores iniciais, mas selecionar melhor dentro de uma coleção limitada.
+                </p>
+              </div>
+            </section>
+
+            <section data-reveal>
+              <h2>O segundo fator: escassez progressiva</h2>
+              <p>
+                Diferente de mercados expansivos, Trancoso não adiciona oferta de forma contínua e previsível. Cada novo projeto surge em um contexto de restrição territorial e ambiental, o que limita o volume total de unidades disponíveis ao longo do tempo.
+              </p>
+              <p>
+                Isso cria um efeito de escassez progressiva: à medida que unidades são absorvidas, a leitura de valor se desloca, e o mercado passa a operar com menos alternativas comparáveis.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <h2>O terceiro fator: qualidade da demanda</h2>
+              <p>
+                Trancoso não é um mercado de volume. A demanda é mais seletiva, frequentemente internacional, e orientada por critérios de qualidade, privacidade e experiência residencial.
+              </p>
+              <p>
+                Esse perfil de demanda altera a dinâmica de timing. Não se trata apenas de ciclos econômicos, mas da capacidade do ativo de permanecer relevante dentro de um contexto de procura qualificada.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <h2>Timing e posição dentro do projeto</h2>
+              <p>
+                O momento de entrada influencia diretamente a posição dentro do projeto. Unidades com melhor implantação, maior privacidade ou relações mais interessantes com o terreno tendem a ser escolhidas primeiro.
+              </p>
+              <p>
+                Por isso, o melhor timing não é necessariamente o mais barato, mas aquele que permite acessar as melhores posições dentro da proposta.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <h2>Flexibilidade operacional como variável de tempo</h2>
+              <p>
+                Em projetos que oferecem possibilidade de operação, como estruturas de <a href="/pt/rental-pool/">rental pool</a>, o timing também pode afetar a estratégia de uso. Entradas mais cedo permitem estruturar o ativo de forma mais alinhada com objetivos pessoais e operacionais.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <h2>Como pensar timing de forma mais estratégica</h2>
+              <p>
+                Em vez de perguntar “quando o preço está melhor?”, a pergunta mais relevante é:
+              </p>
+              <ul>
+                <li>Qual é o nível atual de disponibilidade?</li>
+                <li>Quais tipologias ainda estão acessíveis?</li>
+                <li>Qual é a qualidade das posições disponíveis?</li>
+                <li>O projeto ainda permite escolha estratégica?</li>
+                <li>Qual é o nível de escassez esperado no futuro próximo?</li>
+              </ul>
+            </section>
+
+            <section data-reveal>
+              <div class="articleHighlight">
+                <h3>O erro comum</h3>
+                <p>
+                  Esperar apenas por preço pode levar à perda das melhores posições. Em mercados limitados, o custo invisível da espera é a perda de escolha.
+                </p>
+              </div>
+            </section>
+
+            <section data-reveal>
+              <h2>Conclusão: timing como acesso, não apenas preço</h2>
+              <p>
+                Em Trancoso, o tempo não é apenas uma variável financeira. Ele define acesso, posicionamento e qualidade da escolha dentro de um conjunto limitado.
+              </p>
+              <p>
+                Investir no momento certo significa alinhar disponibilidade, escassez e estratégia de longo prazo — não apenas buscar o menor preço de entrada.
+              </p>
+            </section>
+
+            <section data-reveal>
+              <div class="articleFaq">
+
+                <details>
+                  <summary>Qual é a melhor época para investir em Trancoso?</summary>
+                  <div class="answer">
+                    A melhor época é quando há maior disponibilidade e capacidade de escolha dentro de projetos limitados, não apenas quando o preço parece mais baixo.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>Entrar mais cedo é sempre melhor?</summary>
+                  <div class="answer">
+                    Em geral, sim, pois permite acessar melhores posições e maior variedade dentro do projeto.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>Esperar pode ser uma estratégia válida?</summary>
+                  <div class="answer">
+                    Pode, mas envolve o risco de perder unidades mais bem posicionadas e enfrentar menor disponibilidade.
+                  </div>
+                </details>
+
+                <details>
+                  <summary>Timing influencia o valor no longo prazo?</summary>
+                  <div class="answer">
+                    Sim. A posição adquirida dentro do projeto impacta diretamente a percepção futura de valor.
+                  </div>
+                </details>
+
+              </div>
+            </section>
+
+            <section class="articleRelated" data-reveal>
+              <h2>Continue lendo</h2>
+
+              <div class="articleRelatedLinks">
+                <a href="/pt/blog/quanto-custa-casa-trancoso/">Quanto custa uma casa em Trancoso</a>
+                <a href="/pt/blog/investir-em-trancoso/">Investir em Trancoso</a>
+                <a href="/pt/blog/trancoso-investimento-imobiliario/">Investimento imobiliário em Trancoso</a>
+                <a href="/pt/blog/vale-a-pena-comprar-casa-trancoso/">Vale a pena comprar casa em Trancoso?</a>
+                <a href="/pt/investimento/">Ver visão de investimento</a>
+              </div>
+            </section>
+
+          </article>
+
+          <aside class="articleAside">
+
+            <div class="articleAsideCard" data-reveal>
+              <h3>Ideia central</h3>
+              <p>
+                Timing em Trancoso define acesso e qualidade de escolha — não apenas preço.
+              </p>
+            </div>
+
+            <div class="articleAsideCard" data-reveal>
+              <h3>Principais variáveis</h3>
+              <ul>
+                <li>Estágio do projeto</li>
+                <li>Nível de escassez</li>
+                <li>Disponibilidade de tipologias</li>
+                <li>Posição dentro do conjunto</li>
+              </ul>
+            </div>
+
+            <div class="articleAsideCard" data-reveal>
+              <h3>Próximo passo</h3>
+              <p>
+                Conecte timing com posicionamento patrimonial e leitura de valor no longo prazo.
+              </p>
+              <a class="btn btn-primary" href="/pt/investimento/">Ver investimento</a>
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+</body>
+</html>
