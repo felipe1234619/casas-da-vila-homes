@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PROJETO -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/projeto/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/project/</loc>
+  </url>
+
+  <!-- CASAS -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/casas/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/houses/</loc>
+  </url>
+
+  <!-- CASAS INDIVIDUAIS -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/casas/brisa-suave.html</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/casas/serenidade.html</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/casas/ceu.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/houses/breeze.html</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/houses/serenity.html</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/houses/sky.html</loc>
+  </url>
+
+  <!-- SOCIAL -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/social/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/social/</loc>
+  </url>
+
+  <!-- RENTAL POOL -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/rental-pool/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/rental-pool/</loc>
+  </url>
+
+  <!-- LOCALIZAÇÃO -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/localizacao/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/location/</loc>
+  </url>
+
+  <!-- INVESTIMENTO -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/investimento/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/investment/</loc>
+  </url>
+
+  <!-- CONTATO -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/contato/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/contact/</loc>
+  </url>
+
+  <!-- BLOG -->
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/investimento-trancoso/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/pt/blog/rental-pool-trancoso/</loc>
+  </url>
+
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/trancoso-investment/</loc>
+  </url>
+  <url>
+    <loc>https://www.casasdavilahomes.com/en/blog/rental-pool-trancoso/</loc>
+  </url>
+
+</urlset>
