@@ -12,7 +12,6 @@
   <script defer src="/assets/meta/seo/seo-map.js"></script>
   <script defer src="/assets/meta/seo/schema-base.js"></script>
   <script defer src="/assets/meta/seo/seo-loader.js"></script>
-</head>
   <style>
     .home-hero{min-height:100svh;}
     .hero-stage{position:relative;padding:clamp(18px,3vw,30px);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 80px rgba(0,0,0,.18);overflow:hidden}
@@ -210,6 +209,438 @@
     .final-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,123,84,.08),rgba(61,76,67,.12));pointer-events:none}
     @media (max-width:1080px){.editorial-grid,.availability-board,.experience-grid{grid-template-columns:1fr}.availability-row{grid-template-columns:1fr 1fr}.hero-note{grid-template-columns:1fr}}
     @media (max-width:820px){.availability-row{grid-template-columns:1fr}.hero-stage{padding:22px}.home-hero .hero-inner{padding-bottom:34px}}
+    <style>
+/* ===== HOME PT — HERO / ARQUITETURA / EDITORIAL FIX ===== */
+
+.home-hero{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  background:#161310;
+}
+
+.home-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg, rgba(15,12,10,.72) 0%, rgba(15,12,10,.46) 42%, rgba(15,12,10,.22) 100%),
+    linear-gradient(180deg, rgba(8,8,8,.18) 0%, rgba(8,8,8,.38) 100%),
+    url("/assets/images/location/trancoso-hero-home.jpg") center center / cover no-repeat;
+  transform:scale(1.02);
+}
+
+.home-hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0 0;
+  height:22%;
+  background:linear-gradient(to bottom, rgba(22,19,16,0), rgba(22,19,16,.56));
+  pointer-events:none;
+}
+
+.home-hero .hero-inner,
+.home-hero .container,
+.home-hero .hero-grid{
+  position:relative;
+  z-index:2;
+}
+
+.home-hero .hero-inner{
+  padding-top:clamp(34px, 7vw, 84px);
+  padding-bottom:clamp(42px, 8vw, 84px);
+}
+
+.home-hero .hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.7fr);
+  gap:28px;
+  align-items:end;
+  min-height:min(82svh, 920px);
+}
+
+.hero-stage{
+  position:relative;
+  padding:clamp(26px,3.2vw,38px);
+  border-radius:36px;
+  background:linear-gradient(180deg, rgba(193,171,142,.16), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 28px 90px rgba(0,0,0,.24);
+  overflow:hidden;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.hero-stage::before{
+  content:"";
+  position:absolute;
+  inset:auto -10% -26% auto;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+}
+
+.hero-stage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(255,255,255,.08), transparent 30%, transparent 72%, rgba(255,255,255,.04));
+  pointer-events:none;
+}
+
+.hero-copy .display{
+  max-width:11.2ch;
+  color:#f7f1e8;
+  text-shadow:0 8px 32px rgba(0,0,0,.18);
+}
+
+.hero-copy .lead{
+  max-width:56ch;
+  color:rgba(255,255,255,.88);
+}
+
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 22px;
+  color:rgba(255,255,255,.78);
+  font-size:.82rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.hero-kicker::before{
+  content:"";
+  width:42px;
+  height:1px;
+  background:rgba(255,255,255,.34);
+}
+
+.hero-note{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:24px;
+}
+
+.hero-note div{
+  padding:13px 15px;
+  border-radius:16px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.82);
+  font-size:.94rem;
+  line-height:1.55;
+}
+
+.hero-panel{
+  padding:28px 24px;
+  border-radius:30px;
+  background:linear-gradient(180deg, rgba(24,20,17,.72), rgba(24,20,17,.52));
+  border:1px solid rgba(255,255,255,.10);
+  color:#fff;
+  box-shadow:0 22px 70px rgba(0,0,0,.20);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.hero-panel .small-label{
+  color:rgba(255,255,255,.72);
+}
+
+.hero-panel .metric-row span:first-child{
+  color:rgba(255,255,255,.58);
+}
+
+.hero-panel .metric-row span:last-child{
+  color:#fff;
+}
+
+.hero-panel p{
+  color:rgba(255,255,255,.82);
+}
+
+/* tese de investimento — corrige hierarquia */
+.investment-thesis{
+  padding-top:22px;
+}
+
+.investment-thesis .editorial-grid{
+  align-items:start;
+}
+
+.investment-thesis .page-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+}
+
+.investment-thesis .page-eyebrow::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:rgba(111,85,58,.34);
+}
+
+.investment-thesis .h2{
+  max-width:11ch;
+}
+
+.investment-thesis .editorial-copy{
+  max-width:620px;
+}
+
+/* bloco arquitetônico com imagem real */
+.architecture-feature{
+  position:relative;
+  overflow:hidden;
+  border-radius:36px;
+  min-height:620px;
+  display:grid;
+  align-items:end;
+  padding:clamp(28px,4vw,42px);
+  background:
+    linear-gradient(90deg, rgba(20,16,13,.72) 0%, rgba(20,16,13,.52) 34%, rgba(20,16,13,.18) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.02)),
+    url("/assets/images/location/trancoso-architecture.jpg") center center / cover no-repeat;
+  box-shadow:0 28px 80px rgba(34,28,23,.18);
+}
+
+.architecture-feature::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0 0;
+  height:38%;
+  background:linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.24));
+  pointer-events:none;
+}
+
+.architecture-feature-card{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  padding:26px 26px 24px;
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(27,23,19,.62), rgba(27,23,19,.40));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+}
+
+.architecture-feature .eyebrow{
+  color:rgba(255,255,255,.78);
+}
+
+.architecture-feature .h2{
+  max-width:10.5ch;
+  color:#f7f1e8;
+}
+
+.architecture-feature .copy{
+  max-width:58ch;
+  color:rgba(255,255,255,.86);
+}
+
+/* cards complementares abaixo da imagem */
+.experience-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+
+.experience-item{
+  padding:30px;
+  border-radius:26px;
+  background:rgba(255,255,255,.52);
+  border:1px solid rgba(255,255,255,.46);
+  box-shadow:var(--shadow-soft);
+}
+
+/* editorial final */
+.articleBody{
+  padding:0 0 clamp(72px,8vw,110px);
+}
+
+.articleWrap{
+  width:min(1200px, calc(100% - 48px));
+  margin:0 auto;
+}
+
+.articleGrid{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(280px,.72fr);
+  gap:30px;
+  align-items:start;
+}
+
+.articleContent{
+  min-width:0;
+}
+
+.articleContent section{
+  padding:clamp(28px,3.5vw,42px);
+  border-radius:30px;
+  background:linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.48));
+  border:1px solid rgba(255,255,255,.54);
+  box-shadow:var(--shadow-soft);
+}
+
+.articleKicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+  color:var(--brand-deep);
+  font-size:.8rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.articleKicker::before{
+  content:"";
+  width:34px;
+  height:1px;
+  background:rgba(111,85,58,.34);
+}
+
+.articleContent h2{
+  margin:0;
+  max-width:14ch;
+  font-size:clamp(2.3rem, 5.8vw, 4.7rem);
+  line-height:.97;
+  letter-spacing:-.045em;
+}
+
+.articleContent p{
+  margin:22px 0 0;
+  max-width:62ch;
+  font-size:1.06rem;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.articleAside{
+  min-width:0;
+}
+
+.articleAsideCard{
+  position:sticky;
+  top:118px;
+  padding:28px;
+  border-radius:28px;
+  background:linear-gradient(180deg, #1e1814, #43362d 58%, #58685d);
+  color:#fff;
+  box-shadow:0 24px 70px rgba(34,28,23,.20);
+}
+
+.articleAsideCard h3{
+  margin:0 0 14px;
+  color:#fff;
+}
+
+.articleAsideCard p{
+  margin:0 0 20px;
+  color:rgba(255,255,255,.82);
+  line-height:1.7;
+}
+
+.articleRelatedLinks{
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:2px;
+}
+
+.articleRelatedLinks a{
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:0 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.56);
+  border:1px solid rgba(111,85,58,.12);
+  color:var(--ink);
+  text-decoration:none;
+  line-height:1;
+  transition:transform .24s ease, border-color .24s ease, background .24s ease;
+}
+
+.articleRelatedLinks a:hover{
+  transform:translateY(-2px);
+  background:#fff;
+  border-color:rgba(185,150,90,.24);
+}
+
+/* responsivo */
+@media (max-width:1080px){
+  .home-hero .hero-grid,
+  .experience-grid,
+  .articleGrid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-panel{
+    max-width:720px;
+  }
+
+  .articleAsideCard{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media (max-width:820px){
+  .home-hero .hero-inner{
+    padding-top:26px;
+    padding-bottom:34px;
+  }
+
+  .hero-stage{
+    padding:24px;
+    border-radius:28px;
+  }
+
+  .hero-copy .display{
+    max-width:12ch;
+  }
+
+  .hero-note{
+    grid-template-columns:1fr;
+  }
+
+  .architecture-feature{
+    min-height:520px;
+    padding:22px;
+    border-radius:28px;
+    background-position:center center;
+  }
+
+  .architecture-feature-card{
+    padding:22px 20px 20px;
+    border-radius:24px;
+  }
+
+  .articleWrap{
+    width:min(100% - 28px, 1200px);
+  }
+
+  .articleContent h2{
+    max-width:12ch;
+  }
+
+  .articleRelatedLinks{
+    gap:10px;
+  }
+
+  .articleRelatedLinks a{
+    width:100%;
+    justify-content:flex-start;
+  }
+}
+
   </style>
 <script type="application/ld+json">
 {
@@ -267,77 +698,75 @@
 
 <main>
 
-  <section class="hero home-hero">
-    <div class="hero-inner">
-      <div class="container hero-grid">
+<section class="hero home-hero">
+  <div class="hero-inner">
+    <div class="container hero-grid">
 
-        <div class="hero-copy" data-reveal>
-          <div class="hero-stage">
-            <span class="hero-kicker">Casas da Vila Homes · Trancoso</span>
+      <div class="hero-copy" data-reveal>
+        <div class="hero-stage">
+          <span class="hero-kicker">Casas da Vila Homes · Trancoso</span>
 
-            <h1 class="display">
-              Um ativo residencial definido por arquitetura, escassez e valor no longo prazo em Trancoso.
-            </h1>
+          <h1 class="display">
+            Um ativo residencial raro, moldado por arquitetura, escassez e permanência em Trancoso.
+          </h1>
 
-            <p class="lead" style="margin-top:24px;">
-              Uma coleção privada de residências que combina autoria arquitetônica, oferta limitada e possibilidade de operação — estruturada para uso pessoal e posicionamento patrimonial no longo prazo.
-            </p>
+          <p class="lead" style="margin-top:24px;">
+            Uma coleção privada de residências que combina desenho autoral, baixa densidade e possibilidade de uso ou operação, construída para quem lê Trancoso como estilo de vida e como ativo de longo prazo.
+          </p>
 
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="/pt/investimento/">Ver investimento</a>
-              <a class="btn btn-secondary" href="/pt/contato/">Solicitar material completo</a>
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/pt/investimento/">Ver investimento</a>
+            <a class="btn btn-secondary" href="/pt/contato/">Solicitar material completo</a>
+          </div>
 
-            <div class="hero-note">
-              <div>Escala residencial controlada, orientada à preservação de valor.</div>
-              <div>Três tipologias que combinam uso, arquitetura e leitura de ativo.</div>
-            </div>
+          <div class="hero-note">
+            <div>Casas de 2 e 3 suítes, com jardins, piscinas e rooftop em unidades selecionadas.</div>
+            <div>Implantação de baixa densidade, com leitura residencial mais reservada e patrimonial.</div>
           </div>
         </div>
-
-        <aside class="hero-panel" data-reveal>
-          <div class="small-label">Visão de investimento</div>
-
-          <div class="metric-list" style="margin-top:12px;">
-            <div class="metric-row"><span>Configurações residenciais</span><span>Serenidade · Brisa Suave · Casa Céu</span></div>
-            <div class="metric-row"><span>Programa</span><span>Casas de 2 e 3 suítes</span></div>
-            <div class="metric-row"><span>Diferenciais</span><span>Jardins, piscinas e rooftop em unidades selecionadas</span></div>
-            <div class="metric-row"><span>Entrega prevista</span><span>2027, conforme unidade</span></div>
-          </div>
-
-          <p style="margin-top:18px;">
-            Um conjunto posicionado por arquitetura, escassez e uma abordagem comercial mais reservada.
-          </p>
-        </aside>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0;">
-    <div class="container editorial-grid">
-
-      <div data-reveal>
-        <span class="eyebrow">Tese de investimento</span>
-
-        <h2 class="h2" style="margin-top:18px;">
-          Um ativo residencial moldado por escassez e demanda qualificada.
-        </h2>
       </div>
 
-      <div class="editorial-copy" data-reveal>
-        <p class="copy">
-          Trancoso opera sob restrições naturais e urbanísticas que limitam a expansão, enquanto a demanda qualificada se mantém crescente.
+      <aside class="hero-panel" data-reveal>
+        <div class="small-label">Visão de investimento</div>
+
+        <div class="metric-list" style="margin-top:12px;">
+          <div class="metric-row"><span>Tipologias</span><span>Serenidade · Brisa Suave · Casa Céu</span></div>
+          <div class="metric-row"><span>Programa</span><span>Casas de 2 e 3 suítes</span></div>
+          <div class="metric-row"><span>Diferenciais</span><span>Jardins, piscinas, rooftop e bangalô em unidades selecionadas</span></div>
+          <div class="metric-row"><span>Entrega prevista</span><span>2027, conforme unidade</span></div>
+        </div>
+
+        <p style="margin-top:18px;">
+          Um conjunto desenhado para unir privacidade, linguagem arquitetônica e potencial de valor em um dos mercados residenciais mais restritos do país.
         </p>
-
-        <p class="copy">
-          Casas da Vila Homes se posiciona nesse contexto como um ativo residencial estruturado — combinando arquitetura autoral, baixa densidade e flexibilidade de uso e operação.
-        </p>
-      </div>
+      </aside>
 
     </div>
-  </section>
+  </div>
+</section>
+<section class="section investment-thesis">
+  <div class="container editorial-grid">
 
+    <div data-reveal>
+      <span class="page-eyebrow">Tese de investimento</span>
+
+      <h2 class="h2" style="margin-top:18px;">
+        Trancoso não se explica por oferta. Se explica por limite.
+      </h2>
+    </div>
+
+    <div class="editorial-copy" data-reveal>
+      <p class="copy">
+        O valor em Trancoso nasce da combinação entre escassez territorial, filtro urbanístico, desejo persistente e poucos projetos que conseguem transformar localização em arquitetura.
+      </p>
+
+      <p class="copy">
+        Casas da Vila Homes se posiciona exatamente nesse ponto: um conjunto residencial de escala contida, com tipologias autorais, vocação privada e leitura de ativo mais consistente no tempo.
+      </p>
+    </div>
+
+  </div>
+</section>
   <section class="section">
     <div class="container editorial-grid">
 
@@ -396,42 +825,124 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
+<section class="section">
+  <div class="container">
+    <div class="section-intro" data-reveal>
+      <span class="eyebrow page-eyebrow">O conjunto</span>
+      <h2 class="h2" style="margin-top:18px;">Arquitetura, privacidade e permanência em Trancoso.</h2>
+      <p class="page-lead lead">
+        Casas da Vila Homes reúne tipologias autorais, jardins privativos, piscinas e uma implantação pensada para criar uma experiência mais silenciosa, mais reservada e mais duradoura de habitar.
+      </p>
+    </div>
 
-      <div class="section-intro" data-reveal>
-        <span class="eyebrow page-eyebrow">O conjunto</span>
+    <div class="house-grid-premium">
 
-        <h2 class="h2" style="margin-top:18px;">
-          Arquitetura como vetor de valor no longo prazo.
-        </h2>
+      <article class="house-card" data-reveal>
+        <figure class="house-media">
+          <img src="/assets/images/houses/serenidade/hero.jpg" alt="Casa Serenidade em Casas da Vila Homes" />
 
-        <p class="page-lead lead">
-          Casas da Vila Homes reúne tipologias autorais, jardins, piscinas e uma implantação pensada para gerar uma experiência mais privada, mais equilibrada e mais duradoura.
-        </p>
-      </div>
+          <div class="house-meta-top">
+            <span class="house-badge">Serenidade</span>
+            <span class="house-badge">2 suítes</span>
+          </div>
 
-      <!-- MANTÉM SEU GRID DE CASAS ORIGINAL (SEM ALTERAÇÃO) -->
+          <div class="house-overlay-copy">
+            <h3>Casa Serenidade</h3>
+            <p>Uma composição mais silenciosa, com jardim privativo e rooftop em unidades selecionadas.</p>
+          </div>
+        </figure>
+
+        <div class="card-inner">
+          <div class="meta">
+            <span class="pill">2 suítes</span>
+            <span class="pill">Rooftop + piscina</span>
+          </div>
+
+          <p class="copy">
+            Uma interpretação mais contemplativa do projeto, marcada por verticalidade suave, privacidade de jardim e áreas externas elevadas.
+          </p>
+
+          <a class="btn btn-outline" href="/pt/casas/serenidade.html">Ver tipologia</a>
+        </div>
+      </article>
+
+      <article class="house-card" data-reveal>
+        <figure class="house-media">
+          <img src="/assets/images/houses/brisa-suave/hero.jpg" alt="Casa Brisa Suave em Casas da Vila Homes" />
+
+          <div class="house-meta-top">
+            <span class="house-badge">Brisa Suave</span>
+            <span class="house-badge">2 suítes</span>
+          </div>
+
+          <div class="house-overlay-copy">
+            <h3>Casa Brisa Suave</h3>
+            <p>Uma casa mais horizontal, com continuidade direta entre estar, jardim e piscina.</p>
+          </div>
+        </figure>
+
+        <div class="card-inner">
+          <div class="meta">
+            <span class="pill">2 suítes</span>
+            <span class="pill">Piscina térrea</span>
+          </div>
+
+          <p class="copy">
+            Uma tipologia definida por fluidez cotidiana, relação mais direta com o solo e uma convivência mais calma com o exterior.
+          </p>
+
+          <a class="btn btn-outline" href="/pt/casas/brisa-suave.html">Ver tipologia</a>
+        </div>
+      </article>
+
+      <article class="house-card" data-reveal>
+        <figure class="house-media">
+          <img src="/assets/images/houses/casa-ceu/hero.jpg" alt="Casa Céu em Casas da Vila Homes" />
+
+          <div class="house-meta-top">
+            <span class="house-badge">Casa Céu</span>
+            <span class="house-badge">3 suítes</span>
+          </div>
+
+          <div class="house-overlay-copy">
+            <h3>Casa Céu</h3>
+            <p>A residência mais ampla, com bangalô, piscina e presença arquitetônica mais aberta.</p>
+          </div>
+        </figure>
+
+        <div class="card-inner">
+          <div class="meta">
+            <span class="pill">3 suítes</span>
+            <span class="pill">Bangalô + piscina</span>
+          </div>
+
+          <p class="copy">
+            A interpretação mais expansiva do projeto, com maior amplitude, presença mais marcante e bangalô independente.
+          </p>
+
+          <a class="btn btn-outline" href="/pt/casas/ceu.html">Ver tipologia</a>
+        </div>
+      </article>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" style="padding-top:0;">
-    <div class="container signature-band" data-reveal>
-
+<section class="section" style="padding-top:0;">
+  <div class="container architecture-feature" data-reveal>
+    <div class="architecture-feature-card">
       <span class="eyebrow">Direção arquitetônica</span>
 
       <h2 class="h2" style="margin-top:18px;">
-        Contemporânea na linguagem, tropical na presença, silenciosa na forma de se afirmar.
+        Contemporânea na linguagem, tropical na presença, silenciosa na forma de permanecer.
       </h2>
 
       <p class="copy" style="margin-top:18px;">
-        O projeto combina luz, vegetação, matéria e proporção para criar uma experiência que preserva valor através da arquitetura.
+        O projeto articula vegetação, sombra, matéria e proporção para criar uma residência sofisticada sem excesso — mais calma na experiência, mais precisa na arquitetura e mais duradoura na percepção de valor.
       </p>
-
     </div>
-  </section>
-
+  </div>
+</section>
   <section class="section" style="padding-top:0;">
     <div class="container experience-grid">
 
@@ -467,18 +978,17 @@
 
       <article class="articleContent">
         <section data-reveal>
-          <span class="articleKicker">Editorial · Mercado imobiliário em Trancoso</span>
-          <h2>Entenda Trancoso antes de comparar.</h2>
+          <span class="articleKicker">Editorial · Mercado residencial em Trancoso</span>
+
+          <h2>Entenda Trancoso antes de comparar preços.</h2>
+
           <p>
-            Trancoso é definido por escassez, arquitetura, privacidade e posicionamento no longo prazo. Antes de avaliar casas, preços ou timing, vale começar pela leitura certa do mercado.
+            Em Trancoso, preço isolado diz pouco. O que sustenta valor é a relação entre localização, arquitetura, privacidade, baixa densidade e capacidade do projeto de permanecer desejável ao longo do tempo.
           </p>
 
-          <div class="articleRelatedLinks">
-            <a href="/pt/hub/">Guia completo de investimento em Trancoso</a>
-            <a href="/pt/blog/investir-em-trancoso/">Investir em Trancoso</a>
-            <a href="/pt/blog/quanto-custa-casa-trancoso/">Quanto custa uma casa</a>
-            <a href="/pt/blog/melhor-epoca-trancoso/">Melhor época para investir</a>
-          </div>
+          <p>
+            Antes de comparar metragem ou tabela, a leitura correta começa por outra pergunta: este é apenas um imóvel, ou um ativo residencial com identidade, escassez e potência de longo prazo?
+          </p>
         </section>
       </article>
 
@@ -486,11 +996,18 @@
         <div class="articleAsideCard" data-reveal>
           <h3>Vendas privadas</h3>
           <p>
-            Explore o projeto e solicite a apresentação completa.
+            Receba a apresentação completa do projeto com tipologias, implantação, posicionamento e disponibilidade atual.
           </p>
           <a class="btn btn-primary" href="/pt/contato/">Solicitar apresentação</a>
         </div>
       </aside>
+
+      <div class="articleRelatedLinks">
+        <a href="/pt/hub/">Guia completo de investimento em Trancoso</a>
+        <a href="/pt/blog/investir-em-trancoso/">Investir em Trancoso</a>
+        <a href="/pt/blog/quanto-custa-casa-trancoso/">Quanto custa uma casa</a>
+        <a href="/pt/blog/melhor-epoca-trancoso/">Melhor época para investir</a>
+      </div>
 
     </div>
   </div>

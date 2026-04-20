@@ -2,111 +2,895 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Contact | Casas da Vila Homes</title>
-    <link rel="stylesheet" href="/assets/css/global.css" />
-    <script defer src="/assets/js/header-loader.js"></script>
-    <script defer src="/assets/js/main.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Casas da Vila Homes</title>
+  <meta
+    name="description"
+    content="Request the full presentation of Casas da Vila Homes and receive private guidance on residences, availability and next steps."
+  />
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <style>
+    .contactHero{
+      position: relative;
+      min-height: 100svh;
+      padding-top: calc(var(--header-h, 88px) + 52px);
+      padding-bottom: 92px;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(14,18,20,.48) 0%, rgba(14,18,20,.38) 24%, rgba(14,18,20,.52) 100%),
+        url("/assets/images/location/location-2.jpg") center center / cover no-repeat;
+    }
+
+    .contactHero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(214,183,129,.10), transparent 34%),
+        radial-gradient(circle at 82% 78%, rgba(40, 39, 39, 0.08), transparent 26%);
+      pointer-events:none;
+    }
+
+    .contactHero::after{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:140px;
+      background:linear-gradient(180deg, rgba(247,244,238,0) 0%, #f6f2eb 100%);
+      pointer-events:none;
+    }
+
+    .contactHeroInner{
+      position:relative;
+      z-index:2;
+    }
+
+    .contactHeroGrid{
+      display:grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      gap:44px;
+      align-items:start;
+    }
+
+    .contactIntro{
+      padding-top: 26px;
+      color:#f6f1e8;
+    }
+
+    .contactIntro .page-eyebrow{
+      display:inline-block;
+      margin-bottom:18px;
+      color:rgba(255,255,255,.76);
+    }
+
+    .contactIntro .h1{
+      margin:0;
+      max-width:10ch;
+      color:#fff;
+      letter-spacing:-.04em;
+      text-wrap:balance;
+    }
+
+    .contactIntro .page-lead{
+      margin-top:22px;
+      max-width:34ch;
+      color:rgba(255,255,255,.80);
+    }
+
+    .contactIntroText{
+      margin-top:28px;
+      max-width:44ch;
+    }
+
+    .contactIntroText .copy{
+      color:rgba(255,255,255,.72);
+    }
+
+    .contactPanel{
+      position:relative;
+      border:1px solid rgba(236,224,202,.34);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.06) 100%),
+        rgba(31,35,36,.24);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius:32px;
+      padding:34px 30px 28px;
+      box-shadow:
+        0 28px 80px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+
+    .contactPanel::before{
+      content:"";
+      position:absolute;
+      inset:0 0 auto 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
+      pointer-events:none;
+    }
+
+    .contactPanelHead{
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    .contactKicker,
+    .contactSuccessKicker{
+      display:inline-block;
+      margin-bottom:12px;
+      font-size:.72rem;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:rgba(246,241,232,.74);
+    }
+
+    .contactPanelIntro{
+      margin:0 auto;
+      max-width:34ch;
+      color:rgba(255,255,255,.86);
+      font-size:1rem;
+      line-height:1.82;
+      text-wrap:balance;
+    }
+
+    .contactFormGrid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:16px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .fieldMessage{
+      margin-top:16px;
+    }
+
+    .label{
+      font-size:.76rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(246,241,232,.74);
+    }
+
+    .premiumInput{
+      width:100%;
+      min-height:58px;
+      border-radius:18px;
+      border:1px solid rgba(236,224,202,.34);
+      background:rgba(255,255,255,.07);
+      color:#fff;
+      padding:0 18px;
+      outline:none;
+      appearance:none;
+      font-size:1rem;
+      transition:
+        border-color .28s ease,
+        background .28s ease,
+        transform .28s ease,
+        box-shadow .28s ease;
+    }
+
+    .premiumInput::placeholder,
+    .premiumTextarea::placeholder{
+      color:rgba(255,255,255,.56);
+    }
+
+    .premiumInput:focus,
+    .premiumTextarea:focus{
+      border-color:rgba(232,203,156,.72);
+      background:rgba(255,255,255,.10);
+      box-shadow:0 0 0 4px rgba(232,203,156,.08);
+      transform:translateY(-1px);
+    }
+
+    select.premiumInput{
+      padding-right:50px;
+      background-image:
+        linear-gradient(45deg, transparent 50%, rgba(245,233,214,.82) 50%),
+        linear-gradient(135deg, rgba(245,233,214,.82) 50%, transparent 50%);
+      background-position:
+        calc(100% - 24px) calc(50% - 3px),
+        calc(100% - 18px) calc(50% - 3px);
+      background-size:6px 6px, 6px 6px;
+      background-repeat:no-repeat;
+    }
+
+    select.premiumInput option{
+      color:#15181a;
+    }
+
+    .premiumTextarea{
+      min-height:164px;
+      padding:18px;
+      resize:vertical;
+    }
+
+    .contactActions{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+      margin-top:24px;
+      text-align:center;
+    }
+
+    .contactSubmit{
+      min-width:236px;
+      min-height:58px;
+      padding:0 28px;
+      border-radius:999px;
+      border:none;
+      cursor:pointer;
+      background:linear-gradient(180deg, #d8b681 0%, #c8a36d 100%);
+      color:#1b1a18;
+      font-size:.92rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:600;
+      box-shadow:
+        0 14px 32px rgba(168,122,56,.22),
+        inset 0 1px 0 rgba(255,255,255,.26);
+      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
+    }
+
+    .contactSubmit:hover{
+      transform:translateY(-1px);
+      filter:brightness(1.02);
+      box-shadow:
+        0 18px 36px rgba(168,122,56,.28),
+        inset 0 1px 0 rgba(255,255,255,.26);
+    }
+
+    .contactPrivacy{
+      margin:2px 0 0;
+      max-width:48ch;
+      font-size:.9rem;
+      line-height:1.75;
+      color:rgba(255,255,255,.72);
+    }
+
+    .contactPrivacy a{
+      color:#efe2c9;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
+    .contactNote{
+      margin:0;
+      font-size:.9rem;
+      line-height:1.7;
+      color:rgba(255,255,255,.62);
+    }
+
+    .contactSuccess{
+      position:relative;
+      border:1px solid rgba(236,224,202,.34);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,.05) 100%),
+        rgba(25,29,30,.28);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius:28px;
+      padding:34px 28px 30px;
+      text-align:center;
+      opacity:0;
+      transform:translateY(10px) scale(.985);
+      pointer-events:none;
+      transition:opacity .6s ease, transform .6s ease;
+    }
+
+    .contactSuccess.is-visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      pointer-events:auto;
+    }
+
+    .contactSuccess::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(216,182,129,.18), transparent 42%);
+      pointer-events:none;
+    }
+
+    .contactSuccess h3{
+      margin:0 0 12px;
+      font-size:1.7rem;
+      line-height:1.14;
+      letter-spacing:-.03em;
+      color:#fff;
+      font-weight:500;
+    }
+
+    .contactSuccess p{
+      margin:0 auto;
+      max-width:39ch;
+      color:rgba(255,255,255,.78);
+      line-height:1.82;
+    }
+
+    .contactSuccessActions{
+      margin-top:22px;
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .contactSuccessActions .btn{
+      min-height:50px;
+      padding:0 20px;
+      border-radius:999px;
+    }
+
+    .contactClosing{
+      position:relative;
+      padding:0 0 96px;
+      background:#f6f2eb;
+    }
+
+    .contactClosingCard{
+      max-width:980px;
+      margin:0 auto;
+      padding:54px 40px;
+      border-radius:34px;
+      background:linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
+      box-shadow:
+        0 30px 70px rgba(41,34,24,.08),
+        inset 0 1px 0 rgba(255,255,255,.82);
+      text-align:center;
+    }
+
+    .contactClosingCard .eyebrow{
+      color:rgba(26,27,28,.46);
+    }
+
+    .contactClosingCard .h2{
+      max-width:11ch;
+      margin:18px auto 0;
+      color:#1e2327;
+      letter-spacing:-.045em;
+      text-wrap:balance;
+    }
+
+    .contactClosingCard .copy{
+      max-width:56ch;
+      margin:18px auto 0;
+      color:#5c6064;
+      line-height:1.9;
+    }
+
+    @media (max-width: 1100px){
+      .contactHeroGrid{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      .contactIntro{
+        padding-top:0;
+        max-width:720px;
+      }
+
+      .contactIntro .h1{
+        max-width:12ch;
+      }
+    }
+
+    @media (max-width: 860px){
+      .contactHero{
+        padding-top: calc(var(--header-h, 88px) + 34px);
+        padding-bottom:72px;
+      }
+
+      .contactIntro .h1{
+        max-width:none;
+      }
+
+      .contactPanel{
+        border-radius:24px;
+        padding:24px 18px 22px;
+      }
+
+      .contactFormGrid{
+        grid-template-columns:1fr;
+      }
+
+      .premiumInput{
+        min-height:54px;
+        border-radius:16px;
+      }
+
+      .premiumTextarea{
+        min-height:140px;
+      }
+
+      .contactSubmit{
+        width:100%;
+      }
+
+      .contactClosing{
+        padding-bottom:72px;
+      }
+
+      .contactClosingCard{
+        padding:36px 22px;
+        border-radius:26px;
+      }
+
+      .contactClosingCard .h2{
+        max-width:none;
+      }
+    }
+    <style>
+  .contactHero{
+    position:relative;
+    min-height:100svh;
+    padding-top:calc(var(--header-h, 88px) + 52px);
+    padding-bottom:92px;
+    overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(14,18,20,.52) 0%, rgba(14,18,20,.36) 26%, rgba(14,18,20,.56) 100%),
+      url("/assets/img/contact/contact-hero.jpg") center center / cover no-repeat;
+  }
+
+  .contactHero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(214,183,129,.10), transparent 34%),
+      radial-gradient(circle at 82% 76%, rgba(255,255,255,.08), transparent 28%);
+    pointer-events:none;
+  }
+
+  .contactHero::after{
+    content:"";
+    position:absolute;
+    inset:auto 0 0 0;
+    height:140px;
+    background:linear-gradient(180deg, rgba(246,242,235,0) 0%, #f6f2eb 100%);
+    pointer-events:none;
+  }
+
+  .contactHeroInner{
+    position:relative;
+    z-index:2;
+  }
+
+  .contactHeroGrid{
+    display:grid;
+    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+    gap:44px;
+    align-items:start;
+  }
+
+  .contactIntro{
+    padding-top:26px;
+    color:#f6f1e8;
+  }
+
+  .contactIntro .page-eyebrow{
+    display:inline-block;
+    margin-bottom:18px;
+    color:rgba(255,255,255,.76);
+  }
+
+  .contactIntro .h1{
+    margin:0;
+    max-width:10ch;
+    color:#fff;
+    letter-spacing:-.04em;
+    text-wrap:balance;
+  }
+
+  .contactIntro .page-lead{
+    margin-top:22px;
+    max-width:34ch;
+    color:rgba(255,255,255,.82);
+  }
+
+  .contactIntroText{
+    margin-top:28px;
+    max-width:44ch;
+  }
+
+  .contactIntroText .copy{
+    color:rgba(255,255,255,.72);
+  }
+
+  .contactPanel{
+    position:relative;
+  }
+
+  .contactClosing{
+    position:relative;
+    padding:0 0 96px;
+    background:#f6f2eb;
+  }
+
+  .contactClosingCard{
+    max-width:980px;
+    margin:0 auto;
+    padding:54px 40px;
+    border-radius:34px;
+    background:linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
+    box-shadow:
+      0 30px 70px rgba(41,34,24,.08),
+      inset 0 1px 0 rgba(255,255,255,.82);
+    text-align:center;
+  }
+
+  .contactClosingCard .eyebrow{
+    color:rgba(26,27,28,.46);
+  }
+
+  .contactClosingCard .h2{
+    max-width:11ch;
+    margin:18px auto 0;
+    color:#1e2327;
+    letter-spacing:-.045em;
+    text-wrap:balance;
+  }
+
+  .contactClosingCard .copy{
+    max-width:56ch;
+    margin:18px auto 0;
+    color:#5c6064;
+    line-height:1.9;
+  }
+
+  @media (max-width:1100px){
+    .contactHeroGrid{
+      grid-template-columns:1fr;
+      gap:30px;
+    }
+
+    .contactIntro{
+      padding-top:0;
+      max-width:720px;
+    }
+
+    .contactIntro .h1{
+      max-width:12ch;
+    }
+  }
+
+  @media (max-width:860px){
+    .contactHero{
+      padding-top:calc(var(--header-h, 88px) + 34px);
+      padding-bottom:72px;
+    }
+
+    .contactIntro .h1{
+      max-width:none;
+    }
+
+    .contactClosing{
+      padding-bottom:72px;
+    }
+
+    .contactClosingCard{
+      padding:36px 22px;
+      border-radius:26px;
+    }
+
+    .contactClosingCard .h2{
+      max-width:none;
+    }
+  }
+  <style>
+  .contactIntro,
+  .contactPanel,
+  .contactClosingCard{
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(10px);
+    will-change: opacity, transform, filter;
+    animation: contactFadeBlurIn 1.05s cubic-bezier(.22,.61,.36,1) forwards;
+  }
+
+  .contactIntro{
+    animation-delay: .08s;
+  }
+
+  .contactPanel{
+    animation-delay: .18s;
+  }
+
+  .contactClosingCard{
+    animation-delay: .12s;
+  }
+
+  @keyframes contactFadeBlurIn{
+    0%{
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(10px);
+    }
+    100%{
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .contactIntro,
+    .contactPanel,
+    .contactClosingCard{
+      opacity: 1;
+      transform: none;
+      filter: none;
+      animation: none;
+    }
+  }
+  <style>
+  [data-reveal]{
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    filter: blur(12px);
+    will-change: opacity, transform, filter;
+    transition:
+      opacity .9s cubic-bezier(.22,.61,.36,1),
+      transform .9s cubic-bezier(.22,.61,.36,1),
+      filter .9s cubic-bezier(.22,.61,.36,1);
+  }
+
+  [data-reveal].is-visible{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+
+  /* micro-stagger (muito sutil) */
+  .contactIntro[data-reveal]{ transition-delay: .05s; }
+  .contactPanel[data-reveal]{ transition-delay: .12s; }
+  .contactClosingCard[data-reveal]{ transition-delay: .08s; }
+
+  @media (prefers-reduced-motion: reduce){
+    [data-reveal]{
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+  </style>
 </head>
 
 <body>
-    <div id="site-header"></div>
-<main>
+  <div id="site-header"></div>
 
-  <!-- HERO -->
-  <section class="page-hero">
-    <div class="container grid-2" style="align-items:start; gap:42px;">
+  <main>
 
-      <div data-reveal>
-        <span class="eyebrow page-eyebrow">Private Sales</span>
+    <section class="contactHero">
+      <div class="container contactHeroInner">
+        <div class="contactHeroGrid">
 
-        <h1 class="h1" style="margin-top:18px;">
-          Request the full presentation of the project.
-        </h1>
+          <div class="contactIntro" data-reveal>
+            <span class="eyebrow page-eyebrow">Private Sales</span>
 
-        <p class="page-lead lead">
-          Access to the project material is handled privately,
-          with individual follow-up and a more discreet,
-          non-aggressive approach.
-        </p>
+            <h1 class="h1">
+              Request the full presentation of the project.
+            </h1>
 
-        <div style="margin-top:28px; max-width:420px;">
+            <p class="page-lead lead">
+              Access to Casas da Vila Homes is conducted privately, with
+              individual follow-up, editorial clarity and a more discreet
+              approach to the decision process.
+            </p>
+
+            <div class="contactIntroText">
+              <p class="copy">
+                After your submission, our team will return with the full
+                presentation, current availability, details on each residence
+                and the next steps for a more tailored review.
+              </p>
+            </div>
+          </div>
+
+          <div class="contactPanel" data-reveal>
+
+            <form
+              class="amanContactForm"
+              action="https://formsubmit.co/homes@casasdavila.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="Casas da Vila Homes | New private sales inquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://www.casasdavila.com/en/contact/?sent=1" />
+
+              <div class="contactPanelHead">
+                <span class="contactKicker">Private contact</span>
+                <p class="contactPanelIntro">
+                  Share your interest and our team will return privately with
+                  the presentation, current availability and the most relevant
+                  next materials.
+                </p>
+              </div>
+
+              <div class="contactFormGrid">
+                <div class="field">
+                  <label class="label" for="contact-name">Name</label>
+                  <input
+                    class="premiumInput"
+                    id="contact-name"
+                    name="name"
+                    type="text"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="contact-email">Email</label>
+                  <input
+                    class="premiumInput"
+                    id="contact-email"
+                    name="email"
+                    type="email"
+                    placeholder="you@email.com"
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="contact-phone">Phone</label>
+                  <input
+                    class="premiumInput"
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+55 11 99999 9999"
+                  />
+                </div>
+
+                <div class="field">
+                  <label class="label" for="contact-interest">Interest</label>
+                  <select
+                    class="premiumInput"
+                    id="contact-interest"
+                    name="interest"
+                    required
+                  >
+                    <option value="">Select</option>
+                    <option value="Full presentation">Full presentation</option>
+                    <option value="House Breeze">House Breeze</option>
+                    <option value="House Serenity">House Serenity</option>
+                    <option value="House Sky">House Sky</option>
+                    <option value="Investment inquiry">Investment inquiry</option>
+                    <option value="Private appointment">Private appointment</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field fieldMessage">
+                <label class="label" for="contact-message">Message</label>
+                <textarea
+                  class="premiumInput premiumTextarea"
+                  id="contact-message"
+                  name="message"
+                  placeholder="Tell us a bit about your interest, intended timing, or the residence you would like to receive further details about."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="contactActions">
+                <button class="contactSubmit" type="submit">
+                  Send private request
+                </button>
+
+                <p class="contactPrivacy">
+                  By submitting, you confirm that you have read our
+                  <a href="/en/privacy/">Privacy Policy</a>.
+                </p>
+
+                <p class="contactNote">
+                  Your message is sent directly to <strong>homes@casasdavila.com</strong>.
+                </p>
+              </div>
+            </form>
+
+            <div class="contactSuccess" id="contact-success" aria-live="polite" hidden>
+              <span class="contactSuccessKicker">Thank you</span>
+              <h3>Your request has been received.</h3>
+              <p>
+                Our team will contact you privately with clarity, discretion
+                and the appropriate next materials for your review.
+              </p>
+
+              <div class="contactSuccessActions">
+                <a class="btn btn-primary" href="/en/houses/">View residences</a>
+                <a class="btn btn-secondary" href="/en/">Return home</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="contactClosing">
+      <div class="container">
+        <div class="contactClosingCard" data-reveal>
+          <span class="eyebrow">Approach</span>
+
+          <h2 class="h2">
+            A direct, discreet and clarity-driven approach.
+          </h2>
+
           <p class="copy">
-            After submission, our team will contact you to share the full
-            presentation, current availability and details of each residence
-            in a more tailored way.
+            Casas da Vila Homes does not operate through mass-market sales.
+            Each contact is handled individually, respecting timing, profile,
+            confidentiality and the pace of each decision.
           </p>
         </div>
       </div>
+    </section>
 
-      <div class="glass-panel" data-reveal>
-        <form>
+  </main>
 
-          <div class="form-grid">
-            <div>
-              <label class="label">Name</label>
-              <input class="input" type="text" placeholder="Your name" />
-            </div>
+  <div id="site-footer"></div>
 
-            <div>
-              <label class="label">Email</label>
-              <input class="input" type="email" placeholder="you@email.com" />
-            </div>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const sent = params.get('sent');
+      const form = document.querySelector('.amanContactForm');
+      const success = document.getElementById('contact-success');
 
-            <div>
-              <label class="label">Phone</label>
-              <input class="input" type="tel" placeholder="+00 000 000 000" />
-            </div>
+      if (sent === '1' && form && success) {
+        form.style.display = 'none';
+        success.hidden = false;
 
-            <div>
-              <label class="label">Interest</label>
-              <select class="select">
-                <option>Casa Serenidade</option>
-                <option>Casa Brisa Suave</option>
-                <option>Casa Céu</option>
-                <option>Full presentation</option>
-              </select>
-            </div>
-          </div>
+        requestAnimationFrame(() => {
+          success.classList.add('is-visible');
+        });
 
-          <div style="margin-top:16px;">
-            <label class="label">Message</label>
-            <textarea class="textarea"
-              placeholder="If you wish, share a bit about your interest or timeline."></textarea>
-          </div>
-
-          <button class="btn btn-primary" type="submit" style="margin-top:20px;">
-            Send request
-          </button>
-
-        </form>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CLOSING -->
-  <section class="section">
-    <div class="container signature-band" data-reveal>
-
-      <span class="eyebrow">Approach</span>
-
-      <h2 class="h2" style="margin-top:18px;">
-        A direct, discreet and clarity-driven approach.
-      </h2>
-
-      <p class="copy" style="margin-top:18px;">
-        Casas da Vila Homes does not operate through mass-market sales.
-        Each contact is handled individually, respecting timing,
-        profile and decision process.
-      </p>
-
-    </div>
-  </section>
-
-</main>
-    <div id="site-footer"></div>
+        if (window.history.replaceState) {
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    })();
+  </script>
 </body>
+<script>
+  (function(){
+    const elements = document.querySelectorAll('[data-reveal]');
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(el => el.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: '0px 0px -10% 0px'
+    });
+
+    elements.forEach(el => observer.observe(el));
+  })();
+</script>
 
 </html>
