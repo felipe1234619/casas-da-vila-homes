@@ -1,28 +1,9 @@
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 min
-const RATE_LIMIT_MAX_REQUESTS = 5;
-
-const rateStore = global.__contactRateStore || new Map();
-global.__contactRateStore = rateStore;
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
   try {
-    const ip = getClientIp(req);
-    const now = Date.now();
-
-    cleanupRateStore(now);
-    const rate = consumeRate(ip, now);
-
-    if (rate.count > RATE_LIMIT_MAX_REQUESTS) {
-      return res.status(429).json({
-        ok: false,
-        error: 'Too many requests. Please try again shortly.'
-      });
-    }
-
     const {
       locale = 'en',
       name = '',
@@ -30,10 +11,7 @@ export default async function handler(req, res) {
       phone = '',
       interest = '',
       message = '',
-      page = '',
-      company = '',     // honeypot
-      website = '',     // honeypot
-      formStartedAt = '' // time trap
+      page = ''
     } = req.body || {};
 
     const clean = (value) => String(value || '').trim();
@@ -45,49 +23,23 @@ export default async function handler(req, res) {
       phone: clean(phone),
       interest: clean(interest),
       message: clean(message),
-      page: clean(page),
-      company: clean(company),
-      website: clean(website),
-      formStartedAt: clean(formStartedAt)
+      page: clean(page)
     };
 
-    // Honeypot: bot preenche campos invisíveis
-    if (payload.company || payload.website) {
-      return res.status(200).json({ ok: true });
-    }
+    console.log('CONTACT PAYLOAD', {
+      locale: payload.locale,
+      name: payload.name,
+      email: payload.email,
+      phone: payload.phone,
+      interest: payload.interest,
+      page: payload.page,
+      messageLength: payload.message.length
+    });
 
-    // Time trap: bot enviou rápido demais
-// TEMP: disable anti-spam validation
-console.log('CONTACT DEBUG bypass anti-spam', {
-  formStartedAt: payload.formStartedAt
-});
     if (!payload.name || !payload.email || !payload.interest || !payload.message) {
       return res.status(400).json({
         ok: false,
         error: 'Missing required fields'
-      });
-    }
-
-    if (payload.name.length > 120) {
-      return res.status(400).json({ ok: false, error: 'Invalid name length' });
-    }
-
-    if (payload.email.length > 160) {
-      return res.status(400).json({ ok: false, error: 'Invalid email length' });
-    }
-
-    if (payload.phone.length > 40) {
-      return res.status(400).json({ ok: false, error: 'Invalid phone length' });
-    }
-
-    if (payload.interest.length > 120) {
-      return res.status(400).json({ ok: false, error: 'Invalid interest length' });
-    }
-
-    if (payload.message.length < 10 || payload.message.length > 4000) {
-      return res.status(400).json({
-        ok: false,
-        error: 'Invalid message length'
       });
     }
 
@@ -99,12 +51,19 @@ console.log('CONTACT DEBUG bypass anti-spam', {
       });
     }
 
+    if (payload.message.length < 5) {
+      return res.status(400).json({
+        ok: false,
+        error: 'Message too short'
+      });
+    }
+
     const resendApiKey = process.env.RESEND_API_KEY;
     const toEmail = process.env.CONTACT_TO_EMAIL || 'homes@casasdavila.com';
-    const fromEmail =
-      process.env.CONTACT_FROM_EMAIL || 'Casas da Vila Homes <onboarding@resend.dev>';
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
 
     if (!resendApiKey) {
+      console.error('CONTACT ERROR: missing RESEND_API_KEY');
       return res.status(500).json({
         ok: false,
         error: 'Missing RESEND_API_KEY'
@@ -116,7 +75,7 @@ console.log('CONTACT DEBUG bypass anti-spam', {
         ? `Casas da Vila Homes | Novo contato privado: ${payload.interest}`
         : `Casas da Vila Homes | New private inquiry: ${payload.interest}`;
 
-    const submittedAt = new Date(now).toLocaleString(
+    const submittedAt = new Date().toLocaleString(
       payload.locale === 'pt' ? 'pt-BR' : 'en-US',
       { dateStyle: 'medium', timeStyle: 'short' }
     );
@@ -150,10 +109,6 @@ console.log('CONTACT DEBUG bypass anti-spam', {
             <td style="padding:10px 0; border-bottom:1px solid #e8e2d8;">${escapeHtml(payload.page || '—')}</td>
           </tr>
           <tr>
-            <td style="padding:10px 0; border-bottom:1px solid #e8e2d8;"><strong>${payload.locale === 'pt' ? 'IP' : 'IP'}</strong></td>
-            <td style="padding:10px 0; border-bottom:1px solid #e8e2d8;">${escapeHtml(ip || 'unknown')}</td>
-          </tr>
-          <tr>
             <td style="padding:10px 0; border-bottom:1px solid #e8e2d8;"><strong>${payload.locale === 'pt' ? 'Enviado em' : 'Submitted at'}</strong></td>
             <td style="padding:10px 0; border-bottom:1px solid #e8e2d8;">${escapeHtml(submittedAt)}</td>
           </tr>
@@ -181,8 +136,10 @@ console.log('CONTACT DEBUG bypass anti-spam', {
     });
 
     const resendData = await resendResponse.json();
+    console.log('RESEND RESPONSE', resendData);
 
     if (!resendResponse.ok) {
+      console.error('CONTACT ERROR: resend failed', resendData);
       return res.status(500).json({
         ok: false,
         error: resendData?.message || 'Email sending failed'
@@ -191,6 +148,7 @@ console.log('CONTACT DEBUG bypass anti-spam', {
 
     return res.status(200).json({ ok: true });
   } catch (error) {
+    console.error('CONTACT ERROR: unexpected', error);
     return res.status(500).json({
       ok: false,
       error: 'Unexpected server error'
@@ -205,45 +163,4 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
-}
-
-function getClientIp(req) {
-  const xForwardedFor = req.headers['x-forwarded-for'];
-  if (typeof xForwardedFor === 'string' && xForwardedFor.length) {
-    return xForwardedFor.split(',')[0].trim();
-  }
-
-  const xRealIp = req.headers['x-real-ip'];
-  if (typeof xRealIp === 'string' && xRealIp.length) {
-    return xRealIp.trim();
-  }
-
-  return req.socket?.remoteAddress || 'unknown';
-}
-
-function cleanupRateStore(now) {
-  for (const [key, value] of rateStore.entries()) {
-    if (now - value.firstSeen > RATE_LIMIT_WINDOW_MS) {
-      rateStore.delete(key);
-    }
-  }
-}
-
-function consumeRate(ip, now) {
-  const existing = rateStore.get(ip);
-
-  if (!existing) {
-    const value = { count: 1, firstSeen: now };
-    rateStore.set(ip, value);
-    return value;
-  }
-
-  if (now - existing.firstSeen > RATE_LIMIT_WINDOW_MS) {
-    const value = { count: 1, firstSeen: now };
-    rateStore.set(ip, value);
-    return value;
-  }
-
-  existing.count += 1;
-  return existing;
 }
