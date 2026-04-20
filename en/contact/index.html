@@ -704,7 +704,15 @@
     if (startedAtField) {
       startedAtField.value = String(Date.now());
     }
+(function () {
 
+  const formStartedAtInput = document.getElementById('formStartedAt');
+
+  if (formStartedAtInput) {
+    formStartedAtInput.value = Date.now();
+  }
+
+})();
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
 
