@@ -57,20 +57,10 @@ export default async function handler(req, res) {
     }
 
     // Time trap: bot enviou rápido demais
-const startedAt = Number(payload.formStartedAt);
-
-if (!Number.isFinite(startedAt) || startedAt <= 0) {
-  console.log('CONTACT DEBUG: missing or invalid formStartedAt', {
-    formStartedAt: payload.formStartedAt
-  });
-} else {
-  const elapsed = now - startedAt;
-
-  if (elapsed < 2500) {
-    console.log('CONTACT DEBUG: blocked by time trap', { elapsed });
-    return res.status(200).json({ ok: true });
-  }
-}
+// TEMP: disable anti-spam validation
+console.log('CONTACT DEBUG bypass anti-spam', {
+  formStartedAt: payload.formStartedAt
+});
     if (!payload.name || !payload.email || !payload.interest || !payload.message) {
       return res.status(400).json({
         ok: false,
