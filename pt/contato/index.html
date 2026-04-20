@@ -410,6 +410,16 @@
     .contactPanel[data-reveal]{ transition-delay:.12s; }
     .contactClosingCard[data-reveal]{ transition-delay:.08s; }
 
+    .hp-wrap{
+      position:absolute !important;
+      left:-9999px !important;
+      width:1px !important;
+      height:1px !important;
+      overflow:hidden !important;
+      opacity:0 !important;
+      pointer-events:none !important;
+    }
+
     @media (max-width:1100px){
       .contactHeroGrid{
         grid-template-columns:1fr;
@@ -484,15 +494,6 @@
         transition:none !important;
       }
     }
-    .hp-wrap{
-  position:absolute !important;
-  left:-9999px !important;
-  width:1px !important;
-  height:1px !important;
-  overflow:hidden !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-}
   </style>
 </head>
 
@@ -528,6 +529,18 @@
 
           <div class="contactPanel" data-reveal>
             <form class="amanContactForm" id="contact-form" novalidate>
+              <div class="hp-wrap" aria-hidden="true">
+                <label for="contact-company">Empresa</label>
+                <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="hp-wrap" aria-hidden="true">
+                <label for="contact-website">Website</label>
+                <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <input type="hidden" id="contact-started-at" name="formStartedAt" value="" />
+
               <div class="contactPanelHead">
                 <span class="contactKicker">Contato Privado</span>
                 <p class="contactPanelIntro">
@@ -622,17 +635,7 @@
                 </p>
               </div>
             </form>
-<div class="hp-wrap" aria-hidden="true">
-  <label for="contact-company">Empresa</label>
-  <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
-</div>
 
-<div class="hp-wrap" aria-hidden="true">
-  <label for="contact-website">Website</label>
-  <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
-</div>
-
-<input type="hidden" id="contact-started-at" name="formStartedAt" value="" />
             <div class="contactSuccess" id="contact-success" aria-live="polite" hidden>
               <span class="contactSuccessKicker">Obrigado</span>
               <h3>Sua solicitação foi recebida.</h3>
@@ -647,17 +650,7 @@
               </div>
             </div>
           </div>
-<div class="hp-wrap" aria-hidden="true">
-  <label for="contact-company">Company</label>
-  <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
-</div>
 
-<div class="hp-wrap" aria-hidden="true">
-  <label for="contact-website">Website</label>
-  <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
-</div>
-
-<input type="hidden" id="contact-started-at" name="formStartedAt" value="" />
         </div>
       </div>
     </section>
@@ -683,95 +676,87 @@
 
   <div id="site-footer"></div>
 
-<script>
-  (function () {
-    const elements = document.querySelectorAll('[data-reveal]');
+  <script>
+    (function () {
+      const elements = document.querySelectorAll('[data-reveal]');
 
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.18,
-        rootMargin: '0px 0px -10% 0px'
-      });
-
-      elements.forEach((el) => observer.observe(el));
-    } else {
-      elements.forEach((el) => el.classList.add('is-visible'));
-    }
-
-    const form = document.getElementById('contact-form');
-    const submitButton = document.getElementById('contact-submit');
-    const errorBox = document.getElementById('contact-error');
-    const successBox = document.getElementById('contact-success');
-    const startedAtField = document.getElementById('contact-started-at');
-
-    if (startedAtField) {
-      startedAtField.value = String(Date.now());
-    }
-(function () {
-
-  const formStartedAtInput = document.getElementById('formStartedAt');
-
-  if (formStartedAtInput) {
-    formStartedAtInput.value = Date.now();
-  }
-
-})();
-    form.addEventListener('submit', async function (event) {
-      event.preventDefault();
-
-      errorBox.classList.remove('is-visible');
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando...';
-
-      const formData = new FormData(form);
-      const payload = {
-        locale: 'pt',
-        page: window.location.pathname,
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        interest: formData.get('interest'),
-        message: formData.get('message'),
-        company: formData.get('company'),
-        website: formData.get('website'),
-        formStartedAt: formData.get('formStartedAt')
-      };
-
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.18,
+          rootMargin: '0px 0px -10% 0px'
         });
 
-        const result = await response.json();
-
-        if (!response.ok || !result.ok) {
-          throw new Error(result.error || 'Falha no envio');
-        }
-
-        form.style.display = 'none';
-        successBox.hidden = false;
-
-        requestAnimationFrame(() => {
-          successBox.classList.add('is-visible');
-        });
-      } catch (error) {
-        errorBox.classList.add('is-visible');
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Enviar solicitação privada';
+        elements.forEach((el) => observer.observe(el));
+      } else {
+        elements.forEach((el) => el.classList.add('is-visible'));
       }
-    });
-  })();
-</script>
+
+      const form = document.getElementById('contact-form');
+      const submitButton = document.getElementById('contact-submit');
+      const errorBox = document.getElementById('contact-error');
+      const successBox = document.getElementById('contact-success');
+      const startedAtField = document.getElementById('contact-started-at');
+
+      if (startedAtField) {
+        startedAtField.value = String(Date.now());
+      }
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        errorBox.classList.remove('is-visible');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        const formData = new FormData(form);
+        const payload = {
+          locale: 'pt',
+          page: window.location.pathname,
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          interest: formData.get('interest'),
+          message: formData.get('message'),
+          company: formData.get('company'),
+          website: formData.get('website'),
+          formStartedAt: formData.get('formStartedAt')
+        };
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const result = await response.json();
+
+          if (!response.ok || !result.ok) {
+            throw new Error(result.error || 'Falha no envio');
+          }
+
+          form.style.display = 'none';
+          successBox.hidden = false;
+
+          requestAnimationFrame(() => {
+            successBox.classList.add('is-visible');
+          });
+        } catch (error) {
+          errorBox.classList.add('is-visible');
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Enviar solicitação privada';
+        }
+      });
+    })();
+  </script>
 </body>
 
 </html>
