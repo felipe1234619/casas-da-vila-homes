@@ -16,14 +16,14 @@
 
   <style>
     .contactHero{
-      position: relative;
-      min-height: 100svh;
-      padding-top: calc(var(--header-h, 88px) + 52px);
-      padding-bottom: 92px;
-      overflow: hidden;
+      position:relative;
+      min-height:100svh;
+      padding-top:calc(var(--header-h, 88px) + 52px);
+      padding-bottom:92px;
+      overflow:hidden;
       background:
-        linear-gradient(180deg, rgba(14,18,20,.48) 0%, rgba(14,18,20,.38) 24%, rgba(14,18,20,.52) 100%),
-        url("/assets/images/location/location-2.jpg") center center / cover no-repeat;
+        linear-gradient(180deg, rgba(14,18,20,.52) 0%, rgba(14,18,20,.36) 26%, rgba(14,18,20,.56) 100%),
+        url("/assets/images/location/location-02.jpg") center center / cover no-repeat;
     }
 
     .contactHero::before{
@@ -31,8 +31,8 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 18% 22%, rgba(214,183,129,.10), transparent 34%),
-        radial-gradient(circle at 82% 78%, rgba(255,255,255,.08), transparent 26%);
+        radial-gradient(circle at 18% 20%, rgba(214,183,129,.10), transparent 34%),
+        radial-gradient(circle at 82% 76%, rgba(255,255,255,.08), transparent 28%);
       pointer-events:none;
     }
 
@@ -41,7 +41,7 @@
       position:absolute;
       inset:auto 0 0 0;
       height:140px;
-      background:linear-gradient(180deg, rgba(247,244,238,0) 0%, #f6f2eb 100%);
+      background:linear-gradient(180deg, rgba(246,242,235,0) 0%, #f6f2eb 100%);
       pointer-events:none;
     }
 
@@ -52,13 +52,13 @@
 
     .contactHeroGrid{
       display:grid;
-      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
       gap:44px;
       align-items:start;
     }
 
     .contactIntro{
-      padding-top: 26px;
+      padding-top:26px;
       color:#f6f1e8;
     }
 
@@ -79,7 +79,7 @@
     .contactIntro .page-lead{
       margin-top:22px;
       max-width:34ch;
-      color:rgba(255,255,255,.80);
+      color:rgba(255,255,255,.82);
     }
 
     .contactIntroText{
@@ -241,7 +241,7 @@
       box-shadow:
         0 14px 32px rgba(168,122,56,.22),
         inset 0 1px 0 rgba(255,255,255,.26);
-      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease;
+      transition:transform .28s ease, box-shadow .28s ease, filter .28s ease, opacity .28s ease;
     }
 
     .contactSubmit:hover{
@@ -250,6 +250,11 @@
       box-shadow:
         0 18px 36px rgba(168,122,56,.28),
         inset 0 1px 0 rgba(255,255,255,.26);
+    }
+
+    .contactSubmit:disabled{
+      opacity:.65;
+      cursor:wait;
     }
 
     .contactPrivacy{
@@ -271,6 +276,18 @@
       font-size:.9rem;
       line-height:1.7;
       color:rgba(255,255,255,.62);
+    }
+
+    .contactError{
+      display:none;
+      margin:8px 0 0;
+      font-size:.92rem;
+      line-height:1.7;
+      color:#ffe0d2;
+    }
+
+    .contactError.is-visible{
+      display:block;
     }
 
     .contactSuccess{
@@ -372,7 +389,28 @@
       line-height:1.9;
     }
 
-    @media (max-width: 1100px){
+    [data-reveal]{
+      opacity:0;
+      transform:translate3d(0,12px,0);
+      filter:blur(12px);
+      will-change:opacity, transform, filter;
+      transition:
+        opacity .9s cubic-bezier(.22,.61,.36,1),
+        transform .9s cubic-bezier(.22,.61,.36,1),
+        filter .9s cubic-bezier(.22,.61,.36,1);
+    }
+
+    [data-reveal].is-visible{
+      opacity:1;
+      transform:translate3d(0,0,0);
+      filter:blur(0);
+    }
+
+    .contactIntro[data-reveal]{ transition-delay:.05s; }
+    .contactPanel[data-reveal]{ transition-delay:.12s; }
+    .contactClosingCard[data-reveal]{ transition-delay:.08s; }
+
+    @media (max-width:1100px){
       .contactHeroGrid{
         grid-template-columns:1fr;
         gap:30px;
@@ -388,9 +426,9 @@
       }
     }
 
-    @media (max-width: 860px){
+    @media (max-width:860px){
       .contactHero{
-        padding-top: calc(var(--header-h, 88px) + 34px);
+        padding-top:calc(var(--header-h, 88px) + 34px);
         padding-bottom:72px;
       }
 
@@ -433,240 +471,28 @@
         max-width:none;
       }
     }
-    <style>
-  .contactHero{
-    position:relative;
-    min-height:100svh;
-    padding-top:calc(var(--header-h, 88px) + 52px);
-    padding-bottom:92px;
-    overflow:hidden;
-    background:
-      linear-gradient(180deg, rgba(14,18,20,.52) 0%, rgba(14,18,20,.36) 26%, rgba(14,18,20,.56) 100%),
-      url("/assets/img/contact/contact-hero.jpg") center center / cover no-repeat;
-  }
 
-  .contactHero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(circle at 18% 20%, rgba(214,183,129,.10), transparent 34%),
-      radial-gradient(circle at 82% 76%, rgba(255,255,255,.08), transparent 28%);
-    pointer-events:none;
-  }
+    @media (prefers-reduced-motion: reduce){
+      [data-reveal]{
+        opacity:1 !important;
+        transform:none !important;
+        filter:none !important;
+        transition:none !important;
+      }
 
-  .contactHero::after{
-    content:"";
-    position:absolute;
-    inset:auto 0 0 0;
-    height:140px;
-    background:linear-gradient(180deg, rgba(246,242,235,0) 0%, #f6f2eb 100%);
-    pointer-events:none;
-  }
-
-  .contactHeroInner{
-    position:relative;
-    z-index:2;
-  }
-
-  .contactHeroGrid{
-    display:grid;
-    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
-    gap:44px;
-    align-items:start;
-  }
-
-  .contactIntro{
-    padding-top:26px;
-    color:#f6f1e8;
-  }
-
-  .contactIntro .page-eyebrow{
-    display:inline-block;
-    margin-bottom:18px;
-    color:rgba(255,255,255,.76);
-  }
-
-  .contactIntro .h1{
-    margin:0;
-    max-width:10ch;
-    color:#fff;
-    letter-spacing:-.04em;
-    text-wrap:balance;
-  }
-
-  .contactIntro .page-lead{
-    margin-top:22px;
-    max-width:34ch;
-    color:rgba(255,255,255,.82);
-  }
-
-  .contactIntroText{
-    margin-top:28px;
-    max-width:44ch;
-  }
-
-  .contactIntroText .copy{
-    color:rgba(255,255,255,.72);
-  }
-
-  .contactPanel{
-    position:relative;
-  }
-
-  .contactClosing{
-    position:relative;
-    padding:0 0 96px;
-    background:#f6f2eb;
-  }
-
-  .contactClosingCard{
-    max-width:980px;
-    margin:0 auto;
-    padding:54px 40px;
-    border-radius:34px;
-    background:linear-gradient(180deg, #ffffff 0%, #f7f4ee 100%);
-    box-shadow:
-      0 30px 70px rgba(41,34,24,.08),
-      inset 0 1px 0 rgba(255,255,255,.82);
-    text-align:center;
-  }
-
-  .contactClosingCard .eyebrow{
-    color:rgba(26,27,28,.46);
-  }
-
-  .contactClosingCard .h2{
-    max-width:11ch;
-    margin:18px auto 0;
-    color:#1e2327;
-    letter-spacing:-.045em;
-    text-wrap:balance;
-  }
-
-  .contactClosingCard .copy{
-    max-width:56ch;
-    margin:18px auto 0;
-    color:#5c6064;
-    line-height:1.9;
-  }
-
-  @media (max-width:1100px){
-    .contactHeroGrid{
-      grid-template-columns:1fr;
-      gap:30px;
+      .contactSuccess{
+        transition:none !important;
+      }
     }
-
-    .contactIntro{
-      padding-top:0;
-      max-width:720px;
-    }
-
-    .contactIntro .h1{
-      max-width:12ch;
-    }
-  }
-
-  @media (max-width:860px){
-    .contactHero{
-      padding-top:calc(var(--header-h, 88px) + 34px);
-      padding-bottom:72px;
-    }
-
-    .contactIntro .h1{
-      max-width:none;
-    }
-
-    .contactClosing{
-      padding-bottom:72px;
-    }
-
-    .contactClosingCard{
-      padding:36px 22px;
-      border-radius:26px;
-    }
-
-    .contactClosingCard .h2{
-      max-width:none;
-    }
-  }
-<style>
-  .contactIntro,
-  .contactPanel,
-  .contactClosingCard{
-    opacity: 0;
-    transform: translateY(10px);
-    filter: blur(10px);
-    will-change: opacity, transform, filter;
-    animation: contactFadeBlurIn 1.05s cubic-bezier(.22,.61,.36,1) forwards;
-  }
-
-  .contactIntro{
-    animation-delay: .08s;
-  }
-
-  .contactPanel{
-    animation-delay: .18s;
-  }
-
-  .contactClosingCard{
-    animation-delay: .12s;
-  }
-
-  @keyframes contactFadeBlurIn{
-    0%{
-      opacity: 0;
-      transform: translateY(10px);
-      filter: blur(10px);
-    }
-    100%{
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    .contactIntro,
-    .contactPanel,
-    .contactClosingCard{
-      opacity: 1;
-      transform: none;
-      filter: none;
-      animation: none;
-    }
-  }
-  <style>
-  [data-reveal]{
-    opacity: 0;
-    transform: translate3d(0, 12px, 0);
-    filter: blur(12px);
-    will-change: opacity, transform, filter;
-    transition:
-      opacity .9s cubic-bezier(.22,.61,.36,1),
-      transform .9s cubic-bezier(.22,.61,.36,1),
-      filter .9s cubic-bezier(.22,.61,.36,1);
-  }
-
-  [data-reveal].is-visible{
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    filter: blur(0);
-  }
-
-  /* micro-stagger (muito sutil) */
-  .contactIntro[data-reveal]{ transition-delay: .05s; }
-  .contactPanel[data-reveal]{ transition-delay: .12s; }
-  .contactClosingCard[data-reveal]{ transition-delay: .08s; }
-
-  @media (prefers-reduced-motion: reduce){
-    [data-reveal]{
-      opacity: 1 !important;
-      transform: none !important;
-      filter: none !important;
-      transition: none !important;
-    }
-  }
+    .hp-wrap{
+  position:absolute !important;
+  left:-9999px !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
   </style>
 </head>
 
@@ -674,7 +500,6 @@
   <div id="site-header"></div>
 
   <main>
-
     <section class="contactHero">
       <div class="container contactHeroInner">
         <div class="contactHeroGrid">
@@ -702,17 +527,7 @@
           </div>
 
           <div class="contactPanel" data-reveal>
-
-            <form
-              class="amanContactForm"
-              action="https://formsubmit.co/homes@casasdavila.com"
-              method="POST"
-            >
-              <input type="hidden" name="_subject" value="Casas da Vila Homes | Nova solicitação privada" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_next" value="https://www.casasdavila.com/pt/contato/?sent=1" />
-
+            <form class="amanContactForm" id="contact-form" novalidate>
               <div class="contactPanelHead">
                 <span class="contactKicker">Contato Privado</span>
                 <p class="contactPanelIntro">
@@ -789,7 +604,7 @@
               </div>
 
               <div class="contactActions">
-                <button class="contactSubmit" type="submit">
+                <button class="contactSubmit" id="contact-submit" type="submit">
                   Enviar solicitação privada
                 </button>
 
@@ -801,9 +616,23 @@
                 <p class="contactNote">
                   Sua mensagem é enviada diretamente para <strong>homes@casasdavila.com</strong>.
                 </p>
+
+                <p class="contactError" id="contact-error">
+                  Não foi possível enviar sua solicitação neste momento. Tente novamente em instantes.
+                </p>
               </div>
             </form>
+<div class="hp-wrap" aria-hidden="true">
+  <label for="contact-company">Empresa</label>
+  <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
+</div>
 
+<div class="hp-wrap" aria-hidden="true">
+  <label for="contact-website">Website</label>
+  <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+</div>
+
+<input type="hidden" id="contact-started-at" name="formStartedAt" value="" />
             <div class="contactSuccess" id="contact-success" aria-live="polite" hidden>
               <span class="contactSuccessKicker">Obrigado</span>
               <h3>Sua solicitação foi recebida.</h3>
@@ -817,9 +646,18 @@
                 <a class="btn btn-secondary" href="/pt/">Voltar ao início</a>
               </div>
             </div>
-
           </div>
+<div class="hp-wrap" aria-hidden="true">
+  <label for="contact-company">Company</label>
+  <input type="text" id="contact-company" name="company" tabindex="-1" autocomplete="off" />
+</div>
 
+<div class="hp-wrap" aria-hidden="true">
+  <label for="contact-website">Website</label>
+  <input type="text" id="contact-website" name="website" tabindex="-1" autocomplete="off" />
+</div>
+
+<input type="hidden" id="contact-started-at" name="formStartedAt" value="" />
         </div>
       </div>
     </section>
@@ -841,54 +679,89 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="site-footer"></div>
 
-  <script>
-    (function () {
-      const params = new URLSearchParams(window.location.search);
-      const sent = params.get('sent');
-      const form = document.querySelector('.amanContactForm');
-      const success = document.getElementById('contact-success');
-
-      if (sent === '1' && form && success) {
-        form.style.display = 'none';
-        success.hidden = false;
-
-        requestAnimationFrame(() => {
-          success.classList.add('is-visible');
-        });
-
-        if (window.history.replaceState) {
-          window.history.replaceState({}, document.title, window.location.pathname);
-        }
-      }
-    })();
-  </script>
-  <script>
-  (function(){
+<script>
+  (function () {
     const elements = document.querySelectorAll('[data-reveal]');
 
-    if (!('IntersectionObserver' in window)) {
-      elements.forEach(el => el.classList.add('is-visible'));
-      return;
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -10% 0px'
+      });
+
+      elements.forEach((el) => observer.observe(el));
+    } else {
+      elements.forEach((el) => el.classList.add('is-visible'));
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.18,
-      rootMargin: '0px 0px -10% 0px'
-    });
+    const form = document.getElementById('contact-form');
+    const submitButton = document.getElementById('contact-submit');
+    const errorBox = document.getElementById('contact-error');
+    const successBox = document.getElementById('contact-success');
+    const startedAtField = document.getElementById('contact-started-at');
 
-    elements.forEach(el => observer.observe(el));
+    if (startedAtField) {
+      startedAtField.value = String(Date.now());
+    }
+
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      errorBox.classList.remove('is-visible');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando...';
+
+      const formData = new FormData(form);
+      const payload = {
+        locale: 'pt',
+        page: window.location.pathname,
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        interest: formData.get('interest'),
+        message: formData.get('message'),
+        company: formData.get('company'),
+        website: formData.get('website'),
+        formStartedAt: formData.get('formStartedAt')
+      };
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'Falha no envio');
+        }
+
+        form.style.display = 'none';
+        successBox.hidden = false;
+
+        requestAnimationFrame(() => {
+          successBox.classList.add('is-visible');
+        });
+      } catch (error) {
+        errorBox.classList.add('is-visible');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Enviar solicitação privada';
+      }
+    });
   })();
 </script>
 </body>
