@@ -10,7 +10,7 @@
         </span>
       </a>
 
-      <nav class="header-nav" aria-label="Main navigation">
+      <nav class="header-nav header-nav--desktop" aria-label="Main navigation">
         <a data-nav-link="home" data-key="home" href="/pt/">Home</a>
         <a data-nav-link="project" data-key="project" href="/pt/projeto/">O Projeto</a>
         <a data-nav-link="houses" data-key="houses" href="/pt/casas/">As Casas</a>
@@ -21,7 +21,7 @@
         <a data-nav-link="contact" data-key="contact" href="/pt/contato/">Contato</a>
       </nav>
 
-      <div class="header-actions">
+      <div class="header-actions header-actions--desktop">
         <div class="lang-switch premium-lang" aria-label="Language">
           <a data-lang-link="pt" href="/pt/">PT</a>
           <a data-lang-link="en" href="/en/">EN</a>
@@ -31,6 +31,64 @@
           <span data-key="request_presentation">Solicitar apresentação</span>
         </a>
       </div>
+
+      <button
+        class="header-toggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
+
+  <div class="header-overlay" data-mobile-overlay></div>
+
+  <aside class="mobile-drawer" data-mobile-panel aria-hidden="true">
+    <div class="mobile-drawer-top">
+      <a class="header-brand mobile-brand" href="/" data-brand-link aria-label="Casas da Vila Homes">
+        <span class="brand-mark"></span>
+
+        <span class="brand-text">
+          <strong>Casas da Vila Homes</strong>
+          <span>Trancoso · Bahia</span>
+        </span>
+      </a>
+
+      <button
+        class="mobile-drawer-close"
+        type="button"
+        aria-label="Fechar menu"
+        data-menu-close
+      >
+        ×
+      </button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a data-nav-link="home" data-key="home" href="/pt/">Home</a>
+      <a data-nav-link="project" data-key="project" href="/pt/projeto/">O Projeto</a>
+      <a data-nav-link="houses" data-key="houses" href="/pt/casas/">As Casas</a>
+      <a data-nav-link="shared" data-key="shared" href="/pt/social/">Vida em Comum</a>
+      <a data-nav-link="operations" data-key="operations" href="/pt/rental-pool/">Operação</a>
+      <a data-nav-link="location" data-key="location" href="/pt/localizacao/">Localização</a>
+      <a data-nav-link="investment" data-key="investment" href="/pt/investimento/">Investimento</a>
+      <a data-nav-link="contact" data-key="contact" href="/pt/contato/">Contato</a>
+    </nav>
+
+    <div class="mobile-drawer-bottom">
+      <div class="lang-switch premium-lang mobile-lang" aria-label="Language">
+        <a data-lang-link="pt" href="/pt/">PT</a>
+        <a data-lang-link="en" href="/en/">EN</a>
+      </div>
+
+      <a class="header-cta mobile-cta" data-cta-link href="/pt/contato/">
+        <span data-key="request_presentation">Solicitar apresentação</span>
+      </a>
+    </div>
+  </aside>
 </header>

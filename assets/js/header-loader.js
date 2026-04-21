@@ -478,11 +478,12 @@ function setupMobileMenu() {
     }
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1024 && isOpen) {
-      closeMenu();
-    }
-  });
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) {
+    if (isOpen) closeMenu();
+    header.classList.remove('is-compact');
+  }
+});
 }
 
 function setupHeaderScrollState() {
@@ -495,9 +496,10 @@ function setupHeaderScrollState() {
 
   function applyHeaderState() {
     const currentY = window.scrollY;
+    const isMobile = window.innerWidth <= 1024;
 
     header.classList.toggle('is-scrolled', currentY > 12);
-    header.classList.toggle('is-compact', currentY > 64);
+    header.classList.toggle('is-compact', isMobile && currentY > 64);
 
     if (!body.classList.contains('menu-open')) {
       header.classList.remove('is-hidden');
@@ -515,6 +517,7 @@ function setupHeaderScrollState() {
 
   applyHeaderState();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', applyHeaderState);
 }
 
 function initializeHeader() {
