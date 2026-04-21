@@ -30,7 +30,6 @@ function normalizePath(path) {
 function getLocalizedPath(key, lang) {
   const map = {
     pt: {
-      // navegação principal
       home: '/pt/',
       project: '/pt/projeto/',
       houses: '/pt/casas/',
@@ -40,32 +39,29 @@ function getLocalizedPath(key, lang) {
       investment: '/pt/investimento/',
       contact: '/pt/contato/',
 
-      // ações
       cta: '/pt/contato/',
       brand: '/pt/',
 
-      // footer / links auxiliares
       presentation: '/pt/contato/',
       request_presentation: '/pt/contato/',
       discover_houses: '/pt/casas/',
       view_houses: '/pt/casas/',
       view_shared: '/pt/social/',
       view_operations: '/pt/rental-pool/',
-      // hub + blog
+
       hub: '/pt/hub/',
       blog_investment: '/pt/blog/investir-em-trancoso/',
       blog_prices: '/pt/blog/quanto-custa-casa-trancoso/',
       blog_timing: '/pt/blog/melhor-epoca-trancoso/',
       blog_worth: '/pt/blog/vale-a-pena-comprar-casa-trancoso/',
       blog_realestate: '/pt/blog/trancoso-investimento-imobiliario/',
-      // casas individuais
+
       breeze: '/pt/casas/brisa-suave.html',
       sky: '/pt/casas/ceu.html',
       serenity: '/pt/casas/serenidade.html'
     },
 
     en: {
-      // navigation
       home: '/en/',
       project: '/en/project/',
       houses: '/en/houses/',
@@ -75,25 +71,23 @@ function getLocalizedPath(key, lang) {
       investment: '/en/investment/',
       contact: '/en/contact/',
 
-      // actions
       cta: '/en/contact/',
       brand: '/en/',
 
-      // footer / helper links
       presentation: '/en/contact/',
       request_presentation: '/en/contact/',
       discover_houses: '/en/houses/',
       view_houses: '/en/houses/',
       view_shared: '/en/social/',
       view_operations: '/en/rental-pool/',
-      // hub + blog
+
       hub: '/en/hub/',
       blog_investment: '/en/blog/trancoso-investment/',
       blog_prices: '/en/blog/house-prices-trancoso/',
       blog_timing: '/en/blog/best-time-invest-trancoso/',
       blog_worth: '/en/blog/is-it-worth-buying-house-trancoso/',
       blog_realestate: '/en/blog/trancoso-real-estate-investment/',
-      // individual houses
+
       breeze: '/en/houses/breeze.html',
       sky: '/en/houses/sky.html',
       serenity: '/en/houses/serenity.html'
@@ -152,13 +146,11 @@ function buildTranslatedPath(currentPath, targetLang) {
   };
 
   const reverseMap = {
-    // home
     '/pt': 'home',
     '/pt/': 'home',
     '/en': 'home',
     '/en/': 'home',
 
-    // main sections
     '/pt/projeto': 'project',
     '/pt/projeto/': 'project',
     '/en/project': 'project',
@@ -194,7 +186,6 @@ function buildTranslatedPath(currentPath, targetLang) {
     '/en/contact': 'contact',
     '/en/contact/': 'contact',
 
-    // house pages
     '/pt/casas/brisa-suave.html': 'breeze',
     '/en/houses/breeze.html': 'breeze',
 
@@ -229,6 +220,24 @@ function buildTranslatedPath(currentPath, targetLang) {
   return targetLang === 'en' ? '/en/' : '/pt/';
 }
 
+function highlightCurrentLink() {
+  const current = normalizePath(window.location.pathname);
+
+  document.querySelectorAll('[data-nav-link]').forEach((link) => {
+    const key = link.getAttribute('data-nav-link');
+    const lang = getLangFromPath();
+    const expected = normalizePath(getLocalizedPath(key, lang));
+    const href = normalizePath(link.getAttribute('href'));
+    const target = href || expected;
+
+    const isActive =
+      current === target ||
+      (target !== '/pt/' && target !== '/en/' && current.startsWith(target));
+
+    link.classList.toggle('is-active', isActive);
+  });
+}
+
 function setupHeaderI18n() {
   const lang = getLangFromPath();
 
@@ -242,7 +251,7 @@ function setupHeaderI18n() {
       location: 'Localização',
       investment: 'Investimento',
       contact: 'Contato',
-      request_presentation: 'Solicitar apresentação'
+      request_presentation: 'Apresentação privada'
     },
 
     en: {
@@ -254,13 +263,13 @@ function setupHeaderI18n() {
       location: 'Location',
       investment: 'Investment',
       contact: 'Contact',
-      request_presentation: 'Request Presentation'
+      request_presentation: 'Private Presentation'
     }
   };
 
   document.querySelectorAll('[data-key]').forEach((node) => {
     const key = node.getAttribute('data-key');
-    if (dictionary[lang][key]) {
+    if (dictionary[lang]?.[key]) {
       node.textContent = dictionary[lang][key];
     }
   });
@@ -268,7 +277,7 @@ function setupHeaderI18n() {
   document.querySelectorAll('[data-nav-link]').forEach((link) => {
     const key = link.getAttribute('data-nav-link');
 
-    if (dictionary[lang][key]) {
+    if (dictionary[lang]?.[key]) {
       link.textContent = dictionary[lang][key];
     }
 
@@ -280,10 +289,9 @@ function setupHeaderI18n() {
     brandLink.setAttribute('href', getLocalizedPath('brand', lang));
   }
 
-  const ctaLink = document.querySelector('[data-cta-link]');
-  if (ctaLink) {
+  document.querySelectorAll('[data-cta-link]').forEach((ctaLink) => {
     ctaLink.setAttribute('href', getLocalizedPath('cta', lang));
-  }
+  });
 
   applyLocalizedPaths(document);
 
@@ -371,7 +379,7 @@ function setupFooterI18n() {
 
   document.querySelectorAll('[data-footer-key]').forEach((node) => {
     const key = node.getAttribute('data-footer-key');
-    if (dictionary[lang][key]) {
+    if (dictionary[lang]?.[key]) {
       node.textContent = dictionary[lang][key];
     }
   });
@@ -384,7 +392,7 @@ function setupFooterI18n() {
   document.querySelectorAll('[data-footer-link]').forEach((link) => {
     const key = link.getAttribute('data-footer-link');
 
-    if (dictionary[lang][key]) {
+    if (dictionary[lang]?.[key]) {
       link.textContent = dictionary[lang][key];
     }
 
@@ -405,18 +413,115 @@ function setupFooterI18n() {
   });
 }
 
-function highlightCurrentLink() {
-  const current = normalizePath(window.location.pathname);
+function setupMobileMenu() {
+  const body = document.body;
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const panel = document.querySelector('[data-mobile-panel]');
+  const overlay = document.querySelector('[data-mobile-overlay]');
+  const closeBtn = document.querySelector('[data-menu-close]');
 
-  document.querySelectorAll('[data-nav-link]').forEach((link) => {
-    const href = normalizePath(link.getAttribute('href'));
-    const isActive =
-      current === href ||
-      (href !== '/pt/' && href !== '/en/' && current.startsWith(href));
+  if (!toggle || !panel || !header) return;
 
-    link.classList.toggle('is-active', isActive);
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    body.classList.add('menu-open');
+    toggle.classList.add('is-active');
+    panel.classList.add('is-open');
+    overlay?.classList.add('is-open');
+
+    toggle.setAttribute('aria-expanded', 'true');
+    panel.setAttribute('aria-hidden', 'false');
+
+    header.classList.remove('is-hidden');
+
+    const firstLink = panel.querySelector('a');
+    if (firstLink) {
+      setTimeout(() => firstLink.focus(), 120);
+    }
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    body.classList.remove('menu-open');
+    toggle.classList.remove('is-active');
+    panel.classList.remove('is-open');
+    overlay?.classList.remove('is-open');
+
+    toggle.setAttribute('aria-expanded', 'false');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+
+  function toggleMenu() {
+    if (isOpen) closeMenu();
+    else openMenu();
+  }
+
+  toggle.addEventListener('click', toggleMenu);
+
+  closeBtn?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+
+  panel.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.querySelectorAll('[data-lang-link]').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024 && isOpen) {
+      closeMenu();
+    }
   });
 }
 
-injectFragment('#site-header', '/components/header.html', setupHeaderI18n);
+function setupHeaderScrollState() {
+  const header = document.querySelector('.site-header');
+  const body = document.body;
+
+  if (!header) return;
+
+  let ticking = false;
+
+  function applyHeaderState() {
+    const currentY = window.scrollY;
+
+    header.classList.toggle('is-scrolled', currentY > 12);
+    header.classList.toggle('is-compact', currentY > 64);
+
+    if (!body.classList.contains('menu-open')) {
+      header.classList.remove('is-hidden');
+    }
+
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(applyHeaderState);
+      ticking = true;
+    }
+  }
+
+  applyHeaderState();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+function initializeHeader() {
+  setupHeaderI18n();
+  setupMobileMenu();
+  setupHeaderScrollState();
+}
+
+injectFragment('#site-header', '/components/header.html', initializeHeader);
 injectFragment('#site-footer', '/components/footer.html', setupFooterI18n);
