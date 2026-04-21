@@ -604,7 +604,49 @@
                   </select>
                 </div>
               </div>
+<div class="contactFormGrid">
+  <div class="field">
+    <label class="label" for="contact-interest-type">Perfil de interesse</label>
+    <select
+      class="premiumInput"
+      id="contact-interest-type"
+      name="interest_type"
+    >
+      <option value="">Selecionar</option>
+      <option value="purchase">Aquisição residencial</option>
+      <option value="investment">Investimento</option>
+      <option value="stay">Estadia / uso temporário</option>
+    </select>
+  </div>
 
+  <div class="field">
+    <label class="label" for="contact-budget-range">Faixa de investimento</label>
+    <select
+      class="premiumInput"
+      id="contact-budget-range"
+      name="budget_range"
+    >
+      <option value="">Selecionar</option>
+      <option value="high">Até R$ 5 milhões</option>
+      <option value="ultra">Acima de R$ 5 milhões</option>
+      <option value="unknown">Prefiro não informar</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label class="label" for="contact-timeline">Horizonte de decisão</label>
+    <select
+      class="premiumInput"
+      id="contact-timeline"
+      name="timeline"
+    >
+      <option value="">Selecionar</option>
+      <option value="immediate">Imediato</option>
+      <option value="3-6m">3 a 6 meses</option>
+      <option value="long">Prazo mais longo</option>
+    </select>
+  </div>
+</div>
               <div class="field fieldMessage">
                 <label class="label" for="contact-message">Mensagem</label>
                 <textarea
@@ -716,19 +758,21 @@
         submitButton.textContent = 'Enviando...';
 
         const formData = new FormData(form);
-        const payload = {
-          locale: 'pt',
-          page: window.location.pathname,
-          name: formData.get('name'),
-          email: formData.get('email'),
-          phone: formData.get('phone'),
-          interest: formData.get('interest'),
-          message: formData.get('message'),
-          company: formData.get('company'),
-          website: formData.get('website'),
-          formStartedAt: formData.get('formStartedAt')
-        };
-
+const payload = {
+  locale: 'pt',
+  page: window.location.pathname,
+  name: formData.get('name'),
+  email: formData.get('email'),
+  phone: formData.get('phone'),
+  interest: formData.get('interest'),
+  interest_type: formData.get('interest_type'),
+  budget_range: formData.get('budget_range'),
+  timeline: formData.get('timeline'),
+  message: formData.get('message'),
+  company: formData.get('company'),
+  website: formData.get('website'),
+  formStartedAt: formData.get('formStartedAt')
+};
         try {
           const response = await fetch('/api/contact', {
             method: 'POST',
