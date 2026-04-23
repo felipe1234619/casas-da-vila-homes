@@ -1,15 +1,23 @@
 User-agent: *
+
+# Allow all valid pages
 Allow: /
 
-Sitemap: https://www.casasdavilahomes.com/sitemap.xml
-User-agent: *
+# Block legacy WordPress and technical garbage
 Disallow: /wp-content/
 Disallow: /wp-admin/
 Disallow: /wp-includes/
 Disallow: /xmlrpc.php
+
+# Block useless indexable structures
 Disallow: /feed/
 Disallow: /category/
 Disallow: /tag/
 Disallow: /author/
 Disallow: /elementor-hf/
+
+# Block query parameters (optional but recommended)
 Disallow: /*?*
+
+# Sitemap
+Sitemap: https://www.casasdavilahomes.com/sitemap.xml
