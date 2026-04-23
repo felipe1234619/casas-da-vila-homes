@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
+    { "source": "/wp-includes/:path*", "destination": "/", "permanent": true },
+    { "source": "/xmlrpc.php", "destination": "/", "permanent": true },
+
+    { "source": "/category/:path*", "destination": "/", "permanent": true },
+    { "source": "/tag/:path*", "destination": "/", "permanent": true },
+    { "source": "/author/:path*", "destination": "/", "permanent": true },
+
+    { "source": "/feed", "destination": "/", "permanent": true },
+    { "source": "/elementor-hf/:path*", "destination": "/", "permanent": true }
+  ]
+}
