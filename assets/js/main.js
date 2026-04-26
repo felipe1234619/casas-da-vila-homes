@@ -97,4 +97,74 @@ const footerInsights = {
   container.innerHTML = footerInsights[lang]
     .map(link => `<a href="${link.href}">${link.label}</a>`)
     .join("");
+
+    /* =========================================================
+   TWIPLA — COMMERCIAL EVENT TRACKING (GLOBAL)
+========================================================= */
+
+(function () {
+  function track(eventName, payload = {}) {
+    if (typeof window.va === "function") {
+      window.va("event", eventName, payload);
+    }
+    console.log("[Twipla]", eventName, payload);
+  }
+
+  function getLang() {
+    const p = window.location.pathname;
+    if (p.startsWith("/pt")) return "pt";
+    if (p.startsWith("/en")) return "en";
+    return "unknown";
+  }
+
+  document.addEventListener("click", function (e) {
+    const el = e.target.closest("a, button");
+    if (!el) return;
+
+    const href = el.getAttribute("href") || "";
+    const label = (el.innerText || "").trim();
+
+    const payload = {
+      page: window.location.pathname,
+      lang: getLang(),
+      label,
+      href
+    };
+
+    if (href.includes("wa.me") || href.includes("whatsapp")) {
+      track("whatsapp_click", payload);
+      return;
+    }
+
+    if (href.includes("/contact") || href.includes("/contato")) {
+      track("contact_click", payload);
+      return;
+    }
+
+    if (href.includes("/houses") || href.includes("/casas")) {
+      track("houses_click", payload);
+      return;
+    }
+
+    if (href.includes("/investment") || href.includes("/investimento")) {
+      track("investment_click", payload);
+      return;
+    }
+
+    if (href.includes("/rental-pool")) {
+      track("rental_pool_click", payload);
+      return;
+    }
+
+    if (
+      href.includes("serenity") ||
+      href.includes("serenidade") ||
+      href.includes("brisa") ||
+      href.includes("ceu") ||
+      href.includes("sky")
+    ) {
+      track("house_detail_click", payload);
+    }
+  });
+})();
 })();
