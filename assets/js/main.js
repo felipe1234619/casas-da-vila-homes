@@ -166,38 +166,84 @@ const footerInsights = {
       track("house_detail_click", payload);
     }
   });
-
-  /* =========================================================
-   ANALYTICS GLOBAL — VERCEL + TWIPLA
+/* =========================================================
+   TWIPLA CORE + EVENTS (CORRETO)
 ========================================================= */
 
 (function () {
-  function injectScript(src, id) {
-    if (id && document.getElementById(id)) return;
 
-    var s = document.createElement("script");
-    if (id) s.id = id;
-    s.defer = true;
-    s.async = true;
-    s.src = src;
-    document.body.appendChild(s);
-  }
-
-  // Vercel Analytics
-  injectScript("/_vercel/insights/script.js", "vercel-insights-script");
-
-  // Twipla
+  // ===== LOAD TWIPLA CORE =====
   (function(v,i,s,a,t){
     v[t]=v[t]||function(){(v[t].v=v[t].v||[]).push(arguments)};
-    if(!v._visaSettings){v._visaSettings={}}
+    if(!v._visaSettings){v._visaSettings={}};
     v._visaSettings[a]={v:'1.0',s:a,a:'1',t:t};
-    var b=i.getElementsByTagName('body')[0];
+
     var p=i.createElement('script');
     p.defer=1;
     p.async=1;
     p.src=s+'?s='+a;
-    b.appendChild(p)
+
+    document.body.appendChild(p);
+
   })(window,document,'https://app-worker.visitor-analytics.io/main.js','f6bf2df6-f446-11ef-bf17-f6b0cf20c179','va');
+
+
+  // ===== EVENT TRACKING =====
+  function track(eventName, payload = {}) {
+    if (typeof window.va === "function") {
+      window.va("event", eventName, payload);
+    }
+    console.log("[Twipla]", eventName, payload);
+  }
+
+  function getLang() {
+    const p = window.location.pathname;
+    if (p.startsWith("/pt")) return "pt";
+    if (p.startsWith("/en")) return "en";
+    return "unknown";
+  }
+
+  document.addEventListener("click", function (e) {
+    const el = e.target.closest("a, button");
+    if (!el) return;
+
+    const href = el.getAttribute("href") || "";
+    const label = (el.innerText || "").trim();
+
+    const payload = {
+      page: window.location.pathname,
+      lang: getLang(),
+      label,
+      href
+    };
+
+    if (href.includes("wa.me") || href.includes("whatsapp")) {
+      track("whatsapp_click", payload);
+      return;
+    }
+
+    if (href.includes("/contact") || href.includes("/contato")) {
+      track("contact_click", payload);
+      return;
+    }
+
+    if (href.includes("/houses") || href.includes("/casas")) {
+      track("houses_click", payload);
+      return;
+    }
+
+    if (href.includes("/investment") || href.includes("/investimento")) {
+      track("investment_click", payload);
+      return;
+    }
+
+    if (href.includes("/rental-pool")) {
+      track("rental_pool_click", payload);
+      return;
+    }
+
+  });
+
 })();
 })();
 })();
