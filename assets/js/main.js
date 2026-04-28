@@ -166,5 +166,38 @@ const footerInsights = {
       track("house_detail_click", payload);
     }
   });
+
+  /* =========================================================
+   ANALYTICS GLOBAL — VERCEL + TWIPLA
+========================================================= */
+
+(function () {
+  function injectScript(src, id) {
+    if (id && document.getElementById(id)) return;
+
+    var s = document.createElement("script");
+    if (id) s.id = id;
+    s.defer = true;
+    s.async = true;
+    s.src = src;
+    document.body.appendChild(s);
+  }
+
+  // Vercel Analytics
+  injectScript("/_vercel/insights/script.js", "vercel-insights-script");
+
+  // Twipla
+  (function(v,i,s,a,t){
+    v[t]=v[t]||function(){(v[t].v=v[t].v||[]).push(arguments)};
+    if(!v._visaSettings){v._visaSettings={}}
+    v._visaSettings[a]={v:'1.0',s:a,a:'1',t:t};
+    var b=i.getElementsByTagName('body')[0];
+    var p=i.createElement('script');
+    p.defer=1;
+    p.async=1;
+    p.src=s+'?s='+a;
+    b.appendChild(p)
+  })(window,document,'https://app-worker.visitor-analytics.io/main.js','f6bf2df6-f446-11ef-bf17-f6b0cf20c179','va');
+})();
 })();
 })();
