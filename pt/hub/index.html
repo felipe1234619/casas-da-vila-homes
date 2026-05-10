@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="pt-BR" data-seo-page="hub">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <title>Hub Imobiliário de Trancoso | Casas da Vila Homes</title>
+
+  <link rel="stylesheet" href="/assets/css/global.css" />
+
+  <link rel="canonical" href="https://www.casasdavilahomes.com/pt/hub/" />
+
+  <link rel="alternate" hreflang="pt-BR" href="https://www.casasdavilahomes.com/pt/hub/" />
+  <link rel="alternate" hreflang="en" href="https://www.casasdavilahomes.com/en/hub/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.casasdavilahomes.com/en/hub/" />
+
+  <script defer src="/assets/js/header-loader.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+
+  <script defer src="/assets/meta/seo/seo-map.js"></script>
+  <script defer src="/assets/meta/seo/schema-base.js"></script>
+  <script defer src="/assets/meta/seo/seo-loader.js"></script>
+
+  <style>
+    .articleHero{
+      padding:calc(var(--header-h,96px) + 42px) 0 34px;
+    }
+
+    .articleWrap{
+      width:min(1120px, calc(100vw - 40px));
+      margin:0 auto;
+    }
+
+    .articleIntro{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);
+      gap:26px;
+      align-items:end;
+    }
+
+    .articleKicker{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:.8rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+
+    .articleKicker::before{
+      content:"";
+      width:38px;
+      height:1px;
+      background:rgba(111,85,58,.35);
+    }
+
+    .articleTitle{
+      margin:0;
+      max-width:11ch;
+      font-size:clamp(3rem,7vw,5.8rem);
+      line-height:.94;
+      letter-spacing:-.05em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      text-wrap:balance;
+    }
+
+    .articleLead{
+      margin:22px 0 0;
+      max-width:58ch;
+      font-size:1.08rem;
+      line-height:1.8;
+      color:var(--muted);
+    }
+
+    .articleMetaCard{
+      padding:26px;
+      border-radius:26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.66),rgba(255,255,255,.44));
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .articleMetaCard small{
+      display:block;
+      margin-bottom:8px;
+      font-size:.72rem;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--soft);
+    }
+
+    .articleMetaCard strong{
+      display:block;
+      font-size:1rem;
+      line-height:1.5;
+      color:var(--ink);
+    }
+
+    .articleMetaCard span{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.95rem;
+    }
+
+    .articleMetaGrid{
+      display:grid;
+      gap:18px;
+    }
+
+    .articleBody{
+      padding:18px 0 100px;
+    }
+
+    .articleGrid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(260px,.34fr);
+      gap:34px;
+      align-items:start;
+    }
+
+    .articleContent section + section{
+      margin-top:46px;
+    }
+
+    .articleContent h2{
+      margin:0 0 16px;
+      font-size:clamp(2rem,4vw,3rem);
+      line-height:1;
+      letter-spacing:-.04em;
+      font-weight:500;
+      font-family:"IvyPresto Display","Cormorant Garamond","Times New Roman",serif;
+      text-wrap:balance;
+    }
+
+    .articleContent p{
+      margin:0 0 16px;
+      font-size:1.02rem;
+      line-height:1.86;
+      color:var(--muted);
+      max-width:70ch;
+    }
+
+    .articlePull{
+      padding:34px;
+      border-radius:30px;
+      background:linear-gradient(135deg,#1f1915,#43372d 52%,#51645a);
+      color:#fff;
+      box-shadow:0 26px 70px rgba(34,28,23,.22);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .articlePull p{
+      color:rgba(255,255,255,.86);
+      max-width:34ch;
+      margin:0;
+      font-size:1.1rem;
+      line-height:1.72;
+    }
+
+    .articleAside{
+      position:sticky;
+      top:calc(var(--header-h,96px) + 22px);
+      display:grid;
+      gap:18px;
+    }
+
+    .articleAsideCard{
+      padding:24px 22px;
+      border-radius:24px;
+      background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.42));
+      border:1px solid rgba(255,255,255,.46);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .articleAsideCard h3{
+      margin:0 0 10px;
+      font-size:1.08rem;
+      line-height:1.2;
+      font-weight:600;
+      color:var(--ink);
+    }
+
+    .articleAsideCard p{
+      font-size:.95rem;
+      line-height:1.72;
+      color:var(--muted);
+    }
+
+    .articleAsideCard .btn{
+      margin-top:8px;
+      width:100%;
+      justify-content:center;
+    }
+
+    .articleRelatedLinks{
+      display:grid;
+      gap:0;
+      margin-top:18px;
+      border-top:1px solid var(--line);
+    }
+
+    .articleRelatedLinks a{
+      display:block;
+      padding:16px 0;
+      border-bottom:1px solid var(--line);
+      text-decoration:none;
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    @media (max-width:1080px){
+      .articleIntro,
+      .articleGrid{
+        grid-template-columns:1fr;
+      }
+
+      .articleAside{
+        position:static;
+      }
+
+      .articleTitle{
+        max-width:12ch;
+      }
+    }
+
+    @media (max-width:820px){
+      .articleHero{
+        padding-top:calc(var(--header-h,90px) + 30px);
+      }
+
+      .articleWrap{
+        width:min(100vw - 28px, 1120px);
+      }
+
+      .articleTitle{
+        max-width:100%;
+        font-size:clamp(2.4rem,10vw,4rem);
+      }
+
+      .articleAsideCard{
+        border-radius:22px;
+        padding:22px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="site-header"></div>
+
+<main>
+
+<section class="articleHero">
+  <div class="articleWrap">
+
+    <div class="articleIntro" data-reveal>
+
+      <div>
+        <span class="articleKicker">Trancoso · Hub Imobiliário</span>
+
+        <h1 class="articleTitle">
+          Trancoso como patrimônio, escassez e posicionamento.
+        </h1>
+
+        <p class="articleLead">
+          Um hub editorial para compreender Trancoso além da oferta imediata — através de arquitetura, escassez, timing e posicionamento residencial.
+        </p>
+      </div>
+
+      <aside class="articleMetaCard">
+
+        <div class="articleMetaGrid">
+
+          <div>
+            <small>Objetivo</small>
+            <strong>Compreensão estruturada</strong>
+            <span>Entender o mercado através de lógica e posicionamento.</span>
+          </div>
+
+          <div>
+            <small>Foco</small>
+            <strong>Escassez + valor residencial</strong>
+            <span>O que realmente sustenta valor em Trancoso.</span>
+          </div>
+
+          <div>
+            <small>Próximo passo</small>
+            <strong>
+              <a href="/pt/investimento/">Visão de investimento</a>
+            </strong>
+            <span>Compreenda a lógica por trás do projeto.</span>
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="articleBody">
+
+  <div class="articleWrap">
+
+    <div class="articleGrid">
+
+      <article class="articleContent">
+
+        <section data-reveal>
+
+          <h2>Leituras essenciais sobre Trancoso</h2>
+
+          <p>
+            Estes artigos estruturam uma leitura mais consistente do mercado imobiliário de Trancoso — da escassez territorial até lógica de posicionamento e permanência de valor.
+          </p>
+
+          <div class="articleRelatedLinks">
+
+            <a href="/pt/blog/quanto-custa-casa-trancoso/">
+              Quanto custa uma casa em Trancoso
+            </a>
+
+            <a href="/pt/blog/melhor-epoca-trancoso/">
+              Melhor época para investir em Trancoso
+            </a>
+
+            <a href="/pt/blog/vale-a-pena-comprar-casa-trancoso/">
+              Vale a pena comprar casa em Trancoso?
+            </a>
+
+            <a href="/pt/blog/trancoso-investimento-imobiliario/">
+              Investimento imobiliário em Trancoso
+            </a>
+
+            <a href="/pt/blog/investir-em-trancoso/">
+              Investir em Trancoso
+            </a>
+
+          </div>
+
+        </section>
+
+        <section data-reveal>
+
+          <h2>Como interpretar o mercado</h2>
+
+          <p>
+            Trancoso não funciona como um mercado imobiliário convencional baseado em volume. O que sustenta valor é a combinação entre escassez, arquitetura, baixa densidade e relevância de longo prazo.
+          </p>
+
+          <p>
+            Por isso, preço isolado raramente explica um ativo. Cada residência precisa ser entendida dentro do contexto territorial e da raridade do conjunto onde está inserida.
+          </p>
+
+        </section>
+
+        <section data-reveal>
+
+          <div class="articlePull">
+            <p>
+              Em Trancoso, valor não nasce da oferta abundante. Surge da impossibilidade de replicação.
+            </p>
+          </div>
+
+        </section>
+
+      </article>
+
+      <aside class="articleAside">
+
+        <div class="articleAsideCard">
+          <h3>Conheça o projeto</h3>
+
+          <p>
+            Entenda como Casas da Vila Homes estrutura valor residencial em Trancoso.
+          </p>
+
+          <a href="/pt/projeto/" class="btn">
+            Ver projeto
+          </a>
+        </div>
+
+        <div class="articleAsideCard">
+          <h3>Visão de investimento</h3>
+
+          <p>
+            Uma leitura estruturada sobre posicionamento, timing e lógica patrimonial.
+          </p>
+
+          <a href="/pt/investimento/" class="btn">
+            Ver investimento
+          </a>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<!-- TWIPLA Tracking -->
+<script>
+(function(v,i,s,a,t){
+  v[t]=v[t]||function(){(v[t].v=v[t].v||[]).push(arguments)};
+  if(!v._visaSettings){v._visaSettings={}}
+  v._visaSettings[a]={v:'1.0',s:a,a:'1',t:t};
+
+  var p=i.createElement('script');
+  p.defer=1;
+  p.async=1;
+  p.src='https://app-worker.visitor-analytics.io/main.js?s='+a;
+
+  document.body.appendChild(p);
+})(window,document,'','f6bf2df6-f446-11ef-bf17-f6b0cf20c179','va');
+</script>
+
+</body>
+</html>
