@@ -73,7 +73,7 @@ window.__SEO_MAP__ = {
     blog_rental_pool_trancoso: {
       title: "Rental Pool em Trancoso: quando a casa também opera | Casas da Vila Homes",
       description: "Entenda como funciona o rental pool em Trancoso e como uma segunda residência pode também operar como um ativo com uso flexível.",
-      path: "/pt/blog/rental-pool-trancoso/",
+      path: "/pt/blog/rental-pool/",
       ogImage: "/assets/meta/og/og-investment.jpg",
       type: "article"
     },
@@ -174,7 +174,7 @@ window.__SEO_MAP__ = {
     blog_rental_pool_trancoso: {
       title: "Rental Pool in Trancoso: when a home becomes an asset | Casas da Vila Homes",
       description: "Understand how rental pool works in Trancoso and how a second home can also operate as a flexible asset with structured management.",
-      path: "/en/blog/rental-pool-trancoso/",
+      path: "/en/blog/rental-pool/",
       ogImage: "/assets/meta/og/og-investment.jpg",
       type: "article"
     },
